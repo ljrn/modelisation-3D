@@ -1,4 +1,4 @@
-package reader;
+ package reader;
 
 public class Point {
 

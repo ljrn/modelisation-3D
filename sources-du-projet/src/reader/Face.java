@@ -18,6 +18,6 @@ public class Face {
 	public List<Integer> getPoints() {
 		return points;
 	}
-	
+	 
 	
 }

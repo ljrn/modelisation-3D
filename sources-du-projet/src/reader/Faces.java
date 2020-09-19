@@ -15,6 +15,6 @@ public class Faces {
 				facesInt.add(Integer.parseInt(tab[i]));
 			}
 			this.faces.add(new Face(nbFaces, facesInt));
-		}
+		} 
 	}
 }

@@ -13,7 +13,7 @@ public class Points {
 			points.add(new Point(Float.parseFloat(tab[0]+"F"), Float.parseFloat(tab[1]+"F"),Float.parseFloat(tab[2]+"F")));
 		}
 	}
-
+ 
 	public List<Point> getPoints() {
 		return points;
 	}
