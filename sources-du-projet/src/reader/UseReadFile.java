@@ -13,9 +13,8 @@ public class UseReadFile {
 			}
 			Points ps=new Points();
 			ps.decompStringPoints(rf.getPoints());
-			for(Point p:ps.getPoints()) {
-				System.out.println(p.toString());
-			}
+			Faces f=new Faces();
+			f.decompStringFaces(rf.getFaces(), ps);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

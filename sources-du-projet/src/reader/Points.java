@@ -17,5 +17,20 @@ public class Points {
 	public List<Point> getPoints() {
 		return points;
 	}
+
+	public void setPoints(List<Point> points) {
+		this.points = points;
+	}
+
+	@Override
+	public String toString() {
+		String res="";
+		for(Point p: this.points) {
+			System.out.println(p.toString()+"\n");
+		}
+		return res;
+	}
+	
+	
 	
 }
