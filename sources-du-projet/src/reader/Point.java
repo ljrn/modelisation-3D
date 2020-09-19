@@ -24,4 +24,8 @@ public class Point {
         return z;
     }
     
+    public String toString() {
+    	return ""+this.x+";"+this.y+";"+this.z;
+    }
+    
 }

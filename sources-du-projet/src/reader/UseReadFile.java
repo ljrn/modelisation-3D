@@ -11,8 +11,11 @@ public class UseReadFile {
 			for(String s:ls) {
 				System.out.println(s);
 			}
-			System.out.println(""+rf.getVertex());
-			System.out.println(""+rf.getFace());
+			Points ps=new Points();
+			ps.decompStringPoints(rf.getPoints());
+			for(Point p:ps.getPoints()) {
+				System.out.println(p.toString());
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
