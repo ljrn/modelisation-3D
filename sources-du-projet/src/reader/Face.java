@@ -29,5 +29,27 @@ public class Face {
 		return res;
 	}
 	
+	public double[] getPointsX() {
+		double[] pointsX=new double[nbPoint];
+		for(int i=0; i<ps.size();i++) {
+			pointsX[i]=ps.get(i).getX();
+		}
+		return pointsX;
+	}
+	
+	public double[] getPointsY() {
+		double[] pointsY=new double[nbPoint];
+		for(int i=0; i<ps.size();i++) {
+			pointsY[i]=ps.get(i).getY();
+		}
+		return pointsY;
+	}
+	public double[] getPointsZ() {
+		double[] pointsZ=new double[nbPoint];
+		for(int i=0; i<ps.size();i++) {
+			pointsZ[i]=ps.get(i).getZ();
+		}
+		return pointsZ;
+	}
 	
 }
