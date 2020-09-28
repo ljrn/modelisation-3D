@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.geometry.Point3D;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -39,16 +42,17 @@ public class FormDisplay extends Application{
 			Faces f=new Faces();
 			f.decompStringFaces(rf.getFaces(), ps);
 			Group root=new Group();
-			Canvas c=new Canvas(250,250);
-			GraphicsContext gc= c.getGraphicsContext2D();
-			gc.setFill(Color.BLUE);
-			for(Face fa:f.getFaces()) {
+			Canvas c=new Canvas(3000,3000);
+			c.setOnScroll(e->{
 				
-				System.out.println(fa.getPointsX()[1]);
+			});
+			GraphicsContext gc= c.getGraphicsContext2D();
+			
+			for(Face fa:f.getFaces()) {
 				gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 			}
+			
 			root.getChildren().add(c);
-			root.getChildren().add(new TextField());
 			Scene scene=new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -59,15 +63,6 @@ public class FormDisplay extends Application{
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public static void main(String[] args) {
 		Application.launch();
 	}

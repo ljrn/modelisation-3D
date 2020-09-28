@@ -44,10 +44,11 @@ public class Face {
 		}
 		return pointsY;
 	}
+	
 	public double[] getPointsZ() {
 		double[] pointsZ=new double[nbPoint];
 		for(int i=0; i<ps.size();i++) {
-			pointsZ[i]=ps.get(i).getZ();
+			pointsZ[i]=ps.get(i).getZ()-600;
 		}
 		return pointsZ;
 	}
