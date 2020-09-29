@@ -5,23 +5,10 @@ import java.io.IOException;
 import java.util.List;
 
 import javafx.application.Application;
-import javafx.geometry.Orientation;
-import javafx.geometry.Point3D;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Box;
-import javafx.scene.shape.MeshView;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.TriangleMesh;
 import javafx.stage.Stage;
 import reader.Face;
 import reader.Faces;
@@ -41,11 +28,8 @@ public class FormDisplay extends Application{
 			ps.decompStringPoints(rf.getPoints());
 			Faces f=new Faces();
 			f.decompStringFaces(rf.getFaces(), ps);
-			Group root=new Group();
+			Pane root=new Pane();
 			Canvas c=new Canvas(3000,3000);
-			c.setOnScroll(e->{
-				
-			});
 			GraphicsContext gc= c.getGraphicsContext2D();
 			
 			for(Face fa:f.getFaces()) {
