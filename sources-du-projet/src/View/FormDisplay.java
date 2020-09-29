@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import reader.Face;
 import reader.Faces;
@@ -32,9 +33,11 @@ public class FormDisplay extends Application{
 			Group root=new Group();
 			Canvas c=new Canvas(3000,3000);
 			GraphicsContext gc= c.getGraphicsContext2D();
-			
+			gc.setFill(Color.DARKGREY);
+			gc.setStroke(Color.GREY);
 			for(Face fa:f.getFaces()) {
 				gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
+				gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			}
 			
 			root.getChildren().add(c);
