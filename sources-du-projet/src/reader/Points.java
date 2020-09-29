@@ -30,6 +30,11 @@ public class Points {
 		}
 		return res;
 	}
+	public void center() {
+		for(Point p:this.points) {
+			p.center();
+		}
+	}
 	
 	
 	

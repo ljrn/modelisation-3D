@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -40,7 +41,19 @@ public class FormDisplay extends Application{
 				gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			}
 			//FAIRE EN SORTE QU'ON PUISSE ZOOM
-			
+			c.setOnMousePressed(e->{
+				if(e.getButton().equals(MouseButton.SECONDARY)) {
+					c.setScaleX(c.getScaleX()/2);
+					c.setScaleY(c.getScaleY()/2);
+					c.setTranslateX(0);
+					c.setTranslateY(0);
+				}else {
+					c.setScaleX(c.getScaleX()*2);
+					c.setScaleY(c.getScaleY()*2);
+					c.setTranslateX(0);
+					c.setTranslateY(0);
+				}
+			});
 			
 			//FIN ZOOM
 			root.getChildren().add(c);

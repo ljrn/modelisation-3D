@@ -28,4 +28,9 @@ public class Point {
     	return ""+this.x+";"+this.y+";"+this.z;
     }
     
+    public void center() {
+    	this.x=this.x-x+600;
+    	this.y=this.y-y+600;
+    }
+    
 }
