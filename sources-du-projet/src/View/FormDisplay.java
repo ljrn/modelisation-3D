@@ -39,7 +39,10 @@ public class FormDisplay extends Application{
 				gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 				gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			}
+			//FAIRE EN SORTE QU'ON PUISSE ZOOM
 			
+			
+			//FIN ZOOM
 			root.getChildren().add(c);
 			Scene scene=new Scene(root);
 			primaryStage.setScene(scene);
