@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -28,7 +29,7 @@ public class FormDisplay extends Application{
 			ps.decompStringPoints(rf.getPoints());
 			Faces f=new Faces();
 			f.decompStringFaces(rf.getFaces(), ps);
-			Pane root=new Pane();
+			Group root=new Group();
 			Canvas c=new Canvas(3000,3000);
 			GraphicsContext gc= c.getGraphicsContext2D();
 			
