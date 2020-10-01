@@ -55,8 +55,11 @@ public class FormDisplay extends Application{
 			});
 			
 			//FIN ZOOM
+			Rotation rotation = new Rotation();
 			root.getChildren().add(c);
 			Scene scene=new Scene(root);
+			rotation.initMouseControl(root, scene);
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
