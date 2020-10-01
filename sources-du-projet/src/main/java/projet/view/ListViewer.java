@@ -1,4 +1,4 @@
-package View;
+package projet.view;
 
 
 import java.io.File;

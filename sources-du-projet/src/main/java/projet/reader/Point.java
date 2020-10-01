@@ -1,4 +1,4 @@
- package reader;
+package projet.reader;
 
 public class Point {
 

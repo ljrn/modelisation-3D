@@ -1,4 +1,4 @@
-package View;
+package projet.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import reader.Face;
-import reader.Faces;
-import reader.Point;
-import reader.Points;
-import reader.ReadFile;
+import projet.reader.Face;
+import projet.reader.Faces;
+import projet.reader.Points;
+import projet.reader.ReadFile;
+
 
 public class FormDisplay extends Application{
 	public void start(Stage primaryStage) {

@@ -1,4 +1,4 @@
-package reader;
+package projet.reader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;

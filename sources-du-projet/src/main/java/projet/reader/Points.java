@@ -1,4 +1,4 @@
-package reader;
+package projet.reader;
 
 import java.util.ArrayList;
 import java.util.Iterator;
