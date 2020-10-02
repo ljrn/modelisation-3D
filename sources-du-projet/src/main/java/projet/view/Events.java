@@ -1,10 +1,11 @@
-package main.java.projet.view;
+package projet.view;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Rotate;
 
@@ -29,15 +30,19 @@ public class Events {
 		yRotate.angleProperty().bind(angleY);
 
 		scene.setOnMousePressed(event -> {
+			if(event.getButton().equals(MouseButton.MIDDLE)) {
 			anchorX = event.getSceneX();
 			anchorY = event.getSceneY();
 			anchorAngleX = angleX.get();
 			anchorAngleY = angleY.get();
+			}
 		});
 
 		scene.setOnMouseDragged(event -> {
+			if(event.getButton().equals(MouseButton.MIDDLE)) {
 			angleX.set(anchorAngleX - (anchorY - event.getSceneY()));
 			angleY.set(anchorAngleY + anchorX - event.getSceneX());
+			}
 		});
 	}
 	public void zoom(Canvas c) {
@@ -51,4 +56,8 @@ public class Events {
             c.setScaleY(c.getScaleY() * multiplicateur);
         });
     }
+	
+	public void move(Canvas c) {
+		
+	}
 }
