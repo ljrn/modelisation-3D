@@ -1,32 +1,26 @@
-package projet.view;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+package main.java.projet.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-
-import com.sun.javafx.scene.input.KeyCodeMap;
 
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import projet.reader.Face;
-import projet.reader.Faces;
-import projet.reader.Points;
-import projet.reader.ReadFile;
+import main.java.projet.reader.Face;
+import main.java.projet.reader.Faces;
+import main.java.projet.reader.Points;
+import main.java.projet.reader.ReadFile;
 
 
 public class FormDisplay extends Application{
 	public void start(Stage primaryStage) {
-		ReadFile rf=new ReadFile("./ressources/apple.ply");
+		ReadFile rf=new ReadFile("./ressources/airplane.ply");
 		try {
 			List<String> ls=rf.readHeader();
 			for(String s:ls) {
@@ -74,10 +68,11 @@ public class FormDisplay extends Application{
 //			});
 //			
 			//FIN ZOOM
-			root.getChildren().add(c);
+			ListViewer lv=new ListViewer();
+			HBox hb=lv.ListFiles();
+			root.getChildren().addAll(c, hb);
 			Scene scene=new Scene(root, 1000, 1500);
 			events.rotation(root, scene);
-
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			

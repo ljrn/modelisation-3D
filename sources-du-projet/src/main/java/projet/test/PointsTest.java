@@ -1,4 +1,4 @@
-package projet.test;
+package main.java.projet.test;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,8 +9,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import projet.reader.Point;
-import projet.reader.Points;
+import main.java.projet.reader.Points;
 
 class PointsTest {
 	public List<String> listS;

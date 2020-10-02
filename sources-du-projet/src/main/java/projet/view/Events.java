@@ -1,4 +1,4 @@
-package projet.view;
+package main.java.projet.view;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;

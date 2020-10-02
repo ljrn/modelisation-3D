@@ -1,17 +1,16 @@
-package projet.test;
+package main.java.projet.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import projet.reader.Face;
-import projet.reader.Faces;
-import projet.reader.Point;
-import projet.reader.Points;
-import projet.reader.ReadFile;
+import main.java.projet.reader.Face;
+import main.java.projet.reader.Faces;
+import main.java.projet.reader.Point;
+import main.java.projet.reader.Points;
+import main.java.projet.reader.ReadFile;
 
 class FacesTest {
 	@Test
