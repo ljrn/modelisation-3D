@@ -73,6 +73,8 @@ public class FormDisplay extends Application{
 			root.getChildren().addAll(c, hb);
 			Scene scene=new Scene(root, 1000, 1500);
 			events.rotation(root, scene);
+			events.move(root, scene);
+
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			

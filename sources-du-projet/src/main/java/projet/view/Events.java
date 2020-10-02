@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Translate;
 
 public class Events {
 	//Tracks drag starting point for x and y
@@ -57,7 +58,28 @@ public class Events {
         });
     }
 	
-	public void move(Canvas c) {
+	public void move(Group group, Scene scene) {
+		Translate t;
 		
+		scene.setOnMousePressed(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY)) {
+			anchorX = event.getSceneX();
+			anchorY = event.getSceneY();
+			}
+		});
+		
+		group.getTransforms().addAll(
+				t = new Translate(anchorX,anchorY)
+				);
+
+		scene.setOnMouseDragged(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY)) {
+			System.out.println(event.getX());
+			System.out.println(event.getY());
+
+			t.setX(event.getX());
+			t.setY(event.getY());
+			}
+		});
 	}
 }
