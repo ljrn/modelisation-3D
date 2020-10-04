@@ -2,8 +2,6 @@ package main.java.projet.view;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
@@ -56,24 +54,22 @@ public class Events {
         });
     }
 	
-	public void move(Group group, Scene scene) {
+	public void move(Canvas c) {
 		Translate t;
 		
-		scene.setOnMousePressed(event -> {
+		c.setOnMousePressed(event -> {
 			if(event.getButton().equals(MouseButton.PRIMARY)) {
 			anchorX = event.getSceneX();
 			anchorY = event.getSceneY();
 			}
 		});
 		
-		group.getTransforms().addAll(
+		c.getTransforms().addAll(
 				t = new Translate(anchorX,anchorY)
 				);
 
-		scene.setOnMouseDragged(event -> {
+		c.setOnMouseDragged(event -> {
 			if(event.getButton().equals(MouseButton.PRIMARY)) {
-			System.out.println(event.getX());
-			System.out.println(event.getY());
 
 			t.setX(event.getX());
 			t.setY(event.getY());

@@ -28,6 +28,7 @@ public class FormDisplay extends Application{
 		Events events = new Events();
 	    events.zoom(c);
 	    events.rotation(c);
+	    events.move(c);
 		root.getChildren().add(c);
 		root.setRight(hb);
 		Scene scene=new Scene(root, 1000, 1500);
@@ -79,6 +80,7 @@ public class FormDisplay extends Application{
 	      Events events = new Events();
 		  events.zoom(c);
 		  events.rotation(c);
+		  events.move(c);
 	    }
 	  }
 }
