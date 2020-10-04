@@ -1,10 +1,6 @@
 package main.java.projet.test;
-
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import main.java.projet.reader.Face;
 import main.java.projet.reader.Faces;
@@ -17,9 +13,9 @@ class FacesTest {
 	public void test() {
 		ReadFile rf=new ReadFile("./ressources/airplane.ply");
 		try{
-			List<String> ls=rf.readHeader();
+			rf.readHeader();
 			Points ps=new Points();
-			ps.decompStringPoints(rf.getPoints());
+			ps.decompStringPoints(rf.getPoints(),0,0);
 			Faces f=new Faces();
 			f.decompStringFaces(rf.getFaces(), ps);
 			Face fa=f.getFaces().get(0);

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>projet</groupId>
-	<artifactId>modelisation3D</artifactId>
+	<artifactId>modelisation3d</artifactId>
 	<version>1.0</version>
 
 	<build>

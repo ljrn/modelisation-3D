@@ -26,7 +26,7 @@ class PointsTest {
 		String s1 = "10.123456 20.1234567 30.12345678";
 		listS.add(s1);
 		Points p = new Points();
-		p.decompStringPoints(listS);
+		p.decompStringPoints(listS,0,0);
 		assertEquals(10.123456F,p.getPoints().get(0).getX() );
 		assertEquals(20.1234567F,p.getPoints().get(0).getY() );
 		assertEquals(30.12345678F,p.getPoints().get(0).getZ() );
@@ -39,7 +39,7 @@ class PointsTest {
 		listS.add(s1);
 		listS.add(s2);
 		ps = new Points();
-		ps.decompStringPoints(listS);
+		ps.decompStringPoints(listS,0,0);
 		assertEquals(15, ps.midX());
 	}
 	@Test
@@ -50,7 +50,7 @@ class PointsTest {
 		listS.add(s1);
 		listS.add(s2);
 		ps = new Points();
-		ps.decompStringPoints(listS);
+		ps.decompStringPoints(listS,0,0);
 		assertEquals(25, ps.midY());
 	}
 	@Test
@@ -65,7 +65,7 @@ class PointsTest {
 		listS.add(s3);
 		listS.add(s4);
 		ps = new Points();
-		ps.decompStringPoints(listS);
+		ps.decompStringPoints(listS,0,0);
 		assertEquals(50, ps.minX(),0.05);
 		assertEquals(65.2, ps.maxX(),0.05);
 		assertEquals(20, ps.minY(),0.05);

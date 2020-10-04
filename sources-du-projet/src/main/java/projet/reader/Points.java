@@ -7,10 +7,10 @@ import java.util.List;
 public class Points {
 	private List<Point> points = new ArrayList<Point>();
 	
-	public void decompStringPoints(List<String> stringPoints) {
+	public void decompStringPoints(List<String> stringPoints, double x, double y) {
 		for (String string : stringPoints) {
 			String[] tab = string.split(" ");
-			points.add(new Point(Float.parseFloat(tab[0]+"F"), Float.parseFloat(tab[1]+"F"),Float.parseFloat(tab[2]+"F")));
+			points.add(new Point(Float.parseFloat(tab[0]+"F")+(float)x, Float.parseFloat(tab[1]+"F")+(float)y,Float.parseFloat(tab[2]+"F")));
 		}
 	}
  
