@@ -1,4 +1,4 @@
-package main.java.projet.reader;
+package projet.reader;
 
 public class Point {
 

@@ -1,12 +1,12 @@
-package main.java.projet.test;
+package projet.test;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import main.java.projet.reader.Face;
-import main.java.projet.reader.Faces;
-import main.java.projet.reader.Point;
-import main.java.projet.reader.Points;
-import main.java.projet.reader.ReadFile;
+import projet.reader.Face;
+import projet.reader.Faces;
+import projet.reader.Point;
+import projet.reader.Points;
+import projet.reader.ReadFile;
 
 class FacesTest {
 	@Test

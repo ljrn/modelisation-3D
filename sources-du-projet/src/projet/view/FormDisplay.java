@@ -1,4 +1,4 @@
-package main.java.projet.view;
+package projet.view;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,10 +12,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import main.java.projet.reader.CreateEnvironment;
-import main.java.projet.reader.Face;
-import main.java.projet.reader.Faces;
-import main.java.projet.reader.Points;
+import projet.reader.CreateEnvironment;
+import projet.reader.Face;
+import projet.reader.Faces;
+import projet.reader.Points;
 
 
 public class FormDisplay extends Application{
