@@ -2,11 +2,14 @@ package main.java.projet.view;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.transform.Rotate;
-import main.java.projet.reader.Points;
+import javafx.scene.transform.Translate;
+
 
 public class Events {
 	private double anchorX;
@@ -25,17 +28,20 @@ public class Events {
 				);
 		xRotate.angleProperty().bind(angleX);
 		yRotate.angleProperty().bind(angleY);
-
 		c.setOnMousePressed(event -> {
+			if(event.getButton().equals(MouseButton.MIDDLE)) {
 			anchorX = event.getSceneX();
 			anchorY = event.getSceneY();
 			anchorAngleX = angleX.get();
 			anchorAngleY = angleY.get();
+			}
 		});
 
 		c.setOnMouseDragged(event -> {
+			if(event.getButton().equals(MouseButton.MIDDLE)) {
 			angleX.set(anchorAngleX - (anchorY - event.getSceneY()));
 			angleY.set(anchorAngleY + anchorX - event.getSceneX());
+			}
 		});
 	}
 	public void zoom(Canvas c) {
@@ -49,7 +55,29 @@ public class Events {
             c.setScaleY(c.getScaleY() * multiplicateur);
         });
     }
-	public void translate(Points ps, Canvas c, GraphicsContext gc) {
+	
+	public void move(Group group, Scene scene) {
+		Translate t;
 		
+		scene.setOnMousePressed(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY)) {
+			anchorX = event.getSceneX();
+			anchorY = event.getSceneY();
+			}
+		});
+		
+		group.getTransforms().addAll(
+				t = new Translate(anchorX,anchorY)
+				);
+
+		scene.setOnMouseDragged(event -> {
+			if(event.getButton().equals(MouseButton.PRIMARY)) {
+			System.out.println(event.getX());
+			System.out.println(event.getY());
+
+			t.setX(event.getX());
+			t.setY(event.getY());
+			}
+		});
 	}
 }
