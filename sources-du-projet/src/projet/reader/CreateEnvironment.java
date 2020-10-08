@@ -8,8 +8,9 @@ public class CreateEnvironment {
 	public Faces createFaces(String s, double x, double y) throws IOException{
 		ReadFile rf=new ReadFile(s);
 		rf.readHeader();
-		ps.decompStringPoints(rf.getPoints(),x ,y);
+		ps.decompStringPoints(rf.getPoints(),x,y);
 		fa.decompStringFaces(rf.getFaces(), ps);
+		fa.trierFaces();
 		return fa;
 	}
 }

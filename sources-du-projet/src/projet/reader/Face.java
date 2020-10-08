@@ -3,7 +3,7 @@ package projet.reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Face {
+public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> ps=new ArrayList<Point>();
 	
@@ -51,6 +51,19 @@ public class Face {
 			pointsZ[i]=ps.get(i).getZ()-600;
 		}
 		return pointsZ;
+	}
+
+	@Override
+	public int compareTo(Face o) {
+		int sommeO=0;
+		int sommeThis=0;
+		for(Point p:o.getPoints()) {
+			sommeO+=p.getZ();
+		}
+		for(Point p:this.getPoints()) {
+			sommeThis+=p.getZ();
+		}
+		return sommeThis-sommeO;
 	}
 	
 }

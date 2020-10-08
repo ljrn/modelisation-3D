@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.collections.ListChangeListener;
-import javafx.geometry.Point3D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -12,8 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Transform;
-import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import projet.reader.CreateEnvironment;
 import projet.reader.Face;
@@ -73,18 +70,13 @@ public class FormDisplay extends Application{
 	    public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
 	      CreateEnvironment ce=new CreateEnvironment();
 	      try{
-	    	  ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),width/2,height/2);
+	    	  ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),width,height);
 	      }catch(IOException e ) {
 	    	  System.out.println(ch.getList().toString().substring(13));
 	      }
 	      Points ps=ce.ps;
 	      Faces f=ce.fa;
 	      gc.clearRect(0, 0, c.getWidth(), c.getHeight());
-	      for(Transform t:c.getTransforms()) {
-	    	  Translate tr=(Translate)t;
-	    	  tr.setX(0);
-	    	  tr.setY(0);
-	      }
 	      c.setScaleX(1);
 	      c.setScaleY(1);
 	      c.setWidth(ps.maxX());
@@ -93,9 +85,6 @@ public class FormDisplay extends Application{
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 	      }
-	      Events events = new Events();
-		  events.zoom(c);
-		  events.move(c);
 	    }
 	  }
 }

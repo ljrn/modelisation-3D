@@ -1,7 +1,6 @@
 package projet.reader;
 
 import java.util.ArrayList;
-	
 import java.util.List;
 
 public class Points {
@@ -10,7 +9,27 @@ public class Points {
 	public void decompStringPoints(List<String> stringPoints, double x, double y) {
 		for (String string : stringPoints) {
 			String[] tab = string.split(" ");
-			points.add(new Point(Float.parseFloat(tab[0]+"F")+(float)x, Float.parseFloat(tab[1]+"F")+(float)y,Float.parseFloat(tab[2]+"F")));
+			points.add(new Point(Double.parseDouble(tab[0]), Double.parseDouble(tab[1]),Double.parseDouble(tab[2])));
+		}
+		Double xToZoom=x-midX();
+		if(xToZoom>1) {
+			for(Point p:points) {
+				p.setX(p.getX()*xToZoom);
+				p.setY(p.getY()*xToZoom);
+				p.setZ(p.getZ()*xToZoom);
+			}
+		}
+		if(containsNegativeX()) {
+			double minX=-minX();
+			for(Point p:points) {
+				p.setX(p.getX()+minX);
+			}
+		}
+		if(containsNegativeY()) {
+			double minY=-minY();
+			for(Point p:points) {
+				p.setY(p.getY()+minY);
+			}
 		}
 	}
  
@@ -77,5 +96,19 @@ public class Points {
 			max = Double.max(max,points.get(i).getY());
 		}
 		return max;
+	}
+	
+	public boolean containsNegativeX() {
+		for(Point p: this.points) {
+			if(p.containsNegativeX())return true;
+		}
+		return false;
+	}
+	
+	public boolean containsNegativeY() {
+		for(Point p: this.points) {
+			if(p.containsNegativeY())return true;
+		}
+		return false;
 	}
 }

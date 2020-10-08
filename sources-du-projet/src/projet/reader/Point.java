@@ -1,30 +1,50 @@
 package projet.reader;
 
-public class Point {
+public class Point{
 
-    private float x;
-    private float y;
-    private float z;
+    private double x;
+    private double y;
+    private double z;
     
-    public Point(float x, float y, float z) {
+    public Point(double x, double y, double z) {
         this.x=x;
         this.y=y;
         this.z=z;
     }
 
-    public float getX() {
+    public double getX() {
         return x;
     }
 
-    public float getY() {
+    public double getY() {
         return y;
     }
 
-    public float getZ() {
+    public double getZ() {
         return z;
     }
     
     public String toString() {
     	return ""+this.x+";"+this.y+";"+this.z;
     }
+    
+    public boolean containsNegativeX() {
+    	return this.x<0;
+    }
+    
+    public boolean containsNegativeY() {
+    	return this.y<0;
+    }
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public void setZ(double z) {
+		this.z = z;
+	}
 }

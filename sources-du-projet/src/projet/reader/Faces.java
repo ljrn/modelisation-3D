@@ -1,6 +1,7 @@
 package projet.reader;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Faces {
@@ -24,6 +25,10 @@ public class Faces {
 
 	public List<Face> getFaces() {
 		return faces;
+	}
+	
+	public void trierFaces() {
+		Collections.sort(faces);
 	}
 	
 }
