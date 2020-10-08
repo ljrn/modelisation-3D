@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import projet.reader.CreateEnvironment;
 import projet.reader.Face;
@@ -37,7 +38,7 @@ public class FormDisplay extends Application{
 		HBox hb=listFiles(c,gc);
 		root.getChildren().add(c);
 		root.setRight(hb);
-		Scene scene=new Scene(root, 1000, 1500);
+		Scene scene=new Scene(root, Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -84,6 +85,7 @@ public class FormDisplay extends Application{
 	      for(Face fa:f.getFaces()) {
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+	    	  
 	      }
 	    }
 	  }
