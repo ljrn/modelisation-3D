@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.collections.ListChangeListener;
+import javafx.geometry.Point3D;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,6 +12,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import projet.reader.CreateEnvironment;
 import projet.reader.Face;
@@ -21,6 +24,8 @@ import projet.reader.Points;
 public class FormDisplay extends Application{
 	double scaleX;
 	double scaleY;
+	double width;
+	double height;
 	ListView<File> listFiles;
 	public void start(Stage primaryStage) {
 		BorderPane root=new BorderPane();
@@ -28,11 +33,9 @@ public class FormDisplay extends Application{
 		GraphicsContext gc= c.getGraphicsContext2D();
 		scaleX=c.getScaleX();
 		scaleY=c.getScaleY();
+		width=c.getWidth();
+		height=c.getHeight();
 		HBox hb=listFiles(c,gc);
-		Events events = new Events();
-	    events.zoom(c);
-	    events.move(c);
-	    events.rotation(c);
 		root.getChildren().add(c);
 		root.setRight(hb);
 		Scene scene=new Scene(root, 1000, 1500);
@@ -65,13 +68,18 @@ public class FormDisplay extends Application{
 	    public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
 	      CreateEnvironment ce=new CreateEnvironment();
 	      try{
-				ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),c.getWidth()/2,c.getHeight()/2);
+				ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),width/2,height/2);
 			}catch(IOException e ) {
 				System.out.println(ch.getList().toString().substring(13));
 			}
 	      Points ps=ce.ps;
 	      Faces f=ce.fa;
 	      gc.clearRect(0, 0, c.getWidth(), c.getHeight());
+	      for(Transform t:c.getTransforms()) {
+	    	  Translate tr=(Translate)t;
+	    	  tr.setX(0);
+	    	  tr.setY(0);
+	      }
 	      c.setScaleX(scaleX);
 	      c.setScaleY(scaleY);
 	      c.setWidth(ps.maxX());
@@ -83,6 +91,9 @@ public class FormDisplay extends Application{
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 	      }
+	      Events events = new Events();
+		    events.zoom(c);
+		    events.move(c);
 	    }
 	  }
 }

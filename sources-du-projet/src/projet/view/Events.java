@@ -2,6 +2,7 @@ package projet.view;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.geometry.Point3D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
@@ -19,12 +20,12 @@ public class Events {
 	private final DoubleProperty angleX = new SimpleDoubleProperty(0);
 	private final DoubleProperty angleY = new SimpleDoubleProperty(0);
 
-	public void rotation(Canvas c) {
+	/*public void rotation(Canvas c, Point3D x, Point3D y) {
 		Rotate xRotate;
 		Rotate yRotate;
 		c.getTransforms().addAll(
-			xRotate = new Rotate(0, Rotate.X_AXIS),
-			yRotate = new Rotate(0, Rotate.Y_AXIS)
+			xRotate = new Rotate(0, x),
+			yRotate = new Rotate(0, y)
 		);
 		xRotate.angleProperty().bind(angleX);
 		yRotate.angleProperty().bind(angleY);
@@ -43,7 +44,7 @@ public class Events {
 				angleY.set(anchorAngleY + anchorX - event.getSceneX());
 			}
 		});
-	}
+	}*/
 	public void zoom(Canvas c) {
         c.setOnScroll((ScrollEvent event) -> {
             double multiplicateur = 1.05;

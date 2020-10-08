@@ -30,18 +30,10 @@ public class Points {
 		}
 		return res;
 	}public double midX() {
-		int res = 0;
-		for (Point point : points) {
-			res += (int) point.getX();
-		}
-		return res /= points.size();
+		return (maxX()+minX())/2;
 	}
 	public double midY() {
-		int res = 0;
-		for (Point point : points) {
-			res += (int) point.getY();
-		}
-		return res /= points.size();
+		return (maxY()+minY())/2;
 	}
 	
 	public double minX() {
