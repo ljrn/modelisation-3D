@@ -14,6 +14,8 @@ public class Events {
 	private double anchorY;
 	private double anchorAngleX = 0;
 	private double anchorAngleY = 0;
+	private double translateX=0;
+	private double translateY=0;
 	private final DoubleProperty angleX = new SimpleDoubleProperty(0);
 	private final DoubleProperty angleY = new SimpleDoubleProperty(0);
 
@@ -21,24 +23,24 @@ public class Events {
 		Rotate xRotate;
 		Rotate yRotate;
 		c.getTransforms().addAll(
-				xRotate = new Rotate(0, Rotate.X_AXIS),
-				yRotate = new Rotate(0, Rotate.Y_AXIS)
-				);
+			xRotate = new Rotate(0, Rotate.X_AXIS),
+			yRotate = new Rotate(0, Rotate.Y_AXIS)
+		);
 		xRotate.angleProperty().bind(angleX);
 		yRotate.angleProperty().bind(angleY);
 		c.setOnMousePressed(event -> {
-			if(event.getButton().equals(MouseButton.MIDDLE)) {
-			anchorX = event.getSceneX();
-			anchorY = event.getSceneY();
-			anchorAngleX = angleX.get();
-			anchorAngleY = angleY.get();
+			if(event.getButton().equals(MouseButton.SECONDARY)) {
+				anchorX = event.getSceneX();
+				anchorY = event.getSceneY();
+				anchorAngleX = angleX.get();
+				anchorAngleY = angleY.get();
 			}
 		});
 
 		c.setOnMouseDragged(event -> {
-			if(event.getButton().equals(MouseButton.MIDDLE)) {
-			angleX.set(anchorAngleX - (anchorY - event.getSceneY()));
-			angleY.set(anchorAngleY + anchorX - event.getSceneX());
+			if(event.getButton().equals(MouseButton.SECONDARY)) {
+				angleX.set(anchorAngleX - (anchorY - event.getSceneY()));
+				angleY.set(anchorAngleY + anchorX - event.getSceneX());
 			}
 		});
 	}
@@ -56,23 +58,21 @@ public class Events {
 	
 	public void move(Canvas c) {
 		Translate t;
-		
 		c.setOnMousePressed(event -> {
 			if(event.getButton().equals(MouseButton.PRIMARY)) {
-			anchorX = event.getSceneX();
-			anchorY = event.getSceneY();
+				translateX = event.getSceneX();
+				translateY = event.getSceneY();
 			}
 		});
 		
 		c.getTransforms().addAll(
-				t = new Translate(anchorX,anchorY)
-				);
+			t = new Translate(translateX,translateY)
+		);
 
 		c.setOnMouseDragged(event -> {
 			if(event.getButton().equals(MouseButton.PRIMARY)) {
-
-			t.setX(event.getX());
-			t.setY(event.getY());
+				t.setX(event.getX());
+				t.setY(event.getY());
 			}
 		});
 	}

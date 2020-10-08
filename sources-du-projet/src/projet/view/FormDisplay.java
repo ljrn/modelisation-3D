@@ -19,16 +19,20 @@ import projet.reader.Points;
 
 
 public class FormDisplay extends Application{
+	double scaleX;
+	double scaleY;
 	ListView<File> listFiles;
 	public void start(Stage primaryStage) {
 		BorderPane root=new BorderPane();
 		Canvas c=new Canvas(300,300);
 		GraphicsContext gc= c.getGraphicsContext2D();
+		scaleX=c.getScaleX();
+		scaleY=c.getScaleY();
 		HBox hb=listFiles(c,gc);
 		Events events = new Events();
 	    events.zoom(c);
-	    events.rotation(c);
 	    events.move(c);
+	    events.rotation(c);
 		root.getChildren().add(c);
 		root.setRight(hb);
 		Scene scene=new Scene(root, 1000, 1500);
@@ -68,6 +72,8 @@ public class FormDisplay extends Application{
 	      Points ps=ce.ps;
 	      Faces f=ce.fa;
 	      gc.clearRect(0, 0, c.getWidth(), c.getHeight());
+	      c.setScaleX(scaleX);
+	      c.setScaleY(scaleY);
 	      c.setWidth(ps.maxX());
 	      c.setHeight(ps.maxY());
 	      gc= c.getGraphicsContext2D();
@@ -77,10 +83,6 @@ public class FormDisplay extends Application{
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 	      }
-	      Events events = new Events();
-		  events.zoom(c);
-		  events.rotation(c);
-		  events.move(c);
 	    }
 	  }
 }
