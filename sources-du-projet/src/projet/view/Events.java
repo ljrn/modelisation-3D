@@ -54,6 +54,7 @@ public class Events {
             }
             c.setScaleX(c.getScaleX() * multiplicateur);
             c.setScaleY(c.getScaleY() * multiplicateur);
+            System.out.println(c.getScaleX()+";"+c.getScaleY());
         });
     }
 	

@@ -29,9 +29,13 @@ public class Points {
 			System.out.println(p.toString()+"\n");
 		}
 		return res;
-	}public double midX() {
+	}
+	
+	public double midX() {
 		return (maxX()+minX())/2;
 	}
+	
+	
 	public double midY() {
 		return (maxY()+minY())/2;
 	}
@@ -44,6 +48,8 @@ public class Points {
 		}
 		return min;
 	}
+	
+	
 	public double maxX() {
 		if(points.isEmpty())return 0;
 		double max = points.get(0).getX();
@@ -52,6 +58,8 @@ public class Points {
 		}
 		return max;
 	}
+	
+	
 	public double minY() {
 		if(points.isEmpty())return 0;
 		double min = points.get(0).getY();
@@ -60,6 +68,8 @@ public class Points {
 		}
 		return min;
 	}
+	
+	
 	public double maxY() {
 		if(points.isEmpty())return 0;
 		double max = points.get(0).getY();
@@ -68,13 +78,4 @@ public class Points {
 		}
 		return max;
 	}
-	
-	public void center() {
-		for(Point p:this.points) {
-			p.center();
-		}
-	}
-	
-	
-	
 }
