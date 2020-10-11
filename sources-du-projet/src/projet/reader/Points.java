@@ -11,24 +11,27 @@ public class Points {
 			String[] tab = string.split(" ");
 			points.add(new Point(Double.parseDouble(tab[0]), Double.parseDouble(tab[1]),Double.parseDouble(tab[2])));
 		}
-		Double xToZoom=x-midX();
-		if(xToZoom>1) {
+		double toZoom;
+		if(x>=y) {
+			toZoom=x/((maxX()+minX()/2));
+		}else toZoom=y/((maxY()+minY())/2);
+		if(toZoom>1) {
 			for(Point p:points) {
-				p.setX(p.getX()*xToZoom);
-				p.setY(p.getY()*xToZoom);
-				p.setZ(p.getZ()*xToZoom);
+				p.setX(p.getX()*toZoom);
+				p.setY(p.getY()*toZoom);
+				p.setZ(p.getZ()*toZoom);
 			}
 		}
 		if(containsNegativeX()) {
 			double minX=-minX();
 			for(Point p:points) {
-				p.setX(p.getX()+minX);
+				p.setX(p.getX()+minX+100);
 			}
 		}
 		if(containsNegativeY()) {
 			double minY=-minY();
 			for(Point p:points) {
-				p.setY(p.getY()+minY);
+				p.setY(p.getY()+minY+50);
 			}
 		}
 	}
@@ -49,11 +52,6 @@ public class Points {
 		}
 		return res;
 	}
-	
-	public double midX() {
-		return (maxX()+minX())/2;
-	}
-	
 	
 	public double midY() {
 		return (maxY()+minY())/2;

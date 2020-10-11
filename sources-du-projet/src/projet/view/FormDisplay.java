@@ -77,14 +77,18 @@ public class FormDisplay extends Application{
 	      Points ps=ce.ps;
 	      Faces f=ce.fa;
 	      gc.clearRect(0, 0, c.getWidth(), c.getHeight());
-	      c.setScaleX(1);
-	      c.setScaleY(1);
 	      c.setWidth(ps.maxX());
 	      c.setHeight(ps.maxY());
-	      for(Face fa:f.getFaces()) {
+	      dessinModele(c,gc,f);
+	      //Events e=new Events();
+	      //e.translate(f,c, gc);
+	    }
+	  }
+	
+	public void dessinModele(Canvas c, GraphicsContext gc, Faces f) {
+		for(Face fa:f.getFaces()) {
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 	      }
-	    }
-	  }
+	}
 }

@@ -27,31 +27,9 @@ class PointsTest {
 		listS.add(s1);
 		Points p = new Points();
 		p.decompStringPoints(listS,0,0);
-		assertEquals(10.123456F,p.getPoints().get(0).getX() );
-		assertEquals(20.1234567F,p.getPoints().get(0).getY() );
-		assertEquals(30.12345678F,p.getPoints().get(0).getZ() );
-	}
-	@Test
-	void testMidX() {
-		listS = new ArrayList<String>();
-		String s1 = "10 20 30";
-		String s2 = "20 30 40";
-		listS.add(s1);
-		listS.add(s2);
-		ps = new Points();
-		ps.decompStringPoints(listS,0,0);
-		assertEquals(15, ps.midX());
-	}
-	@Test
-	void testMidY() {
-		listS = new ArrayList<String>();
-		String s1 = "10 20 30";
-		String s2 = "20 30 40";
-		listS.add(s1);
-		listS.add(s2);
-		ps = new Points();
-		ps.decompStringPoints(listS,0,0);
-		assertEquals(25, ps.midY());
+		assertEquals(10.123456,p.getPoints().get(0).getX() );
+		assertEquals(20.1234567,p.getPoints().get(0).getY() );
+		assertEquals(30.12345678,p.getPoints().get(0).getZ() );
 	}
 	@Test
 	void testMinMaxXY() {
