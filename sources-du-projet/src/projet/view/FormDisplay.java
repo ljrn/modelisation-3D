@@ -80,8 +80,8 @@ public class FormDisplay extends Application{
 	      c.setWidth(ps.maxX());
 	      c.setHeight(ps.maxY());
 	      dessinModele(c,gc,f);
-	      //Events e=new Events();
-	      //e.translate(f,c, gc);
+	      Events e =new Events();
+	      e.translate(f, c, gc);
 	    }
 	  }
 	
