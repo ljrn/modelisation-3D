@@ -16,16 +16,18 @@ import projet.reader.CreateEnvironment;
 import projet.reader.Face;
 import projet.reader.Faces;
 import projet.reader.Points;
+import projet.utils.Observer;
+import projet.utils.Subject;
 
 
-public class FormDisplay extends Application{
+public class FormDisplay extends Application implements Observer{
 	double width;
 	double height;
+	Canvas c=new Canvas(300,300);
+	GraphicsContext gc= c.getGraphicsContext2D();
 	ListView<File> listFiles;
 	public void start(Stage primaryStage) {
 		BorderPane root=new BorderPane();
-		Canvas c=new Canvas(300,300);
-		GraphicsContext gc= c.getGraphicsContext2D();
 		gc.setFill(Color.DARKGREY);
 	    gc.setStroke(Color.GREY);
 		
@@ -34,7 +36,7 @@ public class FormDisplay extends Application{
 		height=c.getHeight();
 		
 		//DEFINITION DE LA SCENE
-		HBox hb=listFiles(c,gc);
+		HBox hb=listFiles(c,gc,this);
 		root.getChildren().add(c);
 		root.setRight(hb);
 		Scene scene=new Scene(root, 1000, 1500);
@@ -47,48 +49,34 @@ public class FormDisplay extends Application{
 		Application.launch();
 	}
 	
-	public HBox listFiles(Canvas c, GraphicsContext gc) {
+	public HBox listFiles(Canvas c, GraphicsContext gc, FormDisplay fd) {
 	    File path = new File("./ressources");
 	    listFiles=new ListView<>();
 	    listFiles.getItems().addAll(path.listFiles());
 	    //CREATION DE LA LISTVIEW
-	    listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c,gc));
+	    listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c,gc,fd));
 	    HBox root = new HBox();
 	    root.getChildren().addAll(listFiles);
 	    return root;
 	}
-	class MonListChangeListener implements ListChangeListener<File> {
-		Canvas c;
-		GraphicsContext gc;
-		
-		public MonListChangeListener(Canvas c, GraphicsContext gc) {
-			this.c=c;
-			this.gc=gc;
-		}
-		
-		//METHODE DE BUILD DU MODELE A CHAQUE CHANGEMENT DE FICHIER
-	    public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
-	      CreateEnvironment ce=new CreateEnvironment();
-	      try{
-	    	  ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),width,height);
-	      }catch(IOException e ) {
-	    	  System.out.println(ch.getList().toString().substring(13));
-	      }
-	      Points ps=ce.ps;
-	      Faces f=ce.fa;
-	      gc.clearRect(0, 0, c.getWidth(), c.getHeight());
-	      c.setWidth(ps.maxX());
-	      c.setHeight(ps.maxY());
-	      dessinModele(c,gc,f);
-	      Events e =new Events();
-	      e.translate(f, c, gc);
-	    }
-	  }
 	
-	public void dessinModele(Canvas c, GraphicsContext gc, Faces f) {
+	public void dessinModele(Faces f) {
+		gc.clearRect(0, 0, 10000, 10000);
 		for(Face fa:f.getFaces()) {
 	    	  gc.fillPolygon(fa.getPointsX(), fa.getPointsY(),fa.getNbPoint());
 	    	  gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 	      }
+	}
+
+	@Override
+	public void update(Subject subj) {
+		Faces f=(Faces) subj;
+		this.dessinModele(f);
+	}
+
+
+	@Override
+	public void update(Subject subj, Object data) {
+		//NE FAIT RIEN
 	}
 }

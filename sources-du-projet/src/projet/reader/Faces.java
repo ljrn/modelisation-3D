@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Faces {
+import projet.utils.Subject;
+
+public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<Face>();
 	
 	public void decompStringFaces(List<String> stringFaces, Points ps) {

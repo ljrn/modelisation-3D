@@ -10,11 +10,11 @@ import projet.reader.Point;
 public class Translate {
 	double translateX=0;
 	double translateY=0;
-	public void translate(Faces fa, Canvas c, GraphicsContext gc) {
+	public void translate(Faces fa, Canvas c) {
 		c.setOnMousePressed(event -> {
 			if(event.getButton().equals(MouseButton.PRIMARY)) {
-				translateX = event.getSceneX()-1000;
-				translateY = event.getSceneY()-1000;
+				translateX = event.getSceneX()-750;
+				translateY = event.getSceneY()-750;
 			}
 		});
 
@@ -24,17 +24,13 @@ public class Translate {
 					for(Point p:f.getPoints()) {
 						p.setX(event.getX()+translateX);
 						p.setY(event.getY()+translateY);
-						System.out.println(p);
+						System.out.println("Translation: "+p.getX()+"       "+p.getY());
 					}	
 				}
 			}
 		});
 		c.setOnMouseReleased(e->{
-			gc.clearRect(0, 0, c.getWidth(), c.getHeight());
-			for(Face f:fa.getFaces()) {
-				gc.fillPolygon(f.getPointsX(), f.getPointsY(),f.getNbPoint());
-				gc.strokePolygon(f.getPointsX(), f.getPointsY(), f.getNbPoint());
-			}
+			fa.notifyObservers();
 		});
 	}
 }
