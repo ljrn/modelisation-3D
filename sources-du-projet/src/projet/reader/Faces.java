@@ -28,7 +28,7 @@ public class Faces extends Subject{
 	public List<Face> getFaces() {
 		return faces;
 	}
-	
+
 	public void trierFaces() {
 		Collections.sort(faces);
 	}

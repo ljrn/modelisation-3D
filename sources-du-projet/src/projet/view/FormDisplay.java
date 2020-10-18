@@ -1,4 +1,5 @@
 package projet.view;
+import java.awt.TextField;
 import java.io.File;
 import java.io.IOException;
 
@@ -7,15 +8,18 @@ import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import projet.reader.CreateEnvironment;
 import projet.reader.Face;
 import projet.reader.Faces;
 import projet.reader.Points;
+import projet.reader.ReadFile;
 import projet.utils.Observer;
 import projet.utils.Subject;
 
@@ -26,6 +30,9 @@ public class FormDisplay extends Application implements Observer{
 	Canvas c=new Canvas(300,300);
 	GraphicsContext gc= c.getGraphicsContext2D();
 	ListView<File> listFiles;
+	Faces f;
+	Points ps;
+	VBox vb= new VBox();
 	public void start(Stage primaryStage) {
 		BorderPane root=new BorderPane();
 		gc.setFill(Color.DARKGREY);
@@ -36,9 +43,16 @@ public class FormDisplay extends Application implements Observer{
 		height=c.getHeight();
 		
 		//DEFINITION DE LA SCENE
+
 		HBox hb=listFiles(c,gc,this);
+		
+		
+		
+		
+		
+		VBox tonbouille = new VBox(hb,vb);
 		root.getChildren().add(c);
-		root.setRight(hb);
+		root.setRight(tonbouille);
 		Scene scene=new Scene(root, 1000, 1500);
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -70,7 +84,7 @@ public class FormDisplay extends Application implements Observer{
 
 	@Override
 	public void update(Subject subj) {
-		Faces f=(Faces) subj;
+		f =(Faces) subj;
 		this.dessinModele(f);
 	}
 
