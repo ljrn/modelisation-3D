@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
 import projet.reader.Points;
-import projet.reader.ReadFile;
 
 class MonListChangeListener implements ListChangeListener<File> {
 	Canvas c;

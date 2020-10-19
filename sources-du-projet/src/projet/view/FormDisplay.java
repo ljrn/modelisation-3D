@@ -1,25 +1,19 @@
 package projet.view;
-import java.awt.TextField;
 import java.io.File;
-import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.collections.ListChangeListener;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import projet.reader.CreateEnvironment;
 import projet.reader.Face;
 import projet.reader.Faces;
 import projet.reader.Points;
-import projet.reader.ReadFile;
 import projet.utils.Observer;
 import projet.utils.Subject;
 
@@ -47,12 +41,9 @@ public class FormDisplay extends Application implements Observer{
 		HBox hb=listFiles(c,gc,this);
 		
 		
-		
-		
-		
-		VBox tonbouille = new VBox(hb,vb);
+		VBox nbFaces = new VBox(hb,vb);
 		root.getChildren().add(c);
-		root.setRight(tonbouille);
+		root.setRight(nbFaces);
 		Scene scene=new Scene(root, 1000, 1500);
 		primaryStage.setScene(scene);
 		primaryStage.show();
