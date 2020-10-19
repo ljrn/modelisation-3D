@@ -23,8 +23,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		this.c=c;
 		this.gc=gc;
 		this.fd=fd;
-	}
-	
+	}  
+	 
 	//METHODE DE BUILD DU MODELE A CHAQUE CHANGEMENT DE FICHIER
     public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
       CreateEnvironment ce=new CreateEnvironment();

@@ -27,7 +27,7 @@ import projet.utils.Subject;
 public class FormDisplay extends Application implements Observer{
 	double width;
 	double height;
-	Canvas c=new Canvas(300,300);
+	Canvas c=new Canvas(300,300); 
 	GraphicsContext gc= c.getGraphicsContext2D();
 	ListView<File> listFiles;
 	Faces f;
