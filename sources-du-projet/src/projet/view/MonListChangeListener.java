@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
@@ -15,9 +16,12 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Canvas c;
 	GraphicsContext gc;
 	FormDisplay fd;
-	Label tf = new Label();
-	Label tf2 = new Label();
-	
+	Label nombreDePoints = new Label();
+	Label nombreDeFaces = new Label();
+	Button plusX=new Button("+");
+	Button moinsX=new Button("-");
+	Button plusY=new Button("+");
+	Button moinsY=new Button("-");
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c=c;
 		this.gc=gc;
@@ -37,13 +41,12 @@ class MonListChangeListener implements ListChangeListener<File> {
       Points ps=ce.ps;
       Faces f=ce.fa;
       
-      tf.setText("Nombre de points : "+ps.getPoints().size());
-      tf2.setText("Nombre de faces : "+f.getFaces().size());
-      
-      fd.vb.getChildren().remove(tf);
-      fd.vb.getChildren().remove(tf2);
-      fd.vb.getChildren().add(tf);
-      fd.vb.getChildren().add(tf2);	
+      nombreDePoints.setText("Nombre de points : "+ps.getPoints().size());
+      nombreDeFaces.setText("Nombre de faces : "+f.getFaces().size());
+      fd.vb.getChildren().remove(nombreDePoints);
+      fd.vb.getChildren().remove(nombreDeFaces);
+      fd.vb.getChildren().add(nombreDePoints);
+      fd.vb.getChildren().add(nombreDeFaces);	
       
       f.attach(fd);
       gc.clearRect(0, 0, c.getWidth(), c.getHeight());
@@ -51,6 +54,21 @@ class MonListChangeListener implements ListChangeListener<File> {
       c.setHeight(ps.maxY());
       fd.dessinModele(f);
       Translate t=new Translate();
-      t.translate(f, c);
+      plusX.setOnAction(e->{
+    	  t.plusX(fd,f);
+      });
+      moinsX.setOnAction(e->{
+    	  t.moinsX(fd, f);
+      });
+      plusY.setOnAction(e->{
+    	  t.plusY(fd,f);
+      });
+      moinsY.setOnAction(e->{
+    	  t.moinsY(fd, f);
+      });
+      fd.vb.getChildren().add(plusX);
+      fd.vb.getChildren().add(moinsX);
+      fd.vb.getChildren().add(plusY);
+      fd.vb.getChildren().add(moinsY);
     }
   }

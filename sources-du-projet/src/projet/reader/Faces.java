@@ -33,4 +33,37 @@ public class Faces extends Subject{
 		Collections.sort(faces);
 	}
 	
+	public void incrementFacesX() {
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				p.setX(p.getX()+2.0);
+			}
+		}
+		this.notifyObservers(this);
+	}
+	public void decrementFacesX() {
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				p.setX(p.getX()-2.0);
+			}
+		}
+		this.notifyObservers(this);
+	}
+	public void incrementFacesY() {
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				p.setY(p.getY()+2.0);
+			}
+		}
+		this.notifyObservers(this);
+	}
+	public void decrementFacesY() {
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				p.setY(p.getY()-2.0);
+			}
+		}
+		this.notifyObservers(this);
+	}
+	
 }
