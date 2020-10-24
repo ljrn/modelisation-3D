@@ -3,16 +3,18 @@ package projet.view;
 import projet.reader.Faces;
 
 public class Translate {
+	final private double NBPXL = 0.5000000; 
+	
 	public void plusX(FormDisplay fd,Faces f) {
-		f.incrementFacesX();
+		f.incrementFacesX(NBPXL);
 	}
 	public void moinsX(FormDisplay fd, Faces f) {
-		f.decrementFacesX();
+		f.decrementFacesX(NBPXL);
 	}
 	public void plusY(FormDisplay fd,Faces f) {
-		f.incrementFacesY();
+		f.incrementFacesY(NBPXL);
 	}
 	public void moinsY(FormDisplay fd, Faces f) {
-		f.decrementFacesY();
+		f.decrementFacesY(NBPXL);
 	}
 }

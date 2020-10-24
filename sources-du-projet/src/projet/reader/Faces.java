@@ -1,5 +1,6 @@
 package projet.reader;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,34 +34,35 @@ public class Faces extends Subject{
 		Collections.sort(faces);
 	}
 	
-	public void incrementFacesX() {
+	public void incrementFacesX(double nbPxl) {
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
-				p.setX(p.getX()+2.0);
+				p.setX(p.getX() + nbPxl);
+				System.out.println(p.toString());
 			}
 		}
 		this.notifyObservers(this);
 	}
-	public void decrementFacesX() {
+	public void decrementFacesX(double nbPxl) {
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
-				p.setX(p.getX()-2.0);
+				p.setX(p.getX()- nbPxl);
 			}
 		}
 		this.notifyObservers(this);
 	}
-	public void incrementFacesY() {
+	public void incrementFacesY(double nbPxl) {
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
-				p.setY(p.getY()+2.0);
+				p.setY(p.getY()+nbPxl);
 			}
 		}
 		this.notifyObservers(this);
 	}
-	public void decrementFacesY() {
+	public void decrementFacesY(double nbPxl) {
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
-				p.setY(p.getY()-2.0);
+				p.setY(p.getY()- nbPxl);
 			}
 		}
 		this.notifyObservers(this);
