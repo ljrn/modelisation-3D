@@ -41,7 +41,6 @@ public class Faces extends Subject{
 				if(!modified.contains(p)) {
 				p.setX(p.getX() + nbPxl);
 				modified.add(p);
-				System.out.println(p.toString());
 				}
 			}
 		}
@@ -79,6 +78,21 @@ public class Faces extends Subject{
 			for(Point p:f.getPoints()) {
 				if(!modified.contains(p)) {
 				p.setY(p.getY()- nbPxl);
+				modified.add(p);
+				}
+			}
+		}
+		this.notifyObservers(this);
+	}
+	
+	public void zoomfaces(double factor) {
+		List<Point> modified = new ArrayList<>();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
+				p.setY(p.getY()*factor);
+				p.setX(p.getX()*factor);
+				p.setZ(p.getZ()*factor);
 				modified.add(p);
 				}
 			}

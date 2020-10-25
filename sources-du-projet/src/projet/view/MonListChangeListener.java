@@ -3,6 +3,8 @@ package projet.view;
 import java.io.File;
 import java.io.IOException;
 
+import org.junit.platform.engine.support.descriptor.FileSystemSource;
+
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -69,6 +71,11 @@ class MonListChangeListener implements ListChangeListener<File> {
 			t.moinsY(fd, f);
 		});
 		
+		Zoom z = new Zoom();
+		c.setOnScroll(e->{
+			if(e.getDeltaY()>0)z.Zoom(f,1.5);
+			else z.Zoom(f,0.5);
+		});
 
 
 		fd.vb.getChildren().add(plusX);
