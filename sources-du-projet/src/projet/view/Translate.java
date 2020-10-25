@@ -3,7 +3,7 @@ package projet.view;
 import projet.reader.Faces;
 
 public class Translate {
-	final private double NBPXL = 0.5000000; 
+	final private double NBPXL = 5.5000000; 
 	
 	public void plusX(FormDisplay fd,Faces f) {
 		f.incrementFacesX(NBPXL);

@@ -35,34 +35,52 @@ public class Faces extends Subject{
 	}
 	
 	public void incrementFacesX(double nbPxl) {
+		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
 				p.setX(p.getX() + nbPxl);
+				modified.add(p);
 				System.out.println(p.toString());
+				}
 			}
 		}
 		this.notifyObservers(this);
 	}
 	public void decrementFacesX(double nbPxl) {
+		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
 				p.setX(p.getX()- nbPxl);
+				modified.add(p);
+				}
 			}
 		}
 		this.notifyObservers(this);
 	}
+	
 	public void incrementFacesY(double nbPxl) {
+		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
 				p.setY(p.getY()+nbPxl);
+				modified.add(p);
+				}
 			}
 		}
 		this.notifyObservers(this);
 	}
+	
 	public void decrementFacesY(double nbPxl) {
+		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
 				p.setY(p.getY()- nbPxl);
+				modified.add(p);
+				}
 			}
 		}
 		this.notifyObservers(this);

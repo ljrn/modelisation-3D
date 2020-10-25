@@ -68,6 +68,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		moinsY.setOnAction(e->{
 			t.moinsY(fd, f);
 		});
+		
 
 
 		fd.vb.getChildren().add(plusX);
