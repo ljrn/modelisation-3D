@@ -24,6 +24,14 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button moinsX=new Button("-");
 	Button plusY=new Button("+");
 	Button moinsY=new Button("-");
+	
+	Button rotateX=new Button("⤻");
+	Button rotateY=new Button("⤿");
+	
+	double previousX=0.0;
+	double previousY=0.0;
+
+
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c=c;
 		this.gc=gc;
@@ -59,16 +67,16 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.dessinModele(f);
 		Translate t=new Translate();
 		plusX.setOnAction(e->{
-			t.plusX(fd,f);
+			t.translateX(fd,f,3.0);
 		});
 		moinsX.setOnAction(e->{
-			t.moinsX(fd, f);
+			t.translateX(fd,f,-3.0);
 		});
 		plusY.setOnAction(e->{
-			t.plusY(fd,f);
+			t.translateY(fd,f,3.0);
 		});
 		moinsY.setOnAction(e->{
-			t.moinsY(fd, f);
+			t.translateY(fd,f,-3.0);
 		});
 		
 		Zoom z = new Zoom();
@@ -76,12 +84,65 @@ class MonListChangeListener implements ListChangeListener<File> {
 			if(e.getDeltaY()>0)z.Zoom(f,1.5);
 			else z.Zoom(f,0.5);
 		});
+		
+		Rotate r = new Rotate();
+		rotateX.setOnAction(e->{
+			r.rotateX(fd, f,0.05);
+		});
+		
+		
+		
+		rotateY.setOnMousePressed(e->{
+				r.rotateY(fd, f,0.05);
+				try {
+					e.wait((long) 100.0);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		});
+		
+		
+	
+		c.setOnMousePressed(e->{
+			previousX=e.getSceneX();
+			previousY=e.getSceneY();
+		});
+		
+		c.setOnMouseDragged(e->{
+			double x = e.getScreenX();
+			double y = e.getScreenY();
+			if(e.isPrimaryButtonDown()) {
+				if(x!=previousX) {
+					t.translateX(fd,f,x-previousX);
+					previousX=x;
+				}
+				if(y!=previousY) {
+					t.translateY(fd,f,y-previousY);
+					previousY=y;
+				}
+				
+			}
+			if(e.isSecondaryButtonDown()) {
+				if(x!=previousX) {
+					r.rotateY(fd,f,(x-previousX)/1000);
+					previousX=x;
+				}
+				if(y!=previousY) {
+					r.rotateX(fd,f,(y-previousY)/1000);
+					previousY=y;
+				}
+			}
+		});
 
 
 		fd.vb.getChildren().add(plusX);
 		fd.vb.getChildren().add(moinsX);
 		fd.vb.getChildren().add(plusY);
 		fd.vb.getChildren().add(moinsY);
+		fd.vb.getChildren().add(rotateX);
+		fd.vb.getChildren().add(rotateY);
+
 
 	}
 }

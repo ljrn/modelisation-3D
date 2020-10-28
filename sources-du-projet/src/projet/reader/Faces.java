@@ -34,7 +34,7 @@ public class Faces extends Subject{
 		Collections.sort(faces);
 	}
 	
-	public void incrementFacesX(double nbPxl) {
+	public void translateFacesX(double nbPxl) {
 		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
@@ -59,7 +59,7 @@ public class Faces extends Subject{
 		this.notifyObservers(this);
 	}
 	
-	public void incrementFacesY(double nbPxl) {
+	public void translateFacesY(double nbPxl) {
 		List<Point> modified = new ArrayList<>();
 		for(Face f:faces) {
 			for(Point p:f.getPoints()) {
@@ -93,6 +93,48 @@ public class Faces extends Subject{
 				p.setY(p.getY()*factor);
 				p.setX(p.getX()*factor);
 				p.setZ(p.getZ()*factor);
+				modified.add(p);
+				}
+			}
+		}
+		this.notifyObservers(this);
+	}
+	
+	public void rotateFacesX(double theta) {
+		List<Point> modified = new ArrayList<>();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
+				p.setY((p.getY()*Math.cos(theta))-(p.getZ()*Math.sin(theta)));
+				p.setZ((p.getY()*(Math.sin(theta))+(p.getZ()*Math.cos(theta))));
+				modified.add(p);
+				}
+			}
+		}
+		this.notifyObservers(this);
+	}
+	
+	public void rotateFacesY(double theta) {
+		List<Point> modified = new ArrayList<>();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
+				p.setX((p.getX()*Math.cos(theta))+(p.getZ()*Math.sin(theta)));
+				p.setZ((-(p.getX()*(Math.sin(theta)))+(p.getZ()*Math.cos(theta))));
+				modified.add(p);
+				}
+			}
+		}
+		this.notifyObservers(this);
+	}
+	
+	public void rotateFacesZ(double theta) {
+		List<Point> modified = new ArrayList<>();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(!modified.contains(p)) {
+				p.setX((p.getX()*Math.cos(theta))-(p.getY()*Math.sin(theta)));
+				p.setY((p.getX()*(Math.sin(theta))+(p.getY()*Math.cos(theta))));
 				modified.add(p);
 				}
 			}
