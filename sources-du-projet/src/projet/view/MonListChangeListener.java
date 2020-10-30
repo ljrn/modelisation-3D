@@ -22,10 +22,10 @@ class MonListChangeListener implements ListChangeListener<File> {
 	FormDisplay fd;
 	Label nombreDePoints = new Label();
 	Label nombreDeFaces = new Label();
-	Button plusX=new Button("+");
-	Button moinsX=new Button("-");
-	Button plusY=new Button("-");
-	Button moinsY=new Button("+");
+	Button plusX=new Button("->");
+	Button moinsX=new Button("<-");
+	Button plusY=new Button("v");
+	Button moinsY=new Button("^");
 	
 	Button rotateXplus=new Button("+");
 	Button rotateXmoins=new Button("-");
