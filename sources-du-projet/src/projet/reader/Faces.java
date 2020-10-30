@@ -141,5 +141,9 @@ public class Faces extends Subject{
 		}
 		this.notifyObservers(this);
 	}
+
+	public void setFaces(ArrayList<Face> listFs) {
+		this.faces = listFs;
+	}
 	
 }
