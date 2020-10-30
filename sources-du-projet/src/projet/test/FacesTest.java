@@ -91,5 +91,19 @@ class FacesTest {
 		assertEquals(19.5, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
 	}
 	
+	@Test
+    public void test_Zoom() {
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+        fs.zoomfaces(1.5);
 
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+        fs.zoomfaces(0.5);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getX(), 0.001);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getY(), 0.001);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.001);
+    }
 }

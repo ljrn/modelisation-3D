@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Points {
 	private List<Point> points = new ArrayList<Point>();
+	private Point pointCentral;
 	
 	public void decompStringPoints(List<String> stringPoints, double x, double y) {
 		for (String string : stringPoints) {
@@ -57,6 +58,14 @@ public class Points {
 		return (maxY()+minY())/2;
 	}
 	
+	public double midX() {
+		return (maxX()+minX())/2;
+	}
+	
+	public double midZ() {
+		return (maxZ()+minZ())/2;
+	}
+	
 	public double minX() {
 		if(points.isEmpty())return 0;
 		double min = points.get(0).getX();
@@ -96,6 +105,24 @@ public class Points {
 		return max;
 	}
 	
+	public double minZ() {
+		if(points.isEmpty())return 0;
+		double min = points.get(0).getZ();
+		for (int i = 1; i < points.size(); i++) {
+			min = Double.min(min,points.get(i).getZ());
+		}
+		return min;
+	}
+	
+	public double maxZ() {
+		if(points.isEmpty())return 0;
+		double max = points.get(0).getZ();
+		for (int i = 1; i < points.size(); i++) {
+			max = Double.max(max,points.get(i).getZ());
+		}
+		return max;
+	}
+	
 	public boolean containsNegativeX() {
 		for(Point p: this.points) {
 			if(p.containsNegativeX())return true;
@@ -108,5 +135,10 @@ public class Points {
 			if(p.containsNegativeY())return true;
 		}
 		return false;
+	}
+	public void initCentre() {
+		this.pointCentral.setX(this.midX());
+		this.pointCentral.setY(this.midY());
+		this.pointCentral.setZ(this.midZ());
 	}
 }
