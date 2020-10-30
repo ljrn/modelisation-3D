@@ -24,12 +24,14 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Label nombreDeFaces = new Label();
 	Button plusX=new Button("+");
 	Button moinsX=new Button("-");
-	Button plusY=new Button("+");
-	Button moinsY=new Button("-");
+	Button plusY=new Button("-");
+	Button moinsY=new Button("+");
 	
-	Button rotateX=new Button("â¤»");
-	Button rotateY=new Button("â¤¿");
-	
+	Button rotateXplus=new Button("+");
+	Button rotateXmoins=new Button("-");
+	Button rotateYplus=new Button("+");
+	Button rotateYmoins=new Button("-");
+
 	double previousX=0.0;
 	double previousY=0.0;
 
@@ -80,13 +82,15 @@ class MonListChangeListener implements ListChangeListener<File> {
 		});
 		
 		Rotate r = new Rotate();
-		rotateX.setOnAction(e->{
+		rotateXplus.setOnAction(e->{
 			r.rotateX(fd, f,0.05);
+		});
+		rotateXmoins.setOnAction(e->{
+			r.rotateX(fd, f,-0.05);
 		});
 		
 		
-		
-		rotateY.setOnMousePressed(e->{
+		rotateYplus.setOnMousePressed(e->{
 				r.rotateY(fd, f,0.05);
 				try {
 					e.wait((long) 100.0);
@@ -95,6 +99,15 @@ class MonListChangeListener implements ListChangeListener<File> {
 					e1.printStackTrace();
 				}
 		});
+		rotateYmoins.setOnMousePressed(e->{
+			r.rotateY(fd, f,-0.05);
+			try {
+				e.wait((long) 100.0);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	});
 		
 		
 	
@@ -140,12 +153,14 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new Label("Translation :"));
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le X : "),plusX));
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le X : "),moinsX));
-		fd.vb.getChildren().add(new HBox(new Label("     Incrémenterle Y : "),plusY));
-		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le Y : "),moinsY));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le Y : "),moinsY));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le Y : "),plusY));
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(new Label("Rotation"));
-		fd.vb.getChildren().add(new HBox(new Label("     Rotation en X : "),rotateX));
-		fd.vb.getChildren().add(new HBox(new Label("     Rotation en Y : "),rotateY));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en X : "),rotateXplus));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en X : "),rotateXmoins));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en Y : "),rotateYplus));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Y : "),rotateYmoins));
 
 
 	}
