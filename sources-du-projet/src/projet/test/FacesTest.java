@@ -85,7 +85,11 @@ class FacesTest {
 		assertEquals(9.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
-		
+		fs.translateFacesY(2.4);
+		assertEquals(12.5, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(14.5, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
+		assertEquals(19.5, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
 	}
+	
 
 }

@@ -10,6 +10,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
+import javafx.scene.layout.HBox;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
 import projet.reader.Points;
@@ -51,15 +53,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		Points ps=ce.ps;
 		Faces f=ce.fa;
 
-		fd.vb.getChildren().clear();
-
-		nombreDePoints.setText("Nombre de points : "+ps.getPoints().size());
-		nombreDeFaces.setText("Nombre de faces : "+f.getFaces().size());
-		//fd.vb.getChildren().remove(nombreDePoints);
-		//fd.vb.getChildren().remove(nombreDeFaces);
-		fd.vb.getChildren().add(nombreDePoints);
-		fd.vb.getChildren().add(nombreDeFaces);	
-
+		
 		f.attach(fd);
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
 		c.setWidth(ps.maxX());
@@ -134,14 +128,24 @@ class MonListChangeListener implements ListChangeListener<File> {
 				}
 			}
 		});
+		fd.vb.getChildren().clear();
 
-
-		fd.vb.getChildren().add(plusX);
-		fd.vb.getChildren().add(moinsX);
-		fd.vb.getChildren().add(plusY);
-		fd.vb.getChildren().add(moinsY);
-		fd.vb.getChildren().add(rotateX);
-		fd.vb.getChildren().add(rotateY);
+		nombreDePoints.setText("     Nombre de points : "+ps.getPoints().size());
+		nombreDeFaces.setText("     Nombre de faces : "+f.getFaces().size());
+		Label info = new Label("Informations : ");
+		fd.vb.getChildren().add(info);
+		fd.vb.getChildren().add(nombreDePoints);
+		fd.vb.getChildren().add(nombreDeFaces);	
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(new Label("Translation :"));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le X : "),plusX));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le X : "),moinsX));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenterle Y : "),plusY));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le Y : "),moinsY));
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(new Label("Rotation"));
+		fd.vb.getChildren().add(new HBox(new Label("     Rotation en X : "),rotateX));
+		fd.vb.getChildren().add(new HBox(new Label("     Rotation en Y : "),rotateY));
 
 
 	}
