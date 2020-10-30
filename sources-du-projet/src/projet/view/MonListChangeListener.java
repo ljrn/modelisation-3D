@@ -150,9 +150,9 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(nombreDePoints);
 		fd.vb.getChildren().add(nombreDeFaces);	
 		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new Label("Translation :"));
+		fd.vb.getChildren().add(new Label("Translation :"));    
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le X : "),plusX));
-		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le X : "),moinsX));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le X : "),moinsX)); 
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le Y : "),moinsY));
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter le Y : "),plusY));
 		fd.vb.getChildren().add(new Separator());
