@@ -141,6 +141,11 @@ public class Faces extends Subject{
 		}
 		this.notifyObservers(this);
 	}
+	
+	public Point midPoint() {
+		this.trierFaces();
+		return this.faces.get(this.faces.size()/2).getPoints().get(0);
+	}
 
 	public void setFaces(ArrayList<Face> listFs) {
 		this.faces = listFs;

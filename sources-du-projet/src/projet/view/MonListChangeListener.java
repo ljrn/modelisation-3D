@@ -26,7 +26,6 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button moinsX=new Button("<-");
 	Button plusY=new Button("v");
 	Button moinsY=new Button("^");
-	
 	Button rotateXplus=new Button("+");
 	Button rotateXmoins=new Button("-");
 	Button rotateYplus=new Button("+");
@@ -107,7 +106,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-	});
+		});
 		
 		
 	
