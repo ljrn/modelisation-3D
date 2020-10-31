@@ -30,7 +30,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateXmoins=new Button("-");
 	Button rotateYplus=new Button("+");
 	Button rotateYmoins=new Button("-");
-
+	Button rotateZplus=new Button("+");
+	Button rotateZmoins=new Button("-");
 	double previousX=0.0;
 	double previousY=0.0;
 
@@ -59,6 +60,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
 		c.setWidth(ps.maxX());
 		c.setHeight(ps.maxY());
+
 		fd.dessinModele(f);
 		Translate t=new Translate();
 		plusX.setOnAction(e->{
@@ -87,25 +89,19 @@ class MonListChangeListener implements ListChangeListener<File> {
 		rotateXmoins.setOnAction(e->{
 			r.rotateX(fd, f,-0.05);
 		});
-		
+		rotateZplus.setOnAction(e->{
+			r.rotateZ(fd, f,0.05);
+		});
+		rotateZmoins.setOnAction(e->{
+			r.rotateZ(fd, f,-0.05);
+		});
 		
 		rotateYplus.setOnMousePressed(e->{
 				r.rotateY(fd, f,0.05);
-				try {
-					e.wait((long) 100.0);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			
 		});
 		rotateYmoins.setOnMousePressed(e->{
 			r.rotateY(fd, f,-0.05);
-			try {
-				e.wait((long) 100.0);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 		});
 		
 		
@@ -160,6 +156,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en X : "),rotateXmoins));
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en Y : "),rotateYplus));
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Y : "),rotateYmoins));
+		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en Z : "),rotateZplus));
+		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Z : "),rotateZmoins));
 
 
 	}
