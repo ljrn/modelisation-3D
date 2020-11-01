@@ -1,4 +1,5 @@
 package projet.test;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -10,10 +11,12 @@ import projet.reader.Face;
 import projet.reader.Faces;
 import projet.reader.Point;
 import projet.reader.Points;
-import projet.reader.ReadFile;
+import projet.reader.Translate;
 
-class FacesTest {
+public class TestTranslate {
+	private static final double DELTA = 0.1;
 	Faces fs = new Faces();
+	Translate t =new Translate();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<Point>();
@@ -25,7 +28,6 @@ class FacesTest {
 		listPs.add(new Point(15.1, 15.1, 15.1));
 		listPs.add(new Point(16.1, 16.1, 16.1));
 		listPs.add(new Point(17.1, 17.1, 17.1));
-
 		Points ps = new Points();
 		ps.setPoints(listPs);
 		ArrayList<Face> listFs = new ArrayList<Face>();	
@@ -47,22 +49,25 @@ class FacesTest {
 		fs.setFaces(listFs);
 	}
 	@Test
-	public void testDecompFaces() {
-		ReadFile rf=new ReadFile("./ressources/airplane.ply");
-		try{
-			rf.readHeader();
-			Points ps=new Points();
-			ps.decompStringPoints(rf.getPoints(),0,0);
-			Faces f=new Faces();
-			f.decompStringFaces(rf.getFaces(), ps);
-			Face fa=f.getFaces().get(0);
-			Point p0=ps.getPoints().get(0);
-			Point p1=ps.getPoints().get(1);
-			Point p2=ps.getPoints().get(2);
-			assertEquals(p0, fa.getPoints().get(0));
-			assertEquals(p1, fa.getPoints().get(1));
-			assertEquals(p2, fa.getPoints().get(2));
-		}catch(Exception e) {}
+	public void test_Translation() {
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+		t.translateX(fs, 1);
+		assertEquals(11.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+		assertEquals(12.1, fs.getFaces().get(0).getPoints().get(1).getX(), DELTA);
+		assertEquals(13.1, fs.getFaces().get(0).getPoints().get(2).getX(), DELTA);
+		assertEquals(13.1, fs.getFaces().get(1).getPoints().get(0).getX(), DELTA);
+		
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+		t.translateX(fs, -2);
+		assertEquals(9.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+		t.translateY(fs, 2.4);
+		assertEquals(12.5, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(14.5, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
+		assertEquals(19.5, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
 	}
-	
 }

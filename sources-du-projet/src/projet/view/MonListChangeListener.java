@@ -3,8 +3,6 @@ package projet.view;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.platform.engine.support.descriptor.FileSystemSource;
-
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,6 +13,9 @@ import javafx.scene.layout.HBox;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
 import projet.reader.Points;
+import projet.reader.Rotate;
+import projet.reader.Translate;
+import projet.reader.Zoom;
 
 class MonListChangeListener implements ListChangeListener<File> {
 	Canvas c;
@@ -64,44 +65,44 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.dessinModele(f);
 		Translate t=new Translate();
 		plusX.setOnAction(e->{
-			t.translateX(fd,f,3.0);
+			t.translateX(f,3.0);
 		});
 		moinsX.setOnAction(e->{
-			t.translateX(fd,f,-3.0);
+			t.translateX(f,-3.0);
 		});
 		plusY.setOnAction(e->{
-			t.translateY(fd,f,3.0);
+			t.translateY(f,3.0);
 		});
 		moinsY.setOnAction(e->{
-			t.translateY(fd,f,-3.0);
+			t.translateY(f,-3.0);
 		});
 		
 		Zoom z = new Zoom();
 		c.setOnScroll(e->{
-			if(e.getDeltaY()>0)z.Zoom(f,1.5);
-			else z.Zoom(f,0.5);
+			if(e.getDeltaY()>0)z.zoom(f,1.5);
+			else z.zoom(f,0.5);
 		});
 		
 		Rotate r = new Rotate();
 		rotateXplus.setOnAction(e->{
-			r.rotateX(fd, f,0.05);
+			r.rotateX(f, 0.05);
 		});
 		rotateXmoins.setOnAction(e->{
-			r.rotateX(fd, f,-0.05);
+			r.rotateX(f, -0.05);
 		});
 		rotateZplus.setOnAction(e->{
-			r.rotateZ(fd, f,0.05);
+			r.rotateZ(f, 0.05);
 		});
 		rotateZmoins.setOnAction(e->{
-			r.rotateZ(fd, f,-0.05);
+			r.rotateZ(f, -0.05);
 		});
 		
 		rotateYplus.setOnMousePressed(e->{
-				r.rotateY(fd, f,0.05);
+				r.rotateY(f, 0.05);
 			
 		});
 		rotateYmoins.setOnMousePressed(e->{
-			r.rotateY(fd, f,-0.05);
+			r.rotateY(f, -0.05);
 		});
 		
 		
@@ -116,22 +117,22 @@ class MonListChangeListener implements ListChangeListener<File> {
 			double y = e.getScreenY();
 			if(e.isPrimaryButtonDown()) {
 				if(x!=previousX) {
-					t.translateX(fd,f,x-previousX);
+					t.translateX(f,x-previousX);
 					previousX=x;
 				}
 				if(y!=previousY) {
-					t.translateY(fd,f,y-previousY);
+					t.translateY(f,y-previousY);
 					previousY=y;
 				}
 				
 			}
 			if(e.isSecondaryButtonDown()) {
 				if(x!=previousX) {
-					r.rotateY(fd,f,(x-previousX)/1000);
+					r.rotateY(f,(x-previousX)/1000);
 					previousX=x;
 				}
 				if(y!=previousY) {
-					r.rotateX(fd,f,(y-previousY)/1000);
+					r.rotateX(f,(y-previousY)/1000);
 					previousY=y;
 				}
 			}

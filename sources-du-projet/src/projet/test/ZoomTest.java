@@ -1,4 +1,5 @@
 package projet.test;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -10,10 +11,12 @@ import projet.reader.Face;
 import projet.reader.Faces;
 import projet.reader.Point;
 import projet.reader.Points;
-import projet.reader.ReadFile;
+import projet.reader.Zoom;
 
-class FacesTest {
+public class ZoomTest {
+	private static final double DELTA = 0.1;
 	Faces fs = new Faces();
+	Zoom z = new Zoom();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<Point>();
@@ -46,23 +49,19 @@ class FacesTest {
 		listFs.add(new Face(3,face3));
 		fs.setFaces(listFs);
 	}
-	@Test
-	public void testDecompFaces() {
-		ReadFile rf=new ReadFile("./ressources/airplane.ply");
-		try{
-			rf.readHeader();
-			Points ps=new Points();
-			ps.decompStringPoints(rf.getPoints(),0,0);
-			Faces f=new Faces();
-			f.decompStringFaces(rf.getFaces(), ps);
-			Face fa=f.getFaces().get(0);
-			Point p0=ps.getPoints().get(0);
-			Point p1=ps.getPoints().get(1);
-			Point p2=ps.getPoints().get(2);
-			assertEquals(p0, fa.getPoints().get(0));
-			assertEquals(p1, fa.getPoints().get(1));
-			assertEquals(p2, fa.getPoints().get(2));
-		}catch(Exception e) {}
-	}
 	
+	@Test
+    public void test_Zoom() {
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+        z.zoom(fs, 1.5);
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
+        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+        z.zoom(fs, 0.5);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getX(), 0.001);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getY(), 0.001);
+        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.001);
+    }
 }

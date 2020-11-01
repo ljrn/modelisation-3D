@@ -1,6 +1,5 @@
 package projet.reader;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,114 +31,6 @@ public class Faces extends Subject{
 
 	public void trierFaces() {
 		Collections.sort(faces);
-	}
-	
-	public void translateFacesX(double nbPxl) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setX(p.getX() + nbPxl);
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	public void decrementFacesX(double nbPxl) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setX(p.getX()- nbPxl);
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void translateFacesY(double nbPxl) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setY(p.getY()+nbPxl);
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void decrementFacesY(double nbPxl) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setY(p.getY()- nbPxl);
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void zoomfaces(double factor) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setY(p.getY()*factor);
-				p.setX(p.getX()*factor);
-				p.setZ(p.getZ()*factor);
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void rotateFacesX(double theta) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setY((p.getY()*Math.cos(theta))-(p.getZ()*Math.sin(theta)));
-				p.setZ((p.getY()*(Math.sin(theta))+(p.getZ()*Math.cos(theta))));
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void rotateFacesY(double theta) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setX((p.getX()*Math.cos(theta))+(p.getZ()*Math.sin(theta)));
-				p.setZ((-(p.getX()*(Math.sin(theta)))+(p.getZ()*Math.cos(theta))));
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
-	}
-	
-	public void rotateFacesZ(double theta) {
-		List<Point> modified = new ArrayList<>();
-		for(Face f:faces) {
-			for(Point p:f.getPoints()) {
-				if(!modified.contains(p)) {
-				p.setX((p.getX()*Math.cos(theta))-(p.getY()*Math.sin(theta)));
-				p.setY((p.getX()*(Math.sin(theta))+(p.getY()*Math.cos(theta))));
-				modified.add(p);
-				}
-			}
-		}
-		this.notifyObservers(this);
 	}
 	
 	public Point midPoint() {
