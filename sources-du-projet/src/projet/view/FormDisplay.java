@@ -80,6 +80,8 @@ public class FormDisplay extends Application implements Observer {
 	@Override
 	public void update(Subject subj, Object data) {
 		f = (Faces) data;
+		c.setWidth(f.maxX());
+		c.setHeight(f.maxY());
 		this.dessinModele(f);
 	}
 }
