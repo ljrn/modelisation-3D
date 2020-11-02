@@ -34,12 +34,28 @@ public class Faces extends Subject{
 	}
 	
 	public Point midPoint() {
-		this.trierFaces();
-		return this.faces.get(this.faces.size()/2).getPoints().get(0);
+		return new Point(this.maxX()/2, this.maxY()/2,0);
 	}
 
 	public void setFaces(ArrayList<Face> listFs) {
 		this.faces = listFs;
+	}
+	
+	public double maxX() {
+		double max=faces.get(0).getPoints().get(0).getX();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(p.getX()>max)max=p.getX();
+			}
+		}return max;
+	}
+	public double maxY() {
+		double max=faces.get(0).getPoints().get(0).getY();
+		for(Face f:faces) {
+			for(Point p:f.getPoints()) {
+				if(p.getY()>max)max=p.getY();
+			}
+		}return max;
 	}
 	
 }

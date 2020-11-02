@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Rotate {
 	public void rotateX(Faces f,double nb) {
+		Translate t=new Translate();
+		Point mid=f.midPoint();
+		t.translateX(f, -mid.getX());
+		t.translateY(f, -mid.getY());
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
@@ -15,10 +19,16 @@ public class Rotate {
 				}
 			}
 		}
+		t.translateX(f, mid.getX());
+		t.translateY(f, mid.getY());
 		f.notifyObservers(f);
 	}
 	
 	public void rotateY(Faces f,double nb) {
+		Translate t=new Translate();
+		Point mid=f.midPoint();
+		t.translateX(f, -mid.getX());
+		t.translateY(f, -mid.getY());
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
@@ -29,9 +39,15 @@ public class Rotate {
 				}
 			}
 		}
+		t.translateX(f, mid.getX());
+		t.translateY(f, mid.getY());
 		f.notifyObservers(f);
 	}
 	public void rotateZ(Faces f, double nb) {
+		Translate t=new Translate();
+		Point mid=f.midPoint();
+		t.translateX(f, -mid.getX());
+		t.translateY(f, -mid.getY());
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
@@ -42,6 +58,8 @@ public class Rotate {
 				}
 			}
 		}
+		t.translateX(f, mid.getX());
+		t.translateY(f, mid.getY());
 		f.notifyObservers(f);
 	}
 }

@@ -51,12 +51,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		}catch(IOException e ) {
 			System.out.println(ch.getList().toString().substring(13));
 		}
-
-
 		Points ps=ce.ps;
 		Faces f=ce.fa;
-
-		
 		f.attach(fd);
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
 		c.setWidth(ps.maxX());
