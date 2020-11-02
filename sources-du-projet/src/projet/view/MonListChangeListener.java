@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import projet.controls.MouseControls;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
 import projet.reader.Points;
@@ -33,17 +34,11 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateYmoins=new Button("-");
 	Button rotateZplus=new Button("+");
 	Button rotateZmoins=new Button("-");
-	double previousX=0.0;
-	double previousY=0.0;
-
-
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c=c;
 		this.gc=gc;
 		this.fd=fd;
 	}  
-
-	//METHODE DE BUILD DU MODELE A CHAQUE CHANGEMENT DE FICHIER
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
 		CreateEnvironment ce=new CreateEnvironment();
 		try{
@@ -95,44 +90,12 @@ class MonListChangeListener implements ListChangeListener<File> {
 		
 		rotateYplus.setOnMousePressed(e->{
 				r.rotateY(f, 0.05);
-			
 		});
 		rotateYmoins.setOnMousePressed(e->{
 			r.rotateY(f, -0.05);
 		});
-		
-		
-	
-		c.setOnMousePressed(e->{
-			previousX=e.getSceneX();
-			previousY=e.getSceneY();
-		});
-		
-		c.setOnMouseDragged(e->{
-			double x = e.getScreenX();
-			double y = e.getScreenY();
-			if(e.isPrimaryButtonDown()) {
-				if(x!=previousX) {
-					t.translateX(f,x-previousX);
-					previousX=x;
-				}
-				if(y!=previousY) {
-					t.translateY(f,y-previousY);
-					previousY=y;
-				}
-				
-			}
-			if(e.isSecondaryButtonDown()) {
-				if(x!=previousX) {
-					r.rotateY(f,(x-previousX)/1000);
-					previousX=x;
-				}
-				if(y!=previousY) {
-					r.rotateX(f,(y-previousY)/1000);
-					previousY=y;
-				}
-			}
-		});
+		MouseControls mc =new MouseControls();
+		mc.mouseDragged(c,f);
 		fd.vb.getChildren().clear();
 
 		nombreDePoints.setText("     Nombre de points : "+ps.getPoints().size());

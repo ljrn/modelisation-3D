@@ -27,20 +27,13 @@ public class FormDisplay extends Application implements Observer {
 	Faces f;
 	Points ps;
 	VBox vb = new VBox();
-
 	public void start(Stage primaryStage) {
 		BorderPane root = new BorderPane();
 		gc.setFill(Color.DARKGREY);
 		gc.setStroke(Color.GREY);
-
-		// INITIALISATION DE L'ECHELLE ET DES MESURES DU CANVAS
 		width = c.getWidth();
 		height = c.getHeight();
-
-		// DEFINITION DE LA SCENE
-
 		HBox hb = listFiles(c, gc, this);
-
 		VBox nbFaces = new VBox(hb, vb);
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
@@ -48,22 +41,18 @@ public class FormDisplay extends Application implements Observer {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-
 	public static void main(String[] args) {
 		Application.launch();
 	}
-
 	public HBox listFiles(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		File path = new File("./ressources");
 		listFiles = new ListView<>();
 		listFiles.getItems().addAll(path.listFiles());
-		// CREATION DE LA LISTVIEW
 		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c, gc, fd));
 		HBox root = new HBox();
 		root.getChildren().addAll(listFiles);
 		return root;
 	}
-
 	public void dessinModele(Faces f) {
 		gc.clearRect(0, 0, 10000, 10000);
 		for (Face fa : f.getFaces()) {
@@ -71,12 +60,9 @@ public class FormDisplay extends Application implements Observer {
 			gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 		}
 	}
-
 	@Override
 	public void update(Subject subj) {
-		//NE FAIT RIEN
 	}
-
 	@Override
 	public void update(Subject subj, Object data) {
 		f = (Faces) data;
