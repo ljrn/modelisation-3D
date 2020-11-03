@@ -2,6 +2,11 @@ package projet.view;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
@@ -24,6 +29,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	FormDisplay fd;
 	Label nombreDePoints = new Label();
 	Label nombreDeFaces = new Label();
+	Label date=new Label("     Date de création : ");
+	Label auteur=new Label("     Nom de l'auteur : ");
 	Button plusX=new Button("->");
 	Button moinsX=new Button("<-");
 	Button plusY=new Button("v");
@@ -42,7 +49,15 @@ class MonListChangeListener implements ListChangeListener<File> {
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
 		CreateEnvironment ce=new CreateEnvironment();
 		try{
-			ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),fd.width,fd.height);
+			File theFile=new File("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1));
+			ce.createFaces(theFile,fd.width,fd.height);
+			BasicFileAttributes attributs=Files.readAttributes(theFile.toPath(), BasicFileAttributes.class);
+			FileTime theDate=attributs.creationTime();
+			String author=Files.getOwner(theFile.toPath()).getName();
+			String pattern = "yyyy-MM-dd HH:mm:ss";
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		    auteur.setText(auteur.getText()+author);
+			date.setText(date.getText()+simpleDateFormat.format(new Date(theDate.toMillis())));
 		}catch(IOException e ) {
 			System.out.println(ch.getList().toString().substring(13));
 		}
@@ -103,7 +118,9 @@ class MonListChangeListener implements ListChangeListener<File> {
 		Label info = new Label("Informations : ");
 		fd.vb.getChildren().add(info);
 		fd.vb.getChildren().add(nombreDePoints);
-		fd.vb.getChildren().add(nombreDeFaces);	
+		fd.vb.getChildren().add(nombreDeFaces);
+		fd.vb.getChildren().add(date);
+		fd.vb.getChildren().add(auteur);
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(new Label("Translation :"));    
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le X : "),plusX));
