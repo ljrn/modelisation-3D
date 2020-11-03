@@ -112,7 +112,6 @@ class MonListChangeListener implements ListChangeListener<File> {
 		MouseControls mc =new MouseControls();
 		mc.mouseDragged(c,f);
 		fd.vb.getChildren().clear();
-
 		nombreDePoints.setText("     Nombre de points : "+ps.getPoints().size());
 		nombreDeFaces.setText("     Nombre de faces : "+f.getFaces().size());
 		Label info = new Label("Informations : ");
@@ -135,7 +134,5 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Y : "),rotateYmoins));
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en Z : "),rotateZplus));
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Z : "),rotateZmoins));
-
-
 	}
 }
