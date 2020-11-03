@@ -70,8 +70,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		
 		Zoom z = new Zoom();
 		c.setOnScroll(e->{
-			if(e.getDeltaY()>0)z.zoom(f,1.5);
-			else z.zoom(f,0.5);
+			if(e.getDeltaY()>0)z.zoom(f,1.05);
+			else z.zoom(f,0.95);
 		});
 		
 		Rotate r = new Rotate();
