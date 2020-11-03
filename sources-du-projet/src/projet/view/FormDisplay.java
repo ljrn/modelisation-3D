@@ -37,7 +37,7 @@ public class FormDisplay extends Application implements Observer {
 		VBox nbFaces = new VBox(hb, vb);
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
-		Scene scene = new Scene(root, 1000, 1500);
+		Scene scene = new Scene(root, 1500, 1000);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
