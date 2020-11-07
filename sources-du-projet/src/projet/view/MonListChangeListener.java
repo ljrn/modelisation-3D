@@ -2,6 +2,12 @@ package projet.view;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
@@ -10,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import javafx.stage.DirectoryChooser;
 import projet.controls.MouseControls;
 import projet.reader.CreateEnvironment;
 import projet.reader.Faces;
@@ -24,6 +31,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	FormDisplay fd;
 	Label nombreDePoints = new Label();
 	Label nombreDeFaces = new Label();
+	Label date=new Label("     Date de création : ");
+	Label auteur=new Label("     Nom de l'auteur : ");
 	Button plusX=new Button("->");
 	Button moinsX=new Button("<-");
 	Button plusY=new Button("v");
@@ -42,8 +51,21 @@ class MonListChangeListener implements ListChangeListener<File> {
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch){
 		CreateEnvironment ce=new CreateEnvironment();
 		try{
-			ce.createFaces("./ressources/"+ch.getList().toString().substring(14, ch.getList().toString().length()-1),fd.width,fd.height);
+			auteur.setText("     Nom de l'auteur : ");
+			date.setText("     Date de création : ");
+			String patternFile = Pattern.quote(System.getProperty("file.separator"));
+			File theFile=new File(fd.path.getAbsolutePath()+File.separator+ch.getList().toString().split(patternFile)[ch.getList().toString().split(patternFile).length-1].replace("]", ""));
+			System.out.println(ch.getList().toString().split(patternFile)[ch.getList().toString().split(patternFile).length-1]);
+			ce.createFaces(theFile,fd.width,fd.height);
+			BasicFileAttributes attributs=Files.readAttributes(theFile.toPath(), BasicFileAttributes.class);
+			FileTime theDate=attributs.creationTime();
+			String author=Files.getOwner(theFile.toPath()).getName();
+			String pattern = "yyyy-MM-dd HH:mm:ss";
+		    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		    auteur.setText(auteur.getText()+author);
+			date.setText(date.getText()+simpleDateFormat.format(new Date(theDate.toMillis())));
 		}catch(IOException e ) {
+			System.out.println(e.getMessage());
 			System.out.println(ch.getList().toString().substring(13));
 		}
 		Points ps=ce.ps;
@@ -97,13 +119,14 @@ class MonListChangeListener implements ListChangeListener<File> {
 		MouseControls mc =new MouseControls();
 		mc.mouseDragged(c,f);
 		fd.vb.getChildren().clear();
-
 		nombreDePoints.setText("     Nombre de points : "+ps.getPoints().size());
 		nombreDeFaces.setText("     Nombre de faces : "+f.getFaces().size());
 		Label info = new Label("Informations : ");
 		fd.vb.getChildren().add(info);
 		fd.vb.getChildren().add(nombreDePoints);
-		fd.vb.getChildren().add(nombreDeFaces);	
+		fd.vb.getChildren().add(nombreDeFaces);
+		fd.vb.getChildren().add(date);
+		fd.vb.getChildren().add(auteur);
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(new Label("Translation :"));    
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter le X : "),plusX));
@@ -118,7 +141,5 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Y : "),rotateYmoins));
 		fd.vb.getChildren().add(new HBox(new Label("     Incrémenter en Z : "),rotateZplus));
 		fd.vb.getChildren().add(new HBox(new Label("     Décrémenter en Z : "),rotateZmoins));
-
-
 	}
 }
