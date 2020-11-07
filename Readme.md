@@ -14,5 +14,4 @@ Mohnes:
     -
 Baptiste:
     -
-En dehors des tâches techniques faîtes, un gros travail de communication au sein du groupe a été fait et nous avons réussi à garder une cohésion qui est très importante à la réussite du projet.
-- Toutes précisions qui vous semblent importantes pour la bonne évaluation de votre projet (problème spécifique par exemple une absence prolongée de l'un des membres, réalisation dont vous êtes particulièrement fiers, ...)
+En dehors des tâches techniques faîtes, un gros travail de communication au sein du groupe a été accompli et nous avons réussi à garder une cohésion qui est très importante à la réussite du projet. De plus, nous avons réussi à implémenter les contrôles souris, ce dont nous sommes relativement fiers. Vous pouvez donc zoomer et dézoomer sur les modèles grâce à la molette, faire une rotation de la figure grâce à un cliquer déplacer sur le bouton droit de la souris, et, vous pouvez faire une translation de celle-ci grâce à un cliquer déplacer sur le bouton gauche de la souris.
