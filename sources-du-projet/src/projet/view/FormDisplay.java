@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import projet.reader.Face;
 import projet.reader.Faces;
@@ -27,6 +28,9 @@ public class FormDisplay extends Application implements Observer {
 	Faces f;
 	Points ps;
 	VBox vb = new VBox();
+	DirectoryChooser directoryChooser = new DirectoryChooser();
+	File path = directoryChooser.showDialog(null);
+	
 	public void start(Stage primaryStage) {
 		BorderPane root = new BorderPane();
 		gc.setFill(Color.DARKGREY);
@@ -38,18 +42,25 @@ public class FormDisplay extends Application implements Observer {
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
 		Scene scene = new Scene(root, 1500, 1000);
-		primaryStage.setScene(scene);
+		primaryStage.setScene(scene); 
 		primaryStage.show();
 	}
 	public static void main(String[] args) {
 		Application.launch();
 	}
 	public HBox listFiles(Canvas c, GraphicsContext gc, FormDisplay fd) {
-		File path = new File("./ressources");
+		
+	//	System.out.println("PATH :"+path.getAbsolutePath());
 		listFiles = new ListView<>();
-		listFiles.getItems().addAll(path.listFiles());
+		for (File file : path.listFiles()) {
+			if(file.toString().contains(".ply")) {
+				listFiles.getItems().add(file);
+
+			}
+		}
 		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c, gc, fd));
 		HBox root = new HBox();
+		
 		root.getChildren().addAll(listFiles);
 		return root;
 	}
