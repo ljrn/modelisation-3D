@@ -56,8 +56,8 @@ public class ZoomTest {
         assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
         assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
         z.zoom(fs, 1.5);
-        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
-        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
+        assertEquals(10.875, fs.getFaces().get(0).getPoints().get(0).getX(), 0.001);
+        assertEquals(10.875, fs.getFaces().get(0).getPoints().get(0).getY(), 0.001);
         assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
         z.zoom(fs, 0.5);
         assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getX(), 0.001);
