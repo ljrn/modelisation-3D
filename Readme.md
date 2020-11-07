@@ -1,13 +1,14 @@
 Louis Jeronimo, Mohamed Bourdim, Mohnes Hamroun, Baptiste Momut
 
 Louis:
-    -Parsing du fichier ply.
-    -Implémentation de ListChangeListener
-    -Création des classes réunissant les Points et les faces
-    -Zoom automatique au chargement de la figure
-    -Ajustement de la rotation autour du centre de la figure
-    -Implémentation du Design Pattern Observateur/Observable
-    -Refactoring
+     -Parsing du fichier ply.
+     -Implémentation de ListChangeListener
+     -Création des classes réunissant les Points et les faces
+     -Zoom automatique au chargement de la figure
+     -Ajustement de la rotation autour du centre de la figure
+     -Implémentation du Design Pattern Observateur/Observable
+     -Refactoring
+
 Mohamed:
     -
 Mohnes:
