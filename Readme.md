@@ -12,7 +12,9 @@ Louis:
 Mohamed:
      -
 Mohnes:
-     - 
+     - Directory Chooser
+     - Tests Zoom, tests Rotation
+     - Informations sur les figures
 
 Baptiste: 
      - Classes et fonctions de rotation
