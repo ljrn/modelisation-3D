@@ -10,7 +10,11 @@ Louis:
      -Refactoring
 
 Mohamed:
-     -
+     - FacesTest, Points Tests, TranslateTest
+     - Boutons translation, rotation
+     -informations : nombre de points, nombre de faces
+     - readfile
+     - classe point, points, face, faces
 Mohnes:
      - Directory Chooser
      - Tests Zoom, tests Rotation
