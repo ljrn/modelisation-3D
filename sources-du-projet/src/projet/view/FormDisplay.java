@@ -49,8 +49,6 @@ public class FormDisplay extends Application implements Observer {
 		Application.launch();
 	}
 	public HBox listFiles(Canvas c, GraphicsContext gc, FormDisplay fd) {
-		
-	//	System.out.println("PATH :"+path.getAbsolutePath());
 		listFiles = new ListView<>();
 		for (File file : path.listFiles()) {
 			if(file.toString().contains(".ply")) {
