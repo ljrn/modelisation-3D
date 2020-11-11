@@ -65,8 +65,8 @@ public class RotationTest {
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(12.1, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
 		assertEquals(17.1, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
-		assertEquals(5.88, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
-		assertEquals(14.75, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
+		assertEquals(6.76, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+		assertEquals(5.06, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
 	}
 	@Test
 	public void test_RotationZ() {

@@ -50,25 +50,25 @@ public class TranslateTest {
 	}
 	@Test
 	public void test_TranslationX() {
-		t.translateX(fs, 1);
+		t.translate(fs, 1,0,0);
 		assertEquals(11.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
 		assertEquals(12.1, fs.getFaces().get(0).getPoints().get(1).getX(), DELTA);
 		assertEquals(13.1, fs.getFaces().get(0).getPoints().get(2).getX(), DELTA);
 		assertEquals(13.1, fs.getFaces().get(1).getPoints().get(0).getX(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
-		t.translateX(fs, -2);
+		t.translate(fs, -2,0,0);
 		assertEquals(9.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
 	}
 	@Test
 	public void test_TranslationY() {
-		t.translateY(fs, 2.4);
+		t.translate(fs, 0,2.4,0);
 		assertEquals(12.5, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(14.5, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
 		assertEquals(19.5, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
-		t.translateY(fs, -2.4);
+		t.translate(fs, 0,-2.4,0);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(12.1, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
 		assertEquals(17.1, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);

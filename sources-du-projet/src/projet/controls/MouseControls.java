@@ -20,11 +20,11 @@ public class MouseControls {
 			double y = e.getScreenY();
 			if(e.isPrimaryButtonDown()) {
 				if(x!=previousX) {
-					t.translateX(f,x-previousX);
+					t.translate(f,(x-previousX),0,0);
 					previousX=x;
 				}
 				if(y!=previousY) {
-					t.translateY(f,y-previousY);
+					t.translate(f,0,(y-previousY),0);
 					previousY=y;
 				}
 				

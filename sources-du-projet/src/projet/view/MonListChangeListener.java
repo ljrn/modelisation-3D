@@ -78,16 +78,16 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.dessinModele(f);
 		Translate t=new Translate();
 		plusX.setOnAction(e->{
-			t.translateX(f,3.0);
+			t.translate(f,3.0,0,0);
 		});
 		moinsX.setOnAction(e->{
-			t.translateX(f,-3.0);
+			t.translate(f,-3.0,0,0);
 		});
 		plusY.setOnAction(e->{
-			t.translateY(f,3.0);
+			t.translate(f,0,3.0,0);
 		});
 		moinsY.setOnAction(e->{
-			t.translateY(f,-3.0);
+			t.translate(f,0,-3.0,0);
 		});
 		
 		Zoom z = new Zoom();
