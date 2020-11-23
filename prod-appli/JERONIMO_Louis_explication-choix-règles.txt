@@ -1,0 +1,22 @@
+Les 5 règles choisies:
+    - ExcessiveMethodLength:
+        J'ai choisi cette règle pour améliorer la lisibilité du code et faire des méthodes simples et concises.
+    - LawOfDemeter:
+        J'ai choisi cette règle pour limiter la connection entre les différentes classes et éviter que celles-ci soient trop liées.
+    - NcssCount:
+        J'ai choisi cette règle pour avoir des méthodes réalisant moins de travail et étant plus rapide et explicites.
+    - GodClass:
+        J'ai choisi cette règle pour favoriser un code bien réparti et ne pas tout avoir dans la même classe.
+    - ShortVariable:
+        J'ai choisi cette règle pour pouvoir bien distinguer les variables et ne pas être perdu dans les noms.
+Les 5 règles exclues:
+    - CommentRequired:
+        J'ai exclu cette règle car si notre code est bien écrit nous n'avons pas besoin de commentaires.
+    - JUnitTestContainsTooManyAsserts:
+        J'ai exclu cette règle car je ne vois pas pourquoi un grand nombre d'Assert génerait nos classes de tests.
+    - ImmutableField:
+        J'ai exclu cette règle car les constantes ne sont pas réellement utiles dans notre projet.
+    - ForLoopCanBeForeach:
+        J'ai exclu cette règle car je considère qu'il n'y a pas de différences entre un for et un foreach
+    - AvoidFieldNameMatchingTypeName:
+        J'ai exclu cette règle car je pense que nous savons faire la différence entre une classe et le nom d'un attribut.
