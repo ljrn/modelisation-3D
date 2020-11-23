@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<ruleset name="Project Rules"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Regles projet mode
+    </description>
+
+
+<rule ref="category/java/bestpractices.xml/AvoidReassigningLoopVariables">
+    <properties>
+        <property name="foreachReassign" value="deny" />
+        <property name="forReassign" value="deny" />
+    </properties>
+</rule>
+
+<rule ref="category/java/bestpractices.xml/UnusedLocalVariable" />
+
+<rule ref="category/java/design.xml/LawOfDemeter" />
+
+<rule ref="category/java/design.xml/ExcessiveMethodLength">
+    <properties>
+        <property name="minimum" value="50.0" />
+    </properties>
+</rule>
+
+<rule ref="category/java/design.xml/NcssCount">
+    <properties>
+        <property name="methodReportLevel" value="25" />
+        <property name="classReportLevel" value="300" />
+        <property name="ncssOptions" value="" />
+    </properties>
+</rule>
+
+<rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+    <properties>
+        <property name="ignoreMagicNumbers" value="0" />
+        <property name="ignoreExpressions" value="true" />
+    </properties>
+</rule>
+
+<rule ref="category/java/bestpractices.xml/LooseCoupling" />
+
+<rule ref="category/java/errorprone.xml/EmptyCatchBlock" />
+
+<rule ref="category/java/codestyle.xml/ShortVariable">
+    <properties>
+        <property name="minimum" value="3" />
+    </properties>
+</rule>
+
+<rule ref="category/java/performance.xml/AvoidInstantiatingObjectsInLoops" /> 
+
+<rule ref="category/java/codestyle.xml/UseDiamondOperator" />
+
+<rule ref="category/java/design.xml/ExcessiveImports" />
+
+<rule ref="category/java/bestpractices.xml/UnusedImports" />
+
+<rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
+
+<rule ref="category/java/design.xml/AvoidCatchingGenericException" />
+
+<rule ref="category/java/design.xml/TooManyFields" />
+
+<rule ref="category/java/bestpractices.xml/UnusedAssignment">
+<properties>
+        <property name="checkUnusedPrefixIncrement" value="true" />
+        <property name="reportUnusedVariables" value="false" />
+    </properties>
+</rule>
+
+<rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
+
+<rule ref="category/java/codestyle.xml/UnnecessaryLocalBeforeReturn">
+    <properties>
+        <property name="statementOrderMatters" value="false" />
+    </properties>
+</rule>
+
+<rule ref="category/java/errorprone.xml/CloseResource" />
+
+
+</ruleset>
+
