@@ -1,0 +1,23 @@
+5 règles choisies : 
+
+- LawOfDemeter : Eviter trop de liaisons entre les classes 
+
+- UnusedLocalVariable : Faciliter la lecture et optimiser le code
+
+- AvoidInstantiatingObjectsInLoops : Optimiser le code
+
+- TooManyFields : Faciliter la relecture 
+
+- AvoidLiteralsInIfCondition : Faciliter la relecture et les éventuelles modifications 
+
+5 règles exclues :
+
+- CommentRequired : Exclue car les commentaires seront remplacés par la javadoc
+
+- SystemPrintLn : Exclue car non importante
+
+- JUnitTestContainsTooManyAsserts : Exclue car non gênant 
+
+- SimpleDateFormatNeedsLocale : Exclue car je pense que nous n'en avons pas besoin
+
+- ImmutableField : Exclue car non nécessaire
