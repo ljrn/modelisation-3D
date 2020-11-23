@@ -14,4 +14,31 @@
             <property name="ncssOptions" value="" />
         </properties>
     </rule>
+    <rule ref="category/java/design.xml/LawOfDemeter" />
+    <rule ref="category/java/design.xml/ExcessiveMethodLength">
+    <properties>
+        <property name="minimum" value="50.0" />
+    </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml/ShortVariable">
+    <properties>
+        <property name="minimum" value="3" />
+    </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml/MethodNamingConventions" />
+    <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+    <properties>
+        <property name="ignoreMagicNumbers" value="0" />
+        <property name="ignoreExpressions" value="true" />
+    </properties>
+    </rule>
+    <rule ref="category/java/design.xml/GodClass" />
+    <rule ref="category/java/bestpractices.xml/LooseCoupling" />
+    <rule ref="category/java/errorprone.xml/EmptyCatchBlock" />
+    <rule ref="category/java/codestyle.xml/UseDiamondOperator" />
+    <rule ref="category/java/errorprone.xml/CloseResource" />
+    <rule ref="category/java/bestpractices.xml/SystemPrintln" />
+    <rule ref="category/java/design.xml/FinalFieldCouldBeStatic" />
+    <rule ref="category/java/bestpractices.xml/UnusedAssignment" />
+    <rule ref="category/java/bestpractices.xml/UnusedLocalVariable" />
 </ruleset>
