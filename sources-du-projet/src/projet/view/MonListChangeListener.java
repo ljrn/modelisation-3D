@@ -1,13 +1,6 @@
 package projet.view;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Pattern;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;

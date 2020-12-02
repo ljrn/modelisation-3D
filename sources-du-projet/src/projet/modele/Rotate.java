@@ -5,14 +5,19 @@ import java.util.List;
 
 public class Rotate {
 	public void rotateX(Faces f,double nb) {
-		Translate t=new Translate();
 		Point mid=f.midPoint();
+		Matrice m=new Matrice();
+		double[][] matriceTranslationVers0= {{1,0,0,-mid.getX()},{0,1,0,-mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matriceRotationOx= {{1,0,0,0},{0,Math.cos(nb),-Math.sin(nb),0},{0, Math.sin(nb), Math.cos(nb), 0},{0,0,0,1}};
+		double[][] matriceTranslationCentre={{1,0,0,mid.getX()},{0,1,0,mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matrice=m.multiplication(matriceTranslationVers0, matriceRotationOx);
+		double[][] matriceFin=m.multiplication(matrice, matriceTranslationCentre);
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
 				if(!modified.contains(p)) {
-					p.setY(((p.getY()-mid.getY())*Math.cos(nb))-(p.getZ()*Math.sin(nb))+mid.getY());
-					p.setZ(((p.getY()-mid.getY())*Math.sin(nb))+(p.getZ()*Math.cos(nb)));
+					double[][] point=m.multiplication(p.toMatrice(),matriceFin);
+					p.assign(point);
 					modified.add(p);
 				}
 			}
@@ -21,14 +26,19 @@ public class Rotate {
 	}
 	
 	public void rotateY(Faces f,double nb) {
-		Translate t=new Translate();
 		Point mid=f.midPoint();
+		Matrice m=new Matrice();
+		double[][] matriceTranslationVers0= {{1,0,0,-mid.getX()},{0,1,0,-mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matriceRotationOy= {{Math.cos(nb),0,-Math.sin(nb),0},{0,1,0,0},{Math.sin(nb), 0, Math.cos(nb), 0},{0,0,0,1}};
+		double[][] matriceTranslationCentre={{1,0,0,mid.getX()},{0,1,0,mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matrice=m.multiplication(matriceTranslationVers0, matriceRotationOy);
+		double[][] matriceFin=m.multiplication(matrice, matriceTranslationCentre);
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
 				if(!modified.contains(p)) {
-					p.setX(((p.getX()-mid.getX())*Math.cos(nb))-(p.getZ()*Math.sin(nb))+mid.getX());				p.setZ(((p.getY()-mid.getY())*Math.sin(nb))+(p.getZ()*Math.cos(nb)));
-					p.setZ(((p.getX()-mid.getX())*Math.sin(nb))+(p.getZ()*Math.cos(nb)));
+					double[][] point=m.multiplication(p.toMatrice(),matriceFin);
+					p.assign(point);
 					modified.add(p);
 				}
 			}
@@ -36,15 +46,20 @@ public class Rotate {
 		f.notifyObservers(f);
 	}
 	public void rotateZ(Faces f, double nb) {
-		Translate t=new Translate();
 		Point mid=f.midPoint();
+		Matrice m=new Matrice();
+		double[][] matriceTranslationVers0= {{1,0,0,-mid.getX()},{0,1,0,-mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matriceRotationOz= {{Math.cos(nb),-Math.sin(nb),0,0},{Math.sin(nb),Math.cos(nb), 0,0},{0,0,1,0},{0,0,0,1}};
+		double[][] matriceTranslationCentre={{1,0,0,mid.getX()},{0,1,0,mid.getY()},{0,0,1,0},{0,0,0,1}};
+		double[][] matrice=m.multiplication(matriceTranslationVers0, matriceRotationOz);
+		double[][] matriceFin=m.multiplication(matrice, matriceTranslationCentre);
 		List<Point> modified = new ArrayList<>();
 		for(Face fa:f.getFaces()) {
 			for(Point p:fa.getPoints()) {
 				if(!modified.contains(p)) {
-				p.setX(((p.getX()-mid.getX())*Math.cos(nb))-((p.getY()-mid.getY())*Math.sin(nb))+mid.getX());
-				p.setY(((p.getX()-mid.getX())*Math.sin(nb))+((p.getY()-mid.getY())*Math.cos(nb))+mid.getY());
-				modified.add(p);
+					double[][] point=m.multiplication(p.toMatrice(),matriceFin);
+					p.assign(point);
+					modified.add(p);
 				}
 			}
 		}
