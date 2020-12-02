@@ -1,9 +1,9 @@
 package projet.controls;
 
 import javafx.scene.canvas.Canvas;
-import projet.reader.Faces;
-import projet.reader.Rotate;
-import projet.reader.Translate;
+import projet.modele.Faces;
+import projet.modele.Rotate;
+import projet.modele.Translate;
 
 public class MouseControls {
 	double previousX=0.0;

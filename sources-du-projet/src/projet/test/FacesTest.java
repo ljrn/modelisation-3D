@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import projet.reader.Face;
-import projet.reader.Faces;
-import projet.reader.Point;
-import projet.reader.Points;
-import projet.reader.ReadFile;
+import projet.modele.Face;
+import projet.modele.Faces;
+import projet.modele.Point;
+import projet.modele.Points;
+import projet.modele.ReadFile;
 
 class FacesTest {
 	Faces fs = new Faces();

@@ -1,4 +1,4 @@
-package projet.reader;
+package projet.modele;
 
 import projet.utils.Matrice;
 
