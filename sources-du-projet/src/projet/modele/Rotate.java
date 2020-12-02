@@ -9,6 +9,7 @@ public class Rotate {
 		Matrice m=new Matrice();
 		double[][] matriceTranslationVers0= {{1,0,0,-mid.getX()},{0,1,0,-mid.getY()},{0,0,1,0},{0,0,0,1}};
 		double[][] matriceRotationOx= {{1,0,0,0},{0,Math.cos(nb),-Math.sin(nb),0},{0, Math.sin(nb), Math.cos(nb), 0},{0,0,0,1}};
+		System.out.println(Math.cos(nb)+";"+Math.sin(nb)+";"+nb);
 		double[][] matriceTranslationCentre={{1,0,0,mid.getX()},{0,1,0,mid.getY()},{0,0,1,0},{0,0,0,1}};
 		double[][] matrice=m.multiplicationRotation(matriceTranslationVers0, matriceRotationOx);
 		double[][] matriceFin=m.multiplicationRotation(matrice, matriceTranslationCentre);

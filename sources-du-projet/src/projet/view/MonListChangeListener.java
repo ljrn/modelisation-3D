@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
-import projet.controls.MouseControls;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
 import projet.modele.Points;

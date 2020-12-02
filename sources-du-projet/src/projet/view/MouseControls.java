@@ -1,5 +1,4 @@
-package projet.controls;
-
+package projet.view;
 import javafx.scene.canvas.Canvas;
 import projet.modele.Faces;
 import projet.modele.Rotate;
