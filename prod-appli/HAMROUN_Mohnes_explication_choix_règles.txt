@@ -1,0 +1,7 @@
+Tout d'abord j'ai choisi ShortVariable car si l'on présice pas à quoi sert chaque variable on peut se perdre trés facilement.
+Ensuite nous avons l'erreur LawOfDemeter. NcssCount car la division de code rend plus comprehensible et sert à mieux s'y retrouvé.
+CommentRequired car pour plus vite s'y retrouvé si l'on veut se rappeler ce que fait une methode, et enfin TooManyFields.
+
+ForLoopCanBeForeach car je ne vois pas l'interet de changer cela, OnlyOneReturn,
+SystemePrintLn qui permettent de s'aider lors de blocage, UnusedImports tant que les imports ne sont pas utilisé cela ne gene pas,
+AvoidFieldNameMatchingTypeName.

@@ -13,9 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import projet.reader.Face;
-import projet.reader.Faces;
-import projet.reader.Points;
+import projet.modele.Face;
+import projet.modele.Faces;
+import projet.modele.Points;
 import projet.utils.Observer;
 import projet.utils.Subject;
 
