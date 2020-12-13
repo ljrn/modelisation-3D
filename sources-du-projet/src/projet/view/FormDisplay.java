@@ -64,7 +64,9 @@ public class FormDisplay extends Application implements Observer {
 	}
 	public void dessinModele(Faces f) {
 		gc.clearRect(0, 0, 10000, 10000);
+		f.colorFace();
 		for (Face fa : f.getFaces()) {
+			gc.setFill(Color.rgb(fa.getRed(), fa.getGreen(), fa.getBlue()));
 			gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 		}
