@@ -1,15 +1,13 @@
 package projet.modele;
-
 import java.util.ArrayList;
 import java.util.List;
-
 public class Face implements Comparable<Face>{
 	private int nbPoint;
-	private List<Point> ps=new ArrayList<Point>();
+	private List<Point> points=new ArrayList<Point>();
 	
 	public Face(int nb, List<Point> p) {
 		this.nbPoint = nb;
-		this.ps=p;
+		this.points=p;
 	}
 
 	public int getNbPoint() {
@@ -17,13 +15,13 @@ public class Face implements Comparable<Face>{
 	}
 
 	public List<Point> getPoints() {
-		return ps;
+		return points;
 	}
 
 	@Override
 	public String toString() {
 		String res = "Nb Points: "+nbPoint+"\n";
-		for(Point p: ps) {
+		for(Point p: points) {
 			res+=p.toString()+"\n";
 		}
 		return res;
@@ -31,39 +29,60 @@ public class Face implements Comparable<Face>{
 	
 	public double[] getPointsX() {
 		double[] pointsX=new double[nbPoint];
-		for(int i=0; i<ps.size();i++) {
-			pointsX[i]=ps.get(i).getX();
+		for(int i=0; i<points.size();i++) {
+			pointsX[i]=points.get(i).getX();
 		}
 		return pointsX;
 	}
 	
 	public double[] getPointsY() {
 		double[] pointsY=new double[nbPoint];
-		for(int i=0; i<ps.size();i++) {
-			pointsY[i]=ps.get(i).getY();
+		for(int i=0; i<points.size();i++) {
+			pointsY[i]=points.get(i).getY();
 		}
 		return pointsY;
 	}
 	
 	public double[] getPointsZ() {
 		double[] pointsZ=new double[nbPoint];
-		for(int i=0; i<ps.size();i++) {
-			pointsZ[i]=ps.get(i).getZ()-600;
+		for(int i=0; i<points.size();i++) {
+			pointsZ[i]=points.get(i).getZ()-600;
 		}
 		return pointsZ;
 	}
 
 	@Override
-	public int compareTo(Face o) {
+	public int compareTo(Face face) {
 		int sommeO=0;
 		int sommeThis=0;
-		for(Point p:o.getPoints()) {
-			sommeO+=p.getZ();
+		for(Point point:face.getPoints()) {
+			sommeO+=point.getZ();
 		}
-		for(Point p:this.getPoints()) {
-			sommeThis+=p.getZ();
+		for(Point point:this.getPoints()) {
+			sommeThis+=point.getZ();
 		}
 		return sommeThis-sommeO;
 	}
 	
+	public Vecteur getAB() {
+		double x=this.points.get(1).getX()-this.points.get(0).getX();
+		double y=this.points.get(1).getY()-this.points.get(0).getY();
+		double z=this.points.get(1).getZ()-this.points.get(0).getZ();
+		return new Vecteur(x,y,z);
+	}
+	public Vecteur getAC(){
+		double x=this.points.get(2).getX()-this.points.get(0).getX();
+		double y=this.points.get(2).getY()-this.points.get(0).getY();
+		double z=this.points.get(2).getZ()-this.points.get(0).getZ();
+		return new Vecteur(x,y,z);
+	}
+	
+	public Vecteur normale() {
+		Vecteur ab=this.getAB();
+		Vecteur ac=this.getAC();
+		double x=ab.getY()*ac.getZ()-ab.getZ()*ac.getY();
+		double y=ab.getZ()*ac.getX()-ab.getX()*ac.getZ();
+		double z=ab.getX()*ac.getY()-ab.getY()*ac.getX();
+		return new Vecteur(x,y,z);
+	}
 }
