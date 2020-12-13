@@ -1,15 +1,18 @@
 package projet.modele;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> points=new ArrayList<Point>();
 	private Vecteur normal;
+	private Color color;
 	
 	public Face(int nb, List<Point> p) {
 		this.nbPoint = nb;
 		this.points=p;
 		this.normal=this.normale(p);
+		this.color = Color.GRAY;
 	}
 
 	public int getNbPoint() {
@@ -18,6 +21,14 @@ public class Face implements Comparable<Face>{
 
 	public List<Point> getPoints() {
 		return points;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	@Override
