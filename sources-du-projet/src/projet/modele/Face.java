@@ -43,11 +43,11 @@ public class Face implements Comparable<Face>{
 
 	public void setColor(double coeff) {
 		this.red *= coeff;
-		red=red%255;
-		this.green *= coeff%255;
-		green=green%255;
-		this.blue *= coeff%255;
-		blue=blue%255;
+		red=red%256;
+		this.green *= coeff;
+		green=green%256;
+		this.blue *= coeff;
+		blue=blue%256;
 	}
 	public int getNbPoint() {
 		return nbPoint;
