@@ -4,10 +4,12 @@ import java.util.List;
 public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> points=new ArrayList<Point>();
+	private Vecteur normal;
 	
 	public Face(int nb, List<Point> p) {
 		this.nbPoint = nb;
 		this.points=p;
+		this.normal=this.normale(p);
 	}
 
 	public int getNbPoint() {
@@ -64,22 +66,26 @@ public class Face implements Comparable<Face>{
 		return sommeThis-sommeO;
 	}
 	
-	public Vecteur getAB() {
-		double x=this.points.get(1).getX()-this.points.get(0).getX();
-		double y=this.points.get(1).getY()-this.points.get(0).getY();
-		double z=this.points.get(1).getZ()-this.points.get(0).getZ();
+	public Vecteur getAB(List<Point> p) {
+		double x=p.get(1).getX()-p.get(0).getX();
+		double y=p.get(1).getY()-p.get(0).getY();
+		double z=p.get(1).getZ()-p.get(0).getZ();
 		return new Vecteur(x,y,z);
 	}
-	public Vecteur getAC(){
-		double x=this.points.get(2).getX()-this.points.get(0).getX();
-		double y=this.points.get(2).getY()-this.points.get(0).getY();
-		double z=this.points.get(2).getZ()-this.points.get(0).getZ();
+	public Vecteur getAC(List<Point> p){
+		double x=p.get(2).getX()-p.get(0).getX();
+		double y=p.get(2).getY()-p.get(0).getY();
+		double z=p.get(2).getZ()-p.get(0).getZ();
 		return new Vecteur(x,y,z);
 	}
 	
-	public Vecteur normale() {
-		Vecteur ab=this.getAB();
-		Vecteur ac=this.getAC();
+	public Vecteur getNormal() {
+		return normal;
+	}
+
+	public Vecteur normale(List<Point> p) {
+		Vecteur ab=this.getAB(p);
+		Vecteur ac=this.getAC(p);
 		double x=ab.getY()*ac.getZ()-ab.getZ()*ac.getY();
 		double y=ab.getZ()*ac.getX()-ab.getX()*ac.getZ();
 		double z=ab.getX()*ac.getY()-ab.getY()*ac.getX();
