@@ -12,9 +12,9 @@ public class Face implements Comparable<Face>{
 		this.nbPoint = nb;
 		this.points=p;
 		this.normal=this.normale(p);
-		this.red = 120;
-		this.green = 0;
-		this.blue = 120;
+		this.red = 10;
+		this.green = 10;
+		this.blue = 255;
 	}
 
 	public int getRed() {
@@ -126,6 +126,8 @@ public class Face implements Comparable<Face>{
 		double x=ab.getY()*ac.getZ()-ab.getZ()*ac.getY();
 		double y=ab.getZ()*ac.getX()-ab.getX()*ac.getZ();
 		double z=ab.getX()*ac.getY()-ab.getY()*ac.getX();
-		return new Vecteur(x,y,z);
+		Vecteur n=new Vecteur(x,y,z);
+		n.unitaire();
+		return n;
 	}
 }
