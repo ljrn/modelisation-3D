@@ -13,7 +13,7 @@ public class Face implements Comparable<Face>{
 		this.points=p;
 		this.normal=this.normale(p);
 		this.red = 120;
-		this.green = 120;
+		this.green = 0;
 		this.blue = 120;
 	}
 
