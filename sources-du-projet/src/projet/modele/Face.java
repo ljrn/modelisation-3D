@@ -1,34 +1,57 @@
 package projet.modele;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> points=new ArrayList<Point>();
 	private Vecteur normal;
-	private Color color;
-	
+	private int red;
+	private int green;
+	private int blue;
 	public Face(int nb, List<Point> p) {
 		this.nbPoint = nb;
 		this.points=p;
 		this.normal=this.normale(p);
-		this.color = Color.GRAY;
+		this.red = 120;
+		this.green = 120;
+		this.blue = 120;
 	}
 
+	public int getRed() {
+		return red;
+	}
+
+	public void setRed(int red) {
+		this.red = red;
+	}
+
+	public int getGreen() {
+		return green;
+	}
+
+	public void setGreen(int green) {
+		this.green = green;
+	}
+
+	public int getBlue() {
+		return blue;
+	}
+
+	public void setBlue(int blue) {
+		this.blue = blue;
+	}
+
+	public void setColor(double coeff) {
+		this.red *= coeff;
+		this.green *= coeff;
+		this.blue *= coeff;
+	}
 	public int getNbPoint() {
 		return nbPoint;
 	}
 
 	public List<Point> getPoints() {
 		return points;
-	}
-
-	public Color getColor() {
-		return color;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
 	}
 
 	@Override
