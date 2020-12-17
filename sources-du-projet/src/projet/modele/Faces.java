@@ -25,9 +25,10 @@ public class Faces extends Subject{
 		}
 	}
 	
-	public void colorFace() {
+	public void colorDiffuseFace() {
 		for (Face face : faces) {
 			Vecteur normaleFace=face.getNormal();
+			normaleFace.unitaire();
 			lumiere.unitaire();
 			double scalaire=normaleFace.getX()*lumiere.getX()+normaleFace.getY()*lumiere.getY()+normaleFace.getZ()*lumiere.getZ();
 			System.out.println(scalaire);
@@ -59,6 +60,7 @@ public class Faces extends Subject{
 			}
 		}return max;
 	}
+	
 	public double maxY() {
 		double max=faces.get(0).getPoints().get(0).getY();
 		for(Face f:faces) {

@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import projet.modele.Points;
@@ -14,12 +13,6 @@ import projet.modele.Points;
 class PointsTest {
 	public List<String> listS;
 	Points ps;
-	@Before
-	void setUp() {
-		
-		
-	}
-	
 	@Test
 	void testDecompString() {
 		listS = new ArrayList<String>();
