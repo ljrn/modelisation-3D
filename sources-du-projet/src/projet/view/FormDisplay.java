@@ -13,9 +13,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import projet.reader.Face;
-import projet.reader.Faces;
-import projet.reader.Points;
+import projet.modele.Face;
+import projet.modele.Faces;
+import projet.modele.Points;
 import projet.utils.Observer;
 import projet.utils.Subject;
 
@@ -64,7 +64,9 @@ public class FormDisplay extends Application implements Observer {
 	}
 	public void dessinModele(Faces f) {
 		gc.clearRect(0, 0, 10000, 10000);
+		f.colorFace();
 		for (Face fa : f.getFaces()) {
+			gc.setFill(Color.rgb(fa.getRed(), fa.getGreen(), fa.getBlue()));
 			gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 		}

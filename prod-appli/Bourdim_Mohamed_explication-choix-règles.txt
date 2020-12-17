@@ -1,0 +1,25 @@
+J'ai choisi ExcessiveMethodLengthh et NcssCount pour la lisibilité du code.
+En effet, mieux plusieurs petites méthodes plutot qu'une longue méthode pour se repérer.
+La violation de la loi de Demeter pose aussi un problème de lisibilité, par exemple, 
+dans nos tests, pour récuperer un point du modèle, nous devons faire :
+fs.getFaces().get(0).getPoints().get(0).getX(); Il est vrai qu'il vaut mieux une méthode directe getPoint();
+L'EmptyCatchBlock est un problème, il vaut mieux mettre meme un simple e.getMessage() pour savoir d'où vient une 
+erreur si jamais elle survient.
+Pour finir, j'ai choisi le JUnitTestContainsTooManyAsserts car il est préfèrable d'avoir plus de méthode de tests pour savoir d'où viennent les erreurs avec plus de facilité.
+
+
+
+Pour les méthodes que je n'ai pas choisi :
+- CommentRequired : Je comprends le problème pour la relecture du code mais commenter chacune des méthodes et
+					chacun des attributs est un peu exagéré
+
+- ShortVariable : Là aussi je comprends le problème de compréhension du code mais des variables comme x,y ou tab, 
+				  le problème n'est pas conséquent.
+
+-UseDiamondOperator : Je peux comprendre que ça pose problème quand on veut changer une liste de type, mais dans 
+					  notre code, on souhaite qu'une arraylist de points reste une arraylist de points.
+
+-AvoidLiteralsInIfCondition : Utiliser des nombres ou caractères en brut est parfois mieux que d'initialiser une 
+ 							  variable avant si on ne l'utilise qu'une fois dans un if.
+-OnlyOneReturn : Ici aussi il est parfois préfèrable de retourner faux directement par exemple quand on traite
+				 l'erreur en début de méthode.

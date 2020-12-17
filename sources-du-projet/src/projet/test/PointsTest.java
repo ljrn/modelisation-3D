@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import projet.reader.Points;
+import projet.modele.Points;
 
 class PointsTest {
 	public List<String> listS;

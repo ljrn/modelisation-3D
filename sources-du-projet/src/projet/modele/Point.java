@@ -1,6 +1,4 @@
-package projet.reader;
-
-import projet.utils.Matrice;
+package projet.modele;
 
 public class Point{
 
@@ -50,10 +48,13 @@ public class Point{
 	public void setZ(double z) {
 		this.z = z;
 	}
-	public void multiplyMatrice(Matrice m) {
-		double[][]matrice =m.getMatrice();
-		x=(x*matrice[0][0])+(y*matrice[0][1])+(z*matrice[0][2])+matrice[0][3];
-		y=(x*matrice[1][0])+(y*matrice[1][1])+(z*matrice[1][2])+matrice[1][3];
-		z=(x*matrice[2][0])+(y*matrice[2][1])+(z*matrice[2][2])+matrice[2][3];
+	public double[][] toMatrice(){
+		double[][] matrice= {{x,y,z,HOMOGENE}};
+		return matrice;
+	}
+	public void assign(double[][] point) {
+		x=point[0][0];
+		y=point[0][1];
+		z=point[0][2];
 	}
 }

@@ -1,5 +1,4 @@
-package projet.reader;
-
+package projet.modele;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +7,7 @@ import projet.utils.Subject;
 
 public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<Face>();
+	private Vecteur lumiere=new Vecteur(1,1,1);
 	
 	public void decompStringFaces(List<String> stringFaces, Points ps) {
 		for (String string : stringFaces) {
@@ -22,6 +22,16 @@ public class Faces extends Subject{
 				p.add(ps.getPoints().get(facesInt.get(i)));
 			}
 			this.faces.add(new Face(nbFaces,p));
+		}
+	}
+	
+	public void colorFace() {
+		for (Face face : faces) {
+			Vecteur normaleFace=face.getNormal();
+			lumiere.unitaire();
+			double scalaire=normaleFace.getX()*lumiere.getX()+normaleFace.getY()*lumiere.getY()+normaleFace.getZ()*lumiere.getZ();
+			System.out.println(scalaire);
+			face.setColor(Math.abs(scalaire));
 		}
 	}
 
