@@ -35,6 +35,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateZplus = new Button("+");
 	Button rotateZmoins = new Button("-");
 
+	Button creerVue = new Button("Nouvelle vue");
+	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c = c;
 		this.gc = gc;
@@ -120,5 +122,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en Y : "), rotateYmoins));
 		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter en Z : "), rotateZplus));
 		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en Z : "), rotateZmoins));
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(creerVue);
+
 	}
 }

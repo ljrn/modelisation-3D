@@ -51,13 +51,13 @@ public class RotationTest {
 	@Test
 	public void test_RotationX() {
 		r.rotateX(fs, 0.5);
-		assertEquals(5.06, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
-		assertEquals(7.19, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+		assertEquals(13.7, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
+		assertEquals(4.02, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
 		r.rotateX(fs, -0.5);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
-		assertEquals(8.37, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
-		assertEquals(4.18, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), 0.01);
+		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
 	}
 	@Test
 	public void test_RotationY() {
@@ -65,15 +65,15 @@ public class RotationTest {
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
 		assertEquals(12.1, fs.getFaces().get(1).getPoints().get(0).getY(), DELTA);
 		assertEquals(17.1, fs.getFaces().get(2).getPoints().get(2).getY(), DELTA);
-		assertEquals(6.76, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
-		assertEquals(5.06, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
+		assertEquals(4.02, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+		assertEquals(13.70, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
 	}
 	@Test
 	public void test_RotationZ() {
 		r.rotateZ(fs, 0.5);
 		assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
-		assertEquals(9.16, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
-		assertEquals(10.2, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
-		assertEquals(9.96, fs.getFaces().get(1).getPoints().get(0).getX(), 0.01);
+		assertEquals(13.70, fs.getFaces().get(0).getPoints().get(0).getX(), 0.01);
+		assertEquals(4.02, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+		assertEquals(16.41, fs.getFaces().get(1).getPoints().get(0).getX(), 0.01);
 	}
 }
