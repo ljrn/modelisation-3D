@@ -21,6 +21,7 @@ public class Rotate {
 					modified.add(p);
 				}
 			}
+			fa.normale(fa.getPoints());
 		}
 		f.notifyObservers(f);
 	}
@@ -42,6 +43,7 @@ public class Rotate {
 					modified.add(p);
 				}
 			}
+			fa.normale(fa.getPoints());
 		}
 		f.notifyObservers(f);
 	}
@@ -62,6 +64,7 @@ public class Rotate {
 					modified.add(p);
 				}
 			}
+			fa.normale(fa.getPoints());
 		}
 		f.notifyObservers(f);
 	}

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
 import projet.modele.Points;
@@ -96,6 +97,9 @@ class MonListChangeListener implements ListChangeListener<File> {
 		});
 		rotateYmoins.setOnMousePressed(e -> {
 			r.rotateY(ce.fa, -0.05);
+		});
+		creerVue.setOnAction(e->{
+			new SecondView(ce.fa).start(new Stage());
 		});
 		MouseControls mc = new MouseControls();
 		mc.mouseDragged(c, ce.fa);

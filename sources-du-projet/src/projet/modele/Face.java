@@ -11,7 +11,7 @@ public class Face implements Comparable<Face>{
 	public Face(int nb, List<Point> p) {
 		this.nbPoint = nb;
 		this.points=p;
-		this.normal=this.normale(p);
+		this.normale(p);
 		this.red = 10;
 		this.green = 10;
 		this.blue = 255;
@@ -120,7 +120,7 @@ public class Face implements Comparable<Face>{
 		return normal;
 	}
 
-	public Vecteur normale(List<Point> p) {
+	public void normale(List<Point> p) {
 		Vecteur ab=this.getAB(p);
 		Vecteur ac=this.getAC(p);
 		double x=ab.getY()*ac.getZ()-ab.getZ()*ac.getY();
@@ -128,6 +128,6 @@ public class Face implements Comparable<Face>{
 		double z=ab.getX()*ac.getY()-ab.getY()*ac.getX();
 		Vecteur n=new Vecteur(x,y,z);
 		n.unitaire();
-		return n;
+		normal=n;
 	}
 }

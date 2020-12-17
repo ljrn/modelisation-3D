@@ -28,13 +28,13 @@ public class FormDisplay extends Application implements Observer {
 	Faces f;
 	Points ps;
 	VBox vb = new VBox();
-	DirectoryChooser directoryChooser = new DirectoryChooser();
-	File path = directoryChooser.showDialog(null);
+	DirectoryChooser directoryChooser;
+	File path;
 	
 	public void start(Stage primaryStage) {
+		directoryChooser=new DirectoryChooser();
+		path = directoryChooser.showDialog(null);
 		BorderPane root = new BorderPane();
-		gc.setFill(Color.DARKGREY);
-		gc.setStroke(Color.GREY);
 		width = c.getWidth();
 		height = c.getHeight();
 		HBox hb = listFiles(c, gc, this);
