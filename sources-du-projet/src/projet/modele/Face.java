@@ -5,6 +5,9 @@ public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> points=new ArrayList<Point>();
 	private Vecteur normal;
+	private final int baseRed;
+	private final int baseGreen;
+	private final int baseBlue;
 	private int red;
 	private int green;
 	private int blue;
@@ -12,9 +15,10 @@ public class Face implements Comparable<Face>{
 		this.nbPoint = nb;
 		this.points=p;
 		this.normale(p);
-		this.red = 10;
-		this.green = 10;
-		this.blue = 255;
+		this.baseRed = this.red = 10;
+		this.baseGreen = this.green = 10;
+		this.baseBlue = this.blue = 255;
+		
 	}
 
 	public int getRed() {
@@ -42,11 +46,11 @@ public class Face implements Comparable<Face>{
 	}
 
 	public void setColor(double coeff) {
-		this.red *= coeff;
+		this.red = (int) (baseRed * coeff);
 		red=red%256;
-		this.green *= coeff;
+		this.green = (int) (baseGreen * coeff);
 		green=green%256;
-		this.blue *= coeff;
+		this.blue = (int) (baseBlue * coeff);
 		blue=blue%256;
 	}
 	public int getNbPoint() {
