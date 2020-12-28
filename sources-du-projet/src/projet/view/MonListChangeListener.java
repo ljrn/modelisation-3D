@@ -12,9 +12,11 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
+import projet.modele.Lumiere;
 import projet.modele.Points;
 import projet.modele.Rotate;
 import projet.modele.Translate;
+import projet.modele.Vecteur;
 import projet.modele.Zoom;
 
 class MonListChangeListener implements ListChangeListener<File> {
@@ -35,7 +37,10 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateYmoins = new Button("-");
 	Button rotateZplus = new Button("+");
 	Button rotateZmoins = new Button("-");
-
+	Button rotateLumiereDroite = new Button("->");
+	Button rotateLumiereGauche = new Button("<-");
+	Button rotateLumiereBas = new Button("v");
+	Button rotateLumiereHaut = new Button("^");
 	Button creerVue = new Button("Nouvelle vue");
 	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
@@ -98,6 +103,19 @@ class MonListChangeListener implements ListChangeListener<File> {
 		rotateYmoins.setOnMousePressed(e -> {
 			r.rotateY(ce.fa, -0.05);
 		});
+		Lumiere lum = new Lumiere();
+		rotateLumiereDroite.setOnMousePressed(e -> {
+			lum.rotateHorizontal(ce.fa, 0.1);
+		});
+		rotateLumiereGauche.setOnMousePressed(e -> {
+			lum.rotateHorizontal(ce.fa, -0.1);
+		});
+		rotateLumiereHaut.setOnMousePressed(e -> {
+			lum.rotateVertical(ce.fa, 0.1);
+		});
+		rotateLumiereBas.setOnMousePressed(e -> {
+			lum.rotateVertical(ce.fa, -0.1);
+		});
 		creerVue.setOnAction(e->{
 			new SecondView(ce.fa).start(new Stage());
 		});
@@ -128,6 +146,13 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en Z : "), rotateZmoins));
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(creerVue);
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(new Label("Deplacer la lumiere : "));
+		fd.vb.getChildren().add(new HBox(new Label("     Droite : "), rotateLumiereDroite));
+		fd.vb.getChildren().add(new HBox(new Label("     Gauche : "), rotateLumiereGauche));
+		fd.vb.getChildren().add(new HBox(new Label("     Haut : "), rotateLumiereHaut));
+		fd.vb.getChildren().add(new HBox(new Label("     Bas : "), rotateLumiereBas));
+
 
 	}
 }

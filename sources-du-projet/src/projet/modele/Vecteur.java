@@ -19,6 +19,35 @@ public class Vecteur {
 	public double getZ() {
 		return z;
 	}
+	
+	public void setX(double x) {
+		this.x = x;
+	}
+	public void setY(double y) {
+		this.y = y;
+	}
+	public void setZ(double z) {
+		this.z = z;
+	}
+	public void increaseX(double value) {
+		this.x += value;
+	}
+	public void increaseY(double value) {
+		this.y += value;
+	}
+	public void increaseZ(double value) {
+		this.z += value;
+	}
+	
+	public void decreaseX(double value) {
+		this.x -= value;
+	}
+	public void decreaseY(double value) {
+		this.y -= value;
+	}
+	public void decreaseZ(double value) {
+		this.z -= value;
+	}
 	public void exterieur() {
 		this.x=-x;
 		this.y=-y;

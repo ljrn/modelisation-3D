@@ -7,7 +7,15 @@ import projet.utils.Subject;
 
 public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<Face>();
-	private static final Vecteur lumiere=new Vecteur(1,1,-1);
+	public Vecteur getLumiere() {
+		return lumiere;
+	}
+
+	public  void setLumiere(Vecteur lumiere) {
+		Faces.lumiere = lumiere;
+	}
+
+	private static Vecteur lumiere=new Vecteur(1,1,-1);
 	
 	public void decompStringFaces(List<String> stringFaces, Points ps) {
 		for (String string : stringFaces) {
