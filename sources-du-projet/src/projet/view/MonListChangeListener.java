@@ -2,13 +2,17 @@ package projet.view;
 
 import java.io.File;
 
+import org.w3c.dom.ls.LSOutput;
+
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
@@ -42,6 +46,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateLumiereBas = new Button("v");
 	Button rotateLumiereHaut = new Button("^");
 	Button creerVue = new Button("Nouvelle vue");
+	Button changeRep = new Button("Change Folder");
 	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c = c;
@@ -119,6 +124,18 @@ class MonListChangeListener implements ListChangeListener<File> {
 		creerVue.setOnAction(e->{
 			new SecondView(ce.fa).start(new Stage());
 		});
+		changeRep.setOnAction(e -> {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            fd.path=directoryChooser.showDialog(null);
+            System.out.println(fd.path);
+			fd.listFiles.getItems().clear();
+            for (File file : fd.path.listFiles()) {
+                if(file.toString().contains(".ply")) {
+                    fd.listFiles.getItems().add(file);
+                }
+            }
+        });
+		
 		MouseControls mc = new MouseControls();
 		mc.mouseDragged(c, ce.fa);
 		fd.vb.getChildren().clear();
@@ -152,7 +169,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     Gauche : "), rotateLumiereGauche));
 		fd.vb.getChildren().add(new HBox(new Label("     Haut : "), rotateLumiereHaut));
 		fd.vb.getChildren().add(new HBox(new Label("     Bas : "), rotateLumiereBas));
-
-
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(new HBox(changeRep));
 	}
 }
