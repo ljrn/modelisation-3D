@@ -31,6 +31,7 @@ public class FormDisplay extends Application implements Observer {
 	DirectoryChooser directoryChooser;
 	File path;
 	
+	
 	public void start(Stage primaryStage) {
 		directoryChooser=new DirectoryChooser();
 		path = directoryChooser.showDialog(null);

@@ -12,6 +12,7 @@ public class Faces extends Subject{
 	 private Timer timer;
 	 private boolean timerActive = false;
 	 
+	 
 	public boolean isTimerActive() {
 		return timerActive;
 	}
