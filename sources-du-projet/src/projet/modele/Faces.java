@@ -2,11 +2,24 @@ package projet.modele;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import projet.utils.Subject;
 
 public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<Face>();
+	 private Timer timer;
+	 private boolean timerActive = false;
+	 
+	public boolean isTimerActive() {
+		return timerActive;
+	}
+
+	public void setTimerActive(boolean timerActive) {
+		this.timerActive = timerActive;
+	}
+
 	public Vecteur getLumiere() {
 		return lumiere;
 	}
@@ -75,6 +88,29 @@ public class Faces extends Subject{
 				if(p.getY()>max)max=p.getY();
 			}
 		}return max;
+	}
+	
+	public void timerRotation() {
+    	Faces f = this;
+	    TimerTask repeatedTask = new TimerTask() {
+	        public void run() {
+	        	Rotate r = new Rotate();
+	        	r.rotateY(f, -0.009);
+	        	cancel();
+	        }
+	    };
+	    timer = new Timer("Timer");
+
+	    long delay = 100L;
+	    long period = 10000L;
+	    timer.scheduleAtFixedRate(repeatedTask, delay, period);
+	}
+	
+	public void cancelTimer() {
+		if(timer != null) {
+			timer.cancel();
+			timer = null;
+		}
 	}
 	
 }

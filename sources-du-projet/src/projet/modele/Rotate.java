@@ -24,6 +24,7 @@ public class Rotate {
 			fa.normale(fa.getPoints());
 		}
 		f.notifyObservers(f);
+	
 	}
 	
 	public void rotateY(Faces f,double nb) {

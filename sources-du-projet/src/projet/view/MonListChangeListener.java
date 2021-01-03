@@ -2,14 +2,12 @@ package projet.view;
 
 import java.io.File;
 
-import org.w3c.dom.ls.LSOutput;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
@@ -20,7 +18,6 @@ import projet.modele.Lumiere;
 import projet.modele.Points;
 import projet.modele.Rotate;
 import projet.modele.Translate;
-import projet.modele.Vecteur;
 import projet.modele.Zoom;
 
 class MonListChangeListener implements ListChangeListener<File> {
@@ -47,6 +44,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button rotateLumiereHaut = new Button("^");
 	Button creerVue = new Button("Nouvelle vue");
 	Button changeRep = new Button("Change Folder");
+	Button startTimer = new Button("Start Timer");
+	Button stopTimer = new Button("Stop Timer");
 	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c = c;
@@ -135,6 +134,14 @@ class MonListChangeListener implements ListChangeListener<File> {
                 }
             }
         });
+		startTimer.setOnMousePressed(e -> {
+			fd.f.timerRotation();
+			fd.f.setTimerActive(true);
+		});
+		stopTimer.setOnMousePressed(e -> {
+			fd.f.cancelTimer();
+			fd.f.setTimerActive(false);
+		});
 		
 		MouseControls mc = new MouseControls();
 		mc.mouseDragged(c, ce.fa);
@@ -171,5 +178,9 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(new Label("     Bas : "), rotateLumiereBas));
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(new HBox(changeRep));
+		fd.vb.getChildren().add(new Separator());
+		fd.vb.getChildren().add(new HBox(startTimer));
+		fd.vb.getChildren().add(new HBox(stopTimer));
+		fd.f.cancelTimer();
 	}
 }

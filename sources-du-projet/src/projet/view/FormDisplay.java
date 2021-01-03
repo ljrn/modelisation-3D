@@ -70,6 +70,7 @@ public class FormDisplay extends Application implements Observer {
 			gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 			gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
 		}
+		if(f.isTimerActive())f.timerRotation();
 	}
 	@Override
 	public void update(Subject subj) {
@@ -77,6 +78,7 @@ public class FormDisplay extends Application implements Observer {
 	@Override
 	public void update(Subject subj, Object data) {
 		f = (Faces) data;
+		f.cancelTimer();
 		c.setWidth(f.maxX());
 		c.setHeight(f.maxY());
 		this.dessinModele(f);
