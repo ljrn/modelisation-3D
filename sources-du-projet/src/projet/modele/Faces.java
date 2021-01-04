@@ -69,8 +69,8 @@ public class Faces extends Subject{
 		return new Point(this.maxX()/2, this.maxY()/2,0);
 	}
 
-	public void setFaces(ArrayList<Face> listFs) {
-		this.faces = listFs;
+	public void setFaces(List<Face> list) {
+		this.faces = list;
 	}
 	
 	public double maxX() {

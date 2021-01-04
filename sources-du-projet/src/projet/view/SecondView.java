@@ -21,7 +21,8 @@ public class SecondView extends FormDisplay implements Observer{
 	VBox vb = new VBox();
 	Faces fa;
 	public SecondView(Faces fa) {
-		this.fa=fa;
+		this.fa=new Faces();
+		this.fa.setFaces(fa.getFaces());
 	}
 	@Override
 	public void start(Stage primaryStage) {
@@ -34,7 +35,6 @@ public class SecondView extends FormDisplay implements Observer{
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
 		c.setWidth(fa.maxX());
 		c.setHeight(fa.maxY());
-		System.out.println(fa.maxX());
 		this.dessinModele(fa, true, true);
 		Zoom z = new Zoom();
 		c.setOnScroll(e -> {
@@ -44,6 +44,8 @@ public class SecondView extends FormDisplay implements Observer{
 				z.zoom(fa, 0.95);
 		});
 		MouseControls mc = new MouseControls();
+		gc.setFill(Color.RED);
+		gc.fillRect(0,0, 1000, 1000);
 		mc.mouseDragged(c, fa);
 		root.getChildren().add(c);
 		Scene scene = new Scene(root, 1500, 1000);

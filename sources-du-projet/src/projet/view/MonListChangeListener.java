@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
@@ -126,7 +127,10 @@ class MonListChangeListener implements ListChangeListener<File> {
 			lum.rotateVertical(ce.fa, -0.1);
 		});
 		creerVue.setOnAction(e->{
-			new SecondView(ce.fa).start(new Stage());
+			FormDisplay secondFormDisplay =new FormDisplay();
+			Stage stage=new Stage();
+			stage.initOwner(formDisplay.stage);
+			secondFormDisplay.start(stage);
 		});
 		changeRep.setOnAction(e -> {
             DirectoryChooser directoryChooser = new DirectoryChooser();

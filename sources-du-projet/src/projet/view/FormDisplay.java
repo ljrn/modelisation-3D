@@ -33,7 +33,7 @@ public class FormDisplay extends Application implements Observer {
 	VBox vb = new VBox();
 	DirectoryChooser directoryChooser;
 	File path;
-	
+	Stage stage;
 	
 	public void start(Stage primaryStage) {
 		directoryChooser=new DirectoryChooser();
@@ -46,13 +46,13 @@ public class FormDisplay extends Application implements Observer {
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
 		Scene scene = new Scene(root, 1500, 1000);
-		primaryStage.setScene(scene); 
-		primaryStage.show();
-		
-		primaryStage.setOnCloseRequest(e -> {
+		primaryStage.setScene(scene);
+		stage=primaryStage;
+		primaryStage.show();	
+		/*primaryStage.setOnCloseRequest(e -> {
 	        Platform.exit();
 	        System.exit(0);
-	    });
+	    });*/
 
 	}
 	public static void main(String[] args) {
