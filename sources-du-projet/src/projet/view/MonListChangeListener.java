@@ -192,6 +192,6 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new HBox(stopTimer));
 		fd.vb.getChildren().add(onlyFace);
 		fd.vb.getChildren().add(onlyStroke);
-		fd.f.cancelTimer();
+		if(fd.f !=null)fd.f.cancelTimer();
 	}
 }
