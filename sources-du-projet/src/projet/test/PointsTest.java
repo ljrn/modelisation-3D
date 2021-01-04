@@ -41,7 +41,5 @@ class PointsTest {
 		assertEquals(65.2, ps.maxX(),0.05);
 		assertEquals(20, ps.minY(),0.05);
 		assertEquals(42.5455, ps.maxY(), 0.05);
-
-		
 	}
 }
