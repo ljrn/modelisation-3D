@@ -22,12 +22,12 @@ import projet.modele.Zoom;
 
 
 class MonListChangeListener implements ListChangeListener<File> {
-	Canvas c;
-	GraphicsContext gc;
-	FormDisplay fd;
+	Canvas canvas;
+	GraphicsContext graphicsContext;
+	FormDisplay formDisplay;
 	Label nombreDePoints = new Label();
 	Label nombreDeFaces = new Label();
-	Label date = new Label("     Date de cr�ation : ");
+	Label date = new Label("     Date de creation : ");
 	Label auteur = new Label("     Nom de l'auteur : ");
 	Button plusX = new Button("->");
 	Button moinsX = new Button("<-");
@@ -51,28 +51,28 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button onlyStroke= new Button("Only Strokes");
 	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
-		this.c = c;
-		this.gc = gc;
-		this.fd = fd;
+		this.canvas = c;
+		this.graphicsContext = gc;
+		this.formDisplay = fd;
 	}
 
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch) {
 		CreateEnvironment ce = new CreateEnvironment();
 		auteur.setText("     Nom de l'auteur : ");
-		date.setText("     Date de création : ");
+		date.setText("     Date de creation : ");
 		FileCreator creator = new FileCreator();
-		File theFile = creator.getFile(fd.path, ch.getList().toString());
-		ce.createFaces(theFile, fd.width, fd.height);
+		File theFile = creator.getFile(formDisplay.path, ch.getList().toString());
+		ce.createFaces(theFile, formDisplay.width, formDisplay.height);
 		auteur.setText(auteur.getText() + creator.getAuthor(theFile));
 		date.setText(date.getText() + creator.getDate(theFile));
-		fd.stroke=true;
-		fd.fill=true;
+		formDisplay.stroke=true;
+		formDisplay.fill=true;
 		Points ps = ce.pts;
-		ce.fa.attach(fd);
-		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
-		c.setWidth(ps.maxX());
-		c.setHeight(ps.maxY());
-		fd.dessinModele(ce.fa, true, true);
+		ce.fa.attach(formDisplay);
+		graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		canvas.setWidth(ps.maxX());
+		canvas.setHeight(ps.maxY());
+		formDisplay.dessinModele(ce.fa, true, true);
 		Translate t = new Translate();
 		plusX.setOnAction(e -> {
 			t.translate(ce.fa, 3.0, 0, 0);
@@ -87,7 +87,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 			t.translate(ce.fa, 0, -3.0, 0);
 		});
 		Zoom z = new Zoom();
-		c.setOnScroll(e -> {
+		canvas.setOnScroll(e -> {
 			if (e.getDeltaY() > 0)
 				z.zoom(ce.fa, 1.05);
 			else
@@ -130,74 +130,74 @@ class MonListChangeListener implements ListChangeListener<File> {
 		});
 		changeRep.setOnAction(e -> {
             DirectoryChooser directoryChooser = new DirectoryChooser();
-            fd.path=directoryChooser.showDialog(null);
-            System.out.println(fd.path);
-			fd.listFiles.getItems().clear();
-            for (File file : fd.path.listFiles()) {
+            formDisplay.path=directoryChooser.showDialog(null);
+            System.out.println(formDisplay.path);
+			formDisplay.listFiles.getItems().clear();
+            for (File file : formDisplay.path.listFiles()) {
                 if(file.toString().contains(".ply")) {
-                    fd.listFiles.getItems().add(file);
+                    formDisplay.listFiles.getItems().add(file);
                 }
             }
         });
 		startTimer.setOnMousePressed(e -> {
-			fd.f.timerRotation();
-			fd.f.setTimerActive(true);
+			formDisplay.f.timerRotation();
+			formDisplay.f.setTimerActive(true);
 		});
 		stopTimer.setOnMousePressed(e -> {
-			fd.f.cancelTimer();
-			fd.f.setTimerActive(false);
+			formDisplay.f.cancelTimer();
+			formDisplay.f.setTimerActive(false);
 		});
 		onlyFace.setOnAction(e->{
-			fd.fill=true;
-			fd.stroke=false;
-			fd.dessinModele(ce.fa, true, false);
+			formDisplay.fill=true;
+			formDisplay.stroke=false;
+			formDisplay.dessinModele(ce.fa, true, false);
 		});
 		onlyStroke.setOnAction(e->{
-			fd.stroke=true;
-			fd.fill=false;
-			fd.dessinModele(ce.fa, false, true);
+			formDisplay.stroke=true;
+			formDisplay.fill=false;
+			formDisplay.dessinModele(ce.fa, false, true);
 		});
 		
 		MouseControls mc = new MouseControls();
-		mc.mouseDragged(c, ce.fa);
-		fd.vb.getChildren().clear();
+		mc.mouseDragged(canvas, ce.fa);
+		formDisplay.vb.getChildren().clear();
 		nombreDePoints.setText("     Nombre de points : " + ps.getPoints().size());
 		nombreDeFaces.setText("     Nombre de faces : " + ce.fa.getFaces().size());
 		Label info = new Label("Informations : ");
-		fd.vb.getChildren().add(info);
-		fd.vb.getChildren().add(nombreDePoints);
-		fd.vb.getChildren().add(nombreDeFaces);
-		fd.vb.getChildren().add(date);
-		fd.vb.getChildren().add(auteur);
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new Label("Translation :"));
-		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter le X : "), plusX));
-		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter le X : "), moinsX));
-		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter le Y : "), moinsY));
-		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter le Y : "), plusY));
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new Label("Rotation"));
-		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter en X : "), rotateXplus));
-		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en X : "), rotateXmoins));
-		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter en Y : "), rotateYplus));
-		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en Y : "), rotateYmoins));
-		fd.vb.getChildren().add(new HBox(new Label("     Incr�menter en Z : "), rotateZplus));
-		fd.vb.getChildren().add(new HBox(new Label("     D�cr�menter en Z : "), rotateZmoins));
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(creerVue);
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new Label("Deplacer la lumiere : "));
-		fd.vb.getChildren().add(new HBox(new Label("     Droite : "), rotateLumiereDroite));
-		fd.vb.getChildren().add(new HBox(new Label("     Gauche : "), rotateLumiereGauche));
-		fd.vb.getChildren().add(new HBox(new Label("     Haut : "), rotateLumiereHaut));
-		fd.vb.getChildren().add(new HBox(new Label("     Bas : "), rotateLumiereBas));
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new HBox(changeRep));
-		fd.vb.getChildren().add(new Separator());
-		fd.vb.getChildren().add(new HBox(startTimer));
-		fd.vb.getChildren().add(new HBox(stopTimer));
-		fd.vb.getChildren().add(onlyFace);
-		fd.vb.getChildren().add(onlyStroke);
-		if(fd.f !=null)fd.f.cancelTimer();
+		formDisplay.vb.getChildren().add(info);
+		formDisplay.vb.getChildren().add(nombreDePoints);
+		formDisplay.vb.getChildren().add(nombreDeFaces);
+		formDisplay.vb.getChildren().add(date);
+		formDisplay.vb.getChildren().add(auteur);
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(new Label("Translation :"));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Incrementer le X : "), plusX));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Decrementer le X : "), moinsX));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Incrementer le Y : "), moinsY));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Decrementer le Y : "), plusY));
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(new Label("Rotation"));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Incrementer en X : "), rotateXplus));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Decrementer en X : "), rotateXmoins));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Incrementer en Y : "), rotateYplus));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Decrementer en Y : "), rotateYmoins));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Incrementer en Z : "), rotateZplus));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Decrementer en Z : "), rotateZmoins));
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(creerVue);
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(new Label("Deplacer la lumiere : "));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Droite : "), rotateLumiereDroite));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Gauche : "), rotateLumiereGauche));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Haut : "), rotateLumiereHaut));
+		formDisplay.vb.getChildren().add(new HBox(new Label("     Bas : "), rotateLumiereBas));
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(new HBox(changeRep));
+		formDisplay.vb.getChildren().add(new Separator());
+		formDisplay.vb.getChildren().add(new HBox(startTimer));
+		formDisplay.vb.getChildren().add(new HBox(stopTimer));
+		formDisplay.vb.getChildren().add(onlyFace);
+		formDisplay.vb.getChildren().add(onlyStroke);
+		if(formDisplay.f !=null)formDisplay.f.cancelTimer();
 	}
 }
