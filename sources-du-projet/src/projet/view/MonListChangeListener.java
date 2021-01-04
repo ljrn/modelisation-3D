@@ -146,9 +146,13 @@ class MonListChangeListener implements ListChangeListener<File> {
 			fd.f.setTimerActive(false);
 		});
 		onlyFace.setOnAction(e->{
+			fd.fill=true;
+			fd.stroke=false;
 			fd.dessinModele(ce.fa, true, false);
 		});
 		onlyStroke.setOnAction(e->{
+			fd.stroke=true;
+			fd.fill=false;
 			fd.dessinModele(ce.fa, false, true);
 		});
 		

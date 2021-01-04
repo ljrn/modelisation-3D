@@ -23,6 +23,8 @@ import projet.utils.Subject;
 public class FormDisplay extends Application implements Observer {
 	double width;
 	double height;
+	boolean stroke;
+	boolean fill;
 	Canvas c = new Canvas(300, 300);
 	GraphicsContext gc = c.getGraphicsContext2D();
 	ListView<File> listFiles;
@@ -93,6 +95,6 @@ public class FormDisplay extends Application implements Observer {
 		f.cancelTimer();
 		c.setWidth(f.maxX());
 		c.setHeight(f.maxY());
-		this.dessinModele(f, true, true);
+		this.dessinModele(f, fill, stroke);
 	}
 }
