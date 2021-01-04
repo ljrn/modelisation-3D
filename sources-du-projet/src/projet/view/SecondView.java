@@ -35,7 +35,7 @@ public class SecondView extends FormDisplay implements Observer{
 		c.setWidth(fa.maxX());
 		c.setHeight(fa.maxY());
 		System.out.println(fa.maxX());
-		this.dessinModele(fa);
+		this.dessinModele(fa, true, true);
 		Zoom z = new Zoom();
 		c.setOnScroll(e -> {
 			if (e.getDeltaY() > 0)

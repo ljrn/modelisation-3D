@@ -47,6 +47,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button changeRep = new Button("Change Folder");
 	Button startTimer = new Button("Start Timer");
 	Button stopTimer = new Button("Stop Timer");
+	Button onlyFace=new Button("Only Faces");
+	Button onlyStroke= new Button("Only Strokes");
 	
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.c = c;
@@ -68,7 +70,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
 		c.setWidth(ps.maxX());
 		c.setHeight(ps.maxY());
-		fd.dessinModele(ce.fa);
+		fd.dessinModele(ce.fa, true, true);
 		Translate t = new Translate();
 		plusX.setOnAction(e -> {
 			t.translate(ce.fa, 3.0, 0, 0);
@@ -143,6 +145,12 @@ class MonListChangeListener implements ListChangeListener<File> {
 			fd.f.cancelTimer();
 			fd.f.setTimerActive(false);
 		});
+		onlyFace.setOnAction(e->{
+			fd.dessinModele(ce.fa, true, false);
+		});
+		onlyStroke.setOnAction(e->{
+			fd.dessinModele(ce.fa, false, true);
+		});
 		
 		MouseControls mc = new MouseControls();
 		mc.mouseDragged(c, ce.fa);
@@ -182,6 +190,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		fd.vb.getChildren().add(new Separator());
 		fd.vb.getChildren().add(new HBox(startTimer));
 		fd.vb.getChildren().add(new HBox(stopTimer));
+		fd.vb.getChildren().add(onlyFace);
+		fd.vb.getChildren().add(onlyStroke);
 		fd.f.cancelTimer();
 	}
 }

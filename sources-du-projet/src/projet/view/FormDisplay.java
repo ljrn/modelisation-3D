@@ -70,13 +70,17 @@ public class FormDisplay extends Application implements Observer {
 		root.getChildren().addAll(listFiles);
 		return root;
 	}
-	public void dessinModele(Faces f) {
+	public void dessinModele(Faces f, boolean fill, boolean stroke) {
 		gc.clearRect(0, 0, 10000, 10000);
 		f.colorDiffuseFace();
 		for (Face fa : f.getFaces()) {
-			gc.setFill(Color.rgb(fa.getRed(), fa.getGreen(), fa.getBlue()));
-			gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
-			gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+			if(fill) {
+				gc.setFill(Color.rgb(fa.getRed(), fa.getGreen(), fa.getBlue()));
+				gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+			}
+			if(stroke) {
+				gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+			}
 		}
 		if(f.isTimerActive())f.timerRotation();
 	}
@@ -89,6 +93,6 @@ public class FormDisplay extends Application implements Observer {
 		f.cancelTimer();
 		c.setWidth(f.maxX());
 		c.setHeight(f.maxY());
-		this.dessinModele(f);
+		this.dessinModele(f, true, true);
 	}
 }
