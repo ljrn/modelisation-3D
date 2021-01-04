@@ -130,14 +130,20 @@ class MonListChangeListener implements ListChangeListener<File> {
 		});
 		changeRep.setOnAction(e -> {
             DirectoryChooser directoryChooser = new DirectoryChooser();
+            File tmp = formDisplay.path;
             formDisplay.path=directoryChooser.showDialog(null);
-            System.out.println(formDisplay.path);
-			formDisplay.listFiles.getItems().clear();
-            for (File file : formDisplay.path.listFiles()) {
-                if(file.toString().contains(".ply")) {
-                    formDisplay.listFiles.getItems().add(file);
+            if(formDisplay.path!=null) {
+            	System.out.println(formDisplay.path);
+    			formDisplay.listFiles.getItems().clear();
+                for (File file : formDisplay.path.listFiles()) {
+                    if(file.toString().contains(".ply")) {
+                        formDisplay.listFiles.getItems().add(file);
+                    }
                 }
+            }else {
+            	formDisplay.path=tmp;
             }
+            
         });
 		startTimer.setOnMousePressed(e -> {
 			formDisplay.f.timerRotation();
