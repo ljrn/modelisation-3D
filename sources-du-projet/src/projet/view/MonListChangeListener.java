@@ -65,6 +65,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		ce.createFaces(theFile, fd.width, fd.height);
 		auteur.setText(auteur.getText() + creator.getAuthor(theFile));
 		date.setText(date.getText() + creator.getDate(theFile));
+		fd.stroke=true;
+		fd.fill=true;
 		Points ps = ce.pts;
 		ce.fa.attach(fd);
 		gc.clearRect(0, 0, c.getWidth(), c.getHeight());
