@@ -18,7 +18,7 @@ public class CreateEnvironment {
         String s=file.getAbsolutePath();
         ReadFile rf=new ReadFile(s);
         try {
-			rf.readHeader();
+			rf.readPly();
 			 pts.decompStringPoints(rf.getPoints(),hauteur,largeur);
 		     fa.decompStringFaces(rf.getFaces(), pts);
 		     fa.trierFaces();

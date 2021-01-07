@@ -1,7 +1,9 @@
 package projet.modele;
 
 public class Lumiere {
-
+	/* 
+	 * Methodes assignées aux boutons rotateLumiereDroite et Gauche dans la classe MonListChangeListener
+	 * */
 	public void rotateHorizontal(Faces f, double nb) {
 		Vecteur lum = f.getLumiere();
 		if(lum.getZ() < 1 && lum.getZ() > 0 && lum.getX() < 1 && lum.getX() > 0) {
@@ -23,7 +25,9 @@ public class Lumiere {
 		f.setLumiere(lum);
 		f.notifyObservers(f);
 	}
-	
+	/* 
+	 * Methodes assignées aux boutons rotateLumiereHaut et bas dans la classe MonListChangeListener
+	 * */
 	public void rotateVertical(Faces f, double nb) {
 		Vecteur lum = f.getLumiere();
 		if(lum.getY() < 1 && lum.getY() > 0 && lum.getZ() < 1 && lum.getZ() > 0) {
