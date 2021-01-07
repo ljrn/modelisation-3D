@@ -53,9 +53,9 @@ class MonListChangeListener implements ListChangeListener<File> {
 	
 	/**
 	 * 
-	 * @param c Canvas dans lequel est dessiné la forme
-	 * @param gc GraphicsContext lié au Canvas
-	 * @param fd Fenêtre dans laquelle est le Canvas
+	 * @param c Canvas dans lequel est dessinï¿½ la forme
+	 * @param gc GraphicsContext liï¿½ au Canvas
+	 * @param fd Fenï¿½tre dans laquelle est le Canvas
 	 */
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.canvas = c;
@@ -63,8 +63,8 @@ class MonListChangeListener implements ListChangeListener<File> {
 		this.formDisplay = fd;
 	}
 	/**
-	 * Cette méthode permet d'initialiser et de dessiner la figure lorsqu'un nouveau modèle est sélectionné dans la liste et aussi
-	 * d'initialiser les boutons de la fenêtre.
+	 * Cette mï¿½thode permet d'initialiser et de dessiner la figure lorsqu'un nouveau modï¿½le est sï¿½lectionnï¿½ dans la liste et aussi
+	 * d'initialiser les boutons de la fenï¿½tre.
 	 */
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch) {
 		CreateEnvironment ce = new CreateEnvironment();
@@ -176,6 +176,18 @@ class MonListChangeListener implements ListChangeListener<File> {
 			formDisplay.fill=false;
 			formDisplay.dessinModele(ce.fa, false, true);
 		});
+		
+		formDisplay.rechercher.setOnMousePressed(e -> {
+            formDisplay.listFiles.getItems().clear();
+            for (File file : formDisplay.path.listFiles()) {
+                if(file.toString().contains(".ply") && file.toString().contains(formDisplay.tf.getText())) {
+                    formDisplay.listFiles.getItems().add(file);
+                }else if (formDisplay.tf.getText().equals("")){
+                    formDisplay.listFiles.getItems().add(file);
+
+                }
+            }
+        });
 		
 		MouseControls mc = new MouseControls();
 		mc.mouseDragged(canvas, ce.fa);

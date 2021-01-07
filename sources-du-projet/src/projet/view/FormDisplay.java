@@ -7,7 +7,9 @@ import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -34,6 +36,8 @@ public class FormDisplay extends Application implements Observer {
 	DirectoryChooser directoryChooser;
 	File path;
 	Stage stage;
+	Button rechercher = new Button("Rechercher");
+	TextField tf = new TextField("");
 	
 	public void start(Stage primaryStage) {
 		directoryChooser=new DirectoryChooser();
@@ -42,7 +46,8 @@ public class FormDisplay extends Application implements Observer {
 		width = c.getWidth();
 		height = c.getHeight();
 		HBox hb = listFiles(c, gc);
-		VBox nbFaces = new VBox(hb, vb);
+		HBox hb2 = new HBox(tf,rechercher);
+		VBox nbFaces = new VBox(hb2,hb, vb);
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
 		Scene scene = new Scene(root, 1500, 1000);
@@ -61,8 +66,8 @@ public class FormDisplay extends Application implements Observer {
 	/**
 	 * 
 	 * @param c correspond au Canvas dans lequel on va voir la figure
-	 * @param gc correspond au GraphicsContext lié au Canvas
-	 * @return Une HBox contenant la liste des fichiers .ply dans le répertoire ouvert
+	 * @param gc correspond au GraphicsContext liï¿½ au Canvas
+	 * @return Une HBox contenant la liste des fichiers .ply dans le rï¿½pertoire ouvert
 	 */
 	public HBox listFiles(Canvas c, GraphicsContext gc) {
 		listFiles = new ListView<>();
@@ -80,9 +85,9 @@ public class FormDisplay extends Application implements Observer {
 	}
 	/**
 	 * 
-	 * @param f correspond aux faces de la figure à dessiner
-	 * @param fill boolean permettant de signifier si les faces doivent être pleines
-	 * @param stroke boolean permettant de signifier si les arrêtes doivent être dessinnées
+	 * @param f correspond aux faces de la figure ï¿½ dessiner
+	 * @param fill boolean permettant de signifier si les faces doivent ï¿½tre pleines
+	 * @param stroke boolean permettant de signifier si les arrï¿½tes doivent ï¿½tre dessinnï¿½es
 	 */
 	public void dessinModele(Faces f, boolean fill, boolean stroke) {
 		gc.clearRect(0, 0, 10000, 10000);
