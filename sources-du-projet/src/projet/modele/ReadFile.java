@@ -92,7 +92,7 @@ public class ReadFile {
 	 */
 	public List<String> getPoints() {
 		return points;
-	}
+	} 
 	/**
 	 * 
 	 * @return La liste de toutes les faces du modèle
