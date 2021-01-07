@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rotate {
+	/**
+	 * Cette méthode éxecute la rotation autour de l'axe des X pour tous les points du modèle
+	 * @param f Ensemble des Faces du modèles
+	 * @param nb Coefficient de rotation
+	 */
 	public void rotateX(Faces f,double nb) {
 		Point mid=f.midPoint();
 		Matrice m=new Matrice();
@@ -25,7 +30,11 @@ public class Rotate {
 		}
 		f.notifyObservers(f);
 	}
-	
+	/**
+	 * Cette méthode éxecute la rotation autour de l'axe des Y pour tous les points du modèle
+	 * @param f Ensemble des Faces du modèles
+	 * @param nb Coefficient de rotation
+	 */
 	public void rotateY(Faces f,double nb) {
 		Point mid=f.midPoint();
 		Matrice m=new Matrice();
@@ -47,6 +56,11 @@ public class Rotate {
 		}
 		f.notifyObservers(f);
 	}
+	/**
+	 * Cette méthode éxecute la rotation autour de l'axe des Z pour tous les points du modèle
+	 * @param f Ensemble des Faces du modèles
+	 * @param nb Coefficient de rotation
+	 */
 	public void rotateZ(Faces f, double nb) {
 		Point mid=f.midPoint();
 		Matrice m=new Matrice();

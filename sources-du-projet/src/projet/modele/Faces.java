@@ -8,7 +8,7 @@ import java.util.TimerTask;
 import projet.utils.Subject;
 
 public class Faces extends Subject{
-	private List<Face> faces = new ArrayList<Face>();
+	private List<Face> faces = new ArrayList<>();
 	private static Vecteur lumiere=new Vecteur(1,1,-1);
 	private Timer timer;
 	private boolean timerActive = false;
@@ -51,11 +51,11 @@ public class Faces extends Subject{
 		for (String string : stringFaces) {
 			String[] tab = string.split(" ");
 			int nbFaces = Integer.parseInt(tab[0]);
-			List<Integer> facesInt = new ArrayList<Integer>();
+			List<Integer> facesInt = new ArrayList<>();
 			for (int i = 1; i < tab.length; i++) {
 				facesInt.add(Integer.parseInt(tab[i]));
 			}
-			List<Point> p=new ArrayList<Point>();
+			List<Point> p=new ArrayList<>();
 			for(int i=0; i<facesInt.size();i++){
 				p.add(ps.getPoints().get(facesInt.get(i)));
 			}
@@ -75,8 +75,7 @@ public class Faces extends Subject{
 		}
 	}
 	
-	/*
-	 * 
+	/**
 	 * @return La liste des faces
 	 */
 	public List<Face> getFaces() {

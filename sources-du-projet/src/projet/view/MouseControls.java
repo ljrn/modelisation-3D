@@ -7,6 +7,11 @@ import projet.modele.Translate;
 public class MouseControls {
 	double previousX=0.0;
 	double previousY=0.0;
+	/**
+	 * Controleur souris lorsque celle-ci est cliquée-déplacée
+	 * @param c Canvas contenant le modèle
+	 * @param f Ensemble des faces du modèle
+	 */
 	public void mouseDragged(Canvas c, Faces f) {
 		Translate t=new Translate();
 		Rotate r=new Rotate();

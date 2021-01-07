@@ -10,10 +10,19 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 public class FileCreator {
+	/**
+	 * @param path Chemin du répertoire
+	 * @param listString nom du fichier
+	 * @return Le chemin absolu d'un fichier
+	 */
 	public File getFile(File path, String listString) {
 		String patternFile = Pattern.quote(System.getProperty("file.separator"));
 		return new File(path.getAbsolutePath()+File.separator+listString.split(patternFile)[listString.split(patternFile).length-1].replace("]", ""));
 	}
+	/**
+	 * @param theFile Fichier pour lequel on veut connaître la date
+	 * @return Date de dernière modification du fichier
+	 */
 	public String getDate(File theFile) {
 		try {
 			BasicFileAttributes attributs=Files.readAttributes(theFile.toPath(), BasicFileAttributes.class);
@@ -27,6 +36,10 @@ public class FileCreator {
 		}
 		return null;
 	}
+	/**
+	 * @param theFile Fichier pour lequel on veut connaître l'auteur
+	 * @return String contenant le nom de l'auteur du fichier
+	 */
 	public String getAuthor(File theFile) {
 		try {
 			return Files.getOwner(theFile.toPath()).getName();

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Zoom {	
+	/**
+	 * Cette méthode appplique le zoom à tous les points du modèle
+	 * @param f Ensemble des faces du modèle
+	 * @param factor Facteur de zoom
+	 */
 	public void zoom(Faces f,double factor) {
 		Translate t=new Translate();
 		Point mid=f.midPoint();

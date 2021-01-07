@@ -101,7 +101,9 @@ public class Face implements Comparable<Face>{
 		}
 		return res;
 	}
-	
+	/**
+	 * @return Le tableau des coordonnées en x des points de la face
+	 */
 	public double[] getPointsX() {
 		double[] pointsX=new double[nbPoint];
 		for(int i=0; i<points.size();i++) {
@@ -109,7 +111,9 @@ public class Face implements Comparable<Face>{
 		}
 		return pointsX;
 	}
-	
+	/**
+	 * @return Le tableau des coordonnées en y des points de la face
+	 */
 	public double[] getPointsY() {
 		double[] pointsY=new double[nbPoint];
 		for(int i=0; i<points.size();i++) {
@@ -117,7 +121,9 @@ public class Face implements Comparable<Face>{
 		}
 		return pointsY;
 	}
-	
+	/**
+	 * @return Le tableau des coordonnées en y des points de la face
+	 */
 	public double[] getPointsZ() {
 		double[] pointsZ=new double[nbPoint];
 		for(int i=0; i<points.size();i++) {
@@ -125,7 +131,9 @@ public class Face implements Comparable<Face>{
 		}
 		return pointsZ;
 	}
-
+	/**
+	 * Cette méthode compare une face à une autre en fonction de la somme de ses coordonnées en Z
+	 */
 	@Override
 	public int compareTo(Face face) {
 		int sommeO=0;
@@ -139,12 +147,20 @@ public class Face implements Comparable<Face>{
 		return sommeThis-sommeO;
 	}
 	
+	/**
+	 * @param Liste des points de la face
+	 * @return le vecteur "AB" de la face 
+	 */
 	public Vecteur getAB(List<Point> p) {
 		double x=p.get(1).getX()-p.get(0).getX();
 		double y=p.get(1).getY()-p.get(0).getY();
 		double z=p.get(1).getZ()-p.get(0).getZ();
 		return new Vecteur(x,y,z);
 	}
+	/**
+	 * @param p Liste des points de la face
+	 * @return le vecteur "AC" de la face
+	 */
 	public Vecteur getAC(List<Point> p){
 		double x=p.get(2).getX()-p.get(0).getX();
 		double y=p.get(2).getY()-p.get(0).getY();
@@ -152,10 +168,17 @@ public class Face implements Comparable<Face>{
 		return new Vecteur(x,y,z);
 	}
 	
+	/**
+	 * @return L'attribut de classe "normal"
+	 */
 	public Vecteur getNormal() {
 		return normal;
 	}
-
+	
+	/**
+	 * Cette méthode met la valeur du vecteur normal à la face dans l'attribut de classe "normal"
+	 * @param p Liste des points de la face
+	 */
 	public void normale(List<Point> p) {
 		Vecteur ab=this.getAB(p);
 		Vecteur ac=this.getAC(p);

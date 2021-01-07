@@ -1,6 +1,12 @@
 package projet.modele;
 
 public class Matrice {
+	/**
+	 * Cette méthode multiplie deux matrice pour une translation
+	 * @param m1 Matrice 1
+	 * @param m2 Matrice 2
+	 * @return double[][] étant l'équivalent d'une matrice
+	 */
 	public double[][] multiplicationTranslation(double[][] m1, double [][] m2){
 		double [][] m = new double [m1.length][m2[0].length];
 		for (int i = 0; i < m1.length; i++) {
@@ -14,6 +20,12 @@ public class Matrice {
 		}
 		return m;
 	}
+	/**
+	 * Cette méthode multiplie deux matrice pour une rotation
+	 * @param m1 Matrice 1
+	 * @param m2 Matrice 2
+	 * @return double[][] étant l'équivalent d'une matrice
+	 */
 	public double[][] multiplicationRotation(double[][] m1, double [][] m2){
 		double [][] m = new double [m1.length][m2[0].length];
 		for (int i = 0; i < m1.length; i++) {
@@ -28,6 +40,10 @@ public class Matrice {
 		return m;
 	}
 
+	/**
+	 * @param matriceFin Matrice à afficher
+	 * @return String contenant les valeurs de la matrice
+	 */
 	public String toString(double[][] matriceFin) {
 		String res="";
 		for (int i = 0; i < matriceFin.length; i++) {
