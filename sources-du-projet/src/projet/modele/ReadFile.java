@@ -52,7 +52,7 @@ public class ReadFile {
 	 * @return Le nombre de points dans le modèle (et donc le nombre de lignes contenant des points à lire dans le fichier) 
 	 */
 	public int getVertex() {
-		for(String s:header) {
+		for(String s:header) { 
 			if(s.contains("element vertex")){
 				int res=(Integer.parseInt(s.substring(15)));
 				return res;
