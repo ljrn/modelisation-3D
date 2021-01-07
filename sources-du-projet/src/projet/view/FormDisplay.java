@@ -41,7 +41,7 @@ public class FormDisplay extends Application implements Observer {
 		BorderPane root = new BorderPane();
 		width = c.getWidth();
 		height = c.getHeight();
-		HBox hb = listFiles(c, gc, this);
+		HBox hb = listFiles(c, gc);
 		VBox nbFaces = new VBox(hb, vb);
 		root.getChildren().add(c);
 		root.setRight(nbFaces);
@@ -58,7 +58,13 @@ public class FormDisplay extends Application implements Observer {
 	public static void main(String[] args) {
 		Application.launch();
 	}
-	public HBox listFiles(Canvas c, GraphicsContext gc, FormDisplay fd) {
+	/**
+	 * 
+	 * @param c correspond au Canvas dans lequel on va voir la figure
+	 * @param gc correspond au GraphicsContext lié au Canvas
+	 * @return Une HBox contenant la liste des fichiers .ply dans le répertoire ouvert
+	 */
+	public HBox listFiles(Canvas c, GraphicsContext gc) {
 		listFiles = new ListView<>();
 		for (File file : path.listFiles()) {
 			if(file.toString().contains(".ply")) {
@@ -66,12 +72,18 @@ public class FormDisplay extends Application implements Observer {
 
 			}
 		}
-		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c, gc, fd));
+		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c, gc, this));
 		HBox root = new HBox();
 		
 		root.getChildren().addAll(listFiles);
 		return root;
 	}
+	/**
+	 * 
+	 * @param f correspond aux faces de la figure à dessiner
+	 * @param fill boolean permettant de signifier si les faces doivent être pleines
+	 * @param stroke boolean permettant de signifier si les arrêtes doivent être dessinnées
+	 */
 	public void dessinModele(Faces f, boolean fill, boolean stroke) {
 		gc.clearRect(0, 0, 10000, 10000);
 		f.colorDiffuseFace();

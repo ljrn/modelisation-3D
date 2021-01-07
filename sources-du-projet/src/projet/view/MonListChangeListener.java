@@ -51,12 +51,21 @@ class MonListChangeListener implements ListChangeListener<File> {
 	Button onlyFace=new Button("Only Faces");
 	Button onlyStroke= new Button("Only Strokes");
 	
+	/**
+	 * 
+	 * @param c Canvas dans lequel est dessiné la forme
+	 * @param gc GraphicsContext lié au Canvas
+	 * @param fd Fenêtre dans laquelle est le Canvas
+	 */
 	public MonListChangeListener(Canvas c, GraphicsContext gc, FormDisplay fd) {
 		this.canvas = c;
 		this.graphicsContext = gc;
 		this.formDisplay = fd;
 	}
-
+	/**
+	 * Cette méthode permet d'initialiser et de dessiner la figure lorsqu'un nouveau modèle est sélectionné dans la liste et aussi
+	 * d'initialiser les boutons de la fenêtre.
+	 */
 	public void onChanged(javafx.collections.ListChangeListener.Change<? extends File> ch) {
 		CreateEnvironment ce = new CreateEnvironment();
 		auteur.setText("     Nom de l'auteur : ");

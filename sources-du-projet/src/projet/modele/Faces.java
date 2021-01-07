@@ -9,28 +9,44 @@ import projet.utils.Subject;
 
 public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<Face>();
-	 private Timer timer;
-	 private boolean timerActive = false;
+	private static Vecteur lumiere=new Vecteur(1,1,-1);
+	private Timer timer;
+	private boolean timerActive = false;
 	 
-	 
+	/**
+	 *  
+	 * @return true si le Timer est actif
+	 */
 	public boolean isTimerActive() {
 		return timerActive;
 	}
-
+	/**
+	 * Cette méthode permet de donner la valeur de l'attribut boolean de classe timerActive
+	 */
 	public void setTimerActive(boolean timerActive) {
 		this.timerActive = timerActive;
 	}
-
+	/**
+	 * 
+	 * @return Le vecteur lumière
+	 */
 	public Vecteur getLumiere() {
 		return lumiere;
 	}
-
-	public  void setLumiere(Vecteur lumiere) {
-		Faces.lumiere = lumiere;
-	}
-
-	private static Vecteur lumiere=new Vecteur(1,1,-1);
 	
+	/**
+	 * 
+	 * @param lumiere Valeur qui va être donnée au vecteur lumière
+	 */
+	public void setLumiere(Vecteur lumiere) {
+		Faces.lumiere = lumiere;
+	}	
+	
+	/**
+	 * 
+	 * @param stringFaces Liste de String contenant la description de chaque face
+	 * @param ps Liste des points devant être reliés pour former les faces
+	 */
 	public void decompStringFaces(List<String> stringFaces, Points ps) {
 		for (String string : stringFaces) {
 			String[] tab = string.split(" ");
@@ -47,8 +63,10 @@ public class Faces extends Subject{
 		}
 	}
 	
+	/**
+	 * Cette méthode permet de calculer la couleur de chaque face en fonction du vecteur lumière
+	 */
 	public void colorDiffuseFace() {
-		System.out.println(faces.get(0).getNormal());
 		for (Face face : faces) {
 			Vecteur normaleFace=face.getNormal();
 			lumiere.unitaire();
@@ -56,23 +74,42 @@ public class Faces extends Subject{
 			face.setColor(Math.abs(scalaire));
 		}
 	}
-
+	
+	/*
+	 * 
+	 * @return La liste des faces
+	 */
 	public List<Face> getFaces() {
 		return faces;
 	}
-
+	
+	/*
+	 * Cette méthode permet de trier les faces grâce à l'algorithme du peintre 
+	 */
 	public void trierFaces() {
 		Collections.sort(faces);
 	}
 	
+	/**
+	 * 
+	 * @return Le centre de gravité de la figure
+	 */
 	public Point midPoint() {
 		return new Point(this.maxX()/2, this.maxY()/2,0);
 	}
 
+	/**
+	 * 
+	 * @param list Liste des faces devant être allouées dans le paramètre de classe "faces"
+	 */
 	public void setFaces(List<Face> list) {
 		this.faces = list;
 	}
 	
+	/**
+	 * 
+	 * @return La coordonnée maximale en x de tous les points de la figure
+	 */
 	public double maxX() {
 		double max=faces.get(0).getPoints().get(0).getX();
 		for(Face f:faces) {
@@ -82,6 +119,10 @@ public class Faces extends Subject{
 		}return max;
 	}
 	
+	/**
+	 * 
+	 * @return La coordonnée maximale en y de tous les points de la figure
+	 */
 	public double maxY() {
 		double max=faces.get(0).getPoints().get(0).getY();
 		for(Face f:faces) {
@@ -91,6 +132,9 @@ public class Faces extends Subject{
 		}return max;
 	}
 	
+	/**
+	 * Cette méthode initialise le Timer pour la rotation
+	 */
 	public void timerRotation() {
     	Faces f = this;
 	    TimerTask repeatedTask = new TimerTask() {
@@ -107,6 +151,9 @@ public class Faces extends Subject{
 	    timer.scheduleAtFixedRate(repeatedTask, delay, period);
 	}
 	
+	/**
+	 * Cette méthode remet le timer à la valeur null
+	 */
 	public void cancelTimer() {
 		if(timer != null) {
 			timer.cancel();

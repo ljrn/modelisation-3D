@@ -6,12 +6,20 @@ import java.io.IOException;
 public class CreateEnvironment {
     public Points pts=new Points();
     public Faces fa=new Faces();
-    public Faces createFaces(File f, double x, double y){
-        String s=f.getAbsolutePath();
+    
+    /**
+     * 
+     * @param file Fichier dans lequel les faces doivent être lues
+     * @param hauteur Hauteur du modèle
+     * @param largeur Largeur du modèle
+     * @return Un Faces dans lequel les faces sont triées
+     */
+    public Faces createFaces(File file, double hauteur,double largeur){
+        String s=file.getAbsolutePath();
         ReadFile rf=new ReadFile(s);
         try {
 			rf.readHeader();
-			 pts.decompStringPoints(rf.getPoints(),x,y);
+			 pts.decompStringPoints(rf.getPoints(),hauteur,largeur);
 		     fa.decompStringFaces(rf.getFaces(), pts);
 		     fa.trierFaces();
 		} catch (IOException e) {
