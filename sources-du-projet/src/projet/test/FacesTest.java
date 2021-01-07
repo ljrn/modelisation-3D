@@ -52,7 +52,7 @@ class FacesTest {
 	public void testDecompFaces() {
 		ReadFile rf=new ReadFile("./ressources/airplane.ply");
 		try{
-			rf.readHeader();
+			rf.readPly();
 			Points ps=new Points();
 			ps.decompStringPoints(rf.getPoints(),0,0);
 			Faces f=new Faces();
