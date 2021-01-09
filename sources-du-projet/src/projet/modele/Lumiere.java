@@ -1,52 +1,56 @@
 package projet.modele;
 
 public class Lumiere {
-	/* 
+	/**
 	 * Methodes assignées aux boutons rotateLumiereDroite et Gauche dans la classe MonListChangeListener
-	 * */
-	public void rotateHorizontal(Faces f, double nb) {
-		Vecteur lum = f.getLumiere();
+	 * @param faces Faces à éclairer
+	 * @param coeffLumiere coefficient de lumiere
+	 */
+	public void rotateHorizontal(Faces faces, double coeffLumiere) {
+		Vecteur lum = faces.getLumiere();
 		if(lum.getZ() < 1 && lum.getZ() > 0 && lum.getX() < 1 && lum.getX() > 0) {
-			lum.increaseX(nb);
-			lum.decreaseZ(nb);
+			lum.increaseX(coeffLumiere);
+			lum.decreaseZ(coeffLumiere);
 		}
 		else if(lum.getZ() <= 0 && lum.getZ() > -1 && lum.getX() < 1 && lum.getX() > 0) {
-			lum.decreaseZ(nb);
-			lum.decreaseX(nb);
+			lum.decreaseZ(coeffLumiere);
+			lum.decreaseX(coeffLumiere);
 		}
 		else if(lum.getZ() <= 0 && lum.getX() <= 0) {
-			lum.increaseZ(nb);
-			lum.decreaseX(nb);
+			lum.increaseZ(coeffLumiere);
+			lum.decreaseX(coeffLumiere);
 		}
 		else if(lum.getZ() < 1 && lum.getZ() > 0 && lum.getX() <= 0) {
-			lum.increaseX(nb);
-			lum.increaseZ(nb);
+			lum.increaseX(coeffLumiere);
+			lum.increaseZ(coeffLumiere);
 		}
-		f.setLumiere(lum);
-		f.notifyObservers(f);
+		faces.setLumiere(lum);
+		faces.notifyObservers(faces);
 	}
-	/* 
+	/**
 	 * Methodes assignées aux boutons rotateLumiereHaut et bas dans la classe MonListChangeListener
-	 * */
-	public void rotateVertical(Faces f, double nb) {
-		Vecteur lum = f.getLumiere();
+	 *@param faces Faces à éclairer
+	 *@param coeffLumiere coefficient de lumiere
+	 */
+	public void rotateVertical(Faces faces, double coeffLumiere) {
+		Vecteur lum = faces.getLumiere();
 		if(lum.getY() < 1 && lum.getY() > 0 && lum.getZ() < 1 && lum.getZ() > 0) {
-			lum.increaseZ(nb);
-			lum.decreaseY(nb);
+			lum.increaseZ(coeffLumiere);
+			lum.decreaseY(coeffLumiere);
 		}
 		else if(lum.getY() <= 0 && lum.getY() > -1 && lum.getZ() < 1 && lum.getZ() > 0) {
-			lum.decreaseY(nb);
-			lum.decreaseZ(nb);
+			lum.decreaseY(coeffLumiere);
+			lum.decreaseZ(coeffLumiere);
 		}
 		else if(lum.getY() <= 0 && lum.getZ() <= 0) {
-			lum.increaseY(nb);
-			lum.decreaseZ(nb);
+			lum.increaseY(coeffLumiere);
+			lum.decreaseZ(coeffLumiere);
 		}
 		else if(lum.getY() < 1 && lum.getY() > 0 && lum.getZ() <= 0) {
-			lum.increaseZ(nb);
-			lum.increaseY(nb);
+			lum.increaseZ(coeffLumiere);
+			lum.increaseY(coeffLumiere);
 		}
-		f.setLumiere(lum);
-		f.notifyObservers(f);
+		faces.setLumiere(lum);
+		faces.notifyObservers(faces);
 	}
 }

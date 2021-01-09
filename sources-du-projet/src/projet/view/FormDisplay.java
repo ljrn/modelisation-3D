@@ -27,28 +27,28 @@ public class FormDisplay extends Application implements Observer {
 	double height;
 	boolean stroke;
 	boolean fill;
-	Canvas c = new Canvas(300, 300);
-	GraphicsContext gc = c.getGraphicsContext2D();
+	Canvas canvas = new Canvas(300, 300);
+	GraphicsContext context = canvas.getGraphicsContext2D();
 	ListView<File> listFiles;
-	Faces f;
-	Points ps;
-	VBox vb = new VBox();
+	Faces faces;
+	Points points;
+	VBox vbox = new VBox();
 	DirectoryChooser directoryChooser;
 	File path;
 	Stage stage;
 	Button rechercher = new Button("Rechercher");
-	TextField tf = new TextField("");
+	TextField textField = new TextField("");
 	
 	public void start(Stage primaryStage) {
 		directoryChooser=new DirectoryChooser();
 		path = directoryChooser.showDialog(null);
 		BorderPane root = new BorderPane();
-		width = c.getWidth();
-		height = c.getHeight();
-		HBox hb = listFiles(c, gc);
-		HBox hb2 = new HBox(tf,rechercher);
-		VBox nbFaces = new VBox(hb2,hb, vb);
-		root.getChildren().add(c);
+		width = canvas.getWidth();
+		height = canvas.getHeight();
+		HBox hb = listFiles(canvas, context);
+		HBox hb2 = new HBox(textField,rechercher);
+		VBox nbFaces = new VBox(hb2,hb, vbox);
+		root.getChildren().add(canvas);
 		root.setRight(nbFaces);
 		Scene scene = new Scene(root, 1500, 1000);
 		primaryStage.setScene(scene);
@@ -65,11 +65,11 @@ public class FormDisplay extends Application implements Observer {
 	}
 	/**
 	 * 
-	 * @param c correspond au Canvas dans lequel on va voir la figure
-	 * @param gc correspond au GraphicsContext li� au Canvas
-	 * @return Une HBox contenant la liste des fichiers .ply dans le r�pertoire ouvert
+	 * @param canvas correspond au Canvas dans lequel on va voir la figure
+	 * @param context correspond au GraphicsContext lie au Canvas
+	 * @return Une HBox contenant la liste des fichiers .ply dans le repertoire ouvert
 	 */
-	public HBox listFiles(Canvas c, GraphicsContext gc) {
+	public HBox listFiles(Canvas canvas, GraphicsContext context) {
 		listFiles = new ListView<>();
 		for (File file : path.listFiles()) {
 			if(file.toString().contains(".ply")) {
@@ -77,41 +77,40 @@ public class FormDisplay extends Application implements Observer {
 
 			}
 		}
-		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(c, gc, this));
+		listFiles.getSelectionModel().getSelectedItems().addListener(new MonListChangeListener(canvas, context, this));
 		HBox root = new HBox();
-		
 		root.getChildren().addAll(listFiles);
 		return root;
 	}
 	/**
 	 * 
-	 * @param f correspond aux faces de la figure � dessiner
-	 * @param fill boolean permettant de signifier si les faces doivent �tre pleines
-	 * @param stroke boolean permettant de signifier si les arr�tes doivent �tre dessinn�es
+	 * @param faces correspond aux faces de la figure a dessiner
+	 * @param fill boolean permettant de signifier si les faces doivent etre pleines
+	 * @param stroke boolean permettant de signifier si les arretes doivent etre dessinnees
 	 */
-	public void dessinModele(Faces f, boolean fill, boolean stroke) {
-		gc.clearRect(0, 0, 10000, 10000);
-		f.colorDiffuseFace();
-		for (Face fa : f.getFaces()) {
+	public void dessinModele(Faces faces, boolean fill, boolean stroke) {
+		context.clearRect(0, 0, 10000, 10000);
+		faces.colorDiffuseFace();
+		for (Face face : faces.getFaces()) {
 			if(fill) {
-				gc.setFill(Color.rgb(fa.getRed(), fa.getGreen(), fa.getBlue()));
-				gc.fillPolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+				context.setFill(Color.rgb(face.getRed(), face.getGreen(), face.getBlue()));
+				context.fillPolygon(face.getPointsX(), face.getPointsY(), face.getNbPoint());
 			}
 			if(stroke) {
-				gc.strokePolygon(fa.getPointsX(), fa.getPointsY(), fa.getNbPoint());
+				context.strokePolygon(face.getPointsX(), face.getPointsY(), face.getNbPoint());
 			}
 		}
-		if(f.isTimerActive())f.timerRotation();
+		if(faces.isTimerActive())faces.timerRotation();
 	}
 	@Override
 	public void update(Subject subj) {
 	}
 	@Override
 	public void update(Subject subj, Object data) {
-		f = (Faces) data;
-		f.cancelTimer();
-		c.setWidth(f.maxX());
-		c.setHeight(f.maxY());
-		this.dessinModele(f, fill, stroke);
+		faces = (Faces) data;
+		faces.cancelTimer();
+		canvas.setWidth(faces.maxX());
+		canvas.setHeight(faces.maxY());
+		this.dessinModele(faces, fill, stroke);
 	}
 }

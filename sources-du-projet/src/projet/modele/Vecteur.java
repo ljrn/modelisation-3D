@@ -38,63 +38,60 @@ public class Vecteur {
 		return z;
 	}
 	/**
-	 * 
 	 * @param x la valeur du x que l'on veut attribuer au vecteur
 	 */
 	public void setX(double x) {
 		this.x = x;
 	}
 	/**
-	 * 
 	 * @param x la valeur du y que l'on veut attribuer au vecteur
 	 */
 	public void setY(double y) {
 		this.y = y;
 	}
 	/**
-	 * 
 	 * @param x la valeur du z que l'on veut attribuer au vecteur
 	 */
 	public void setZ(double z) {
 		this.z = z;
 	}
 	/**
-	 * 
+	 * Ajoute value a la valeur de x
 	 * @param value la valeur que l'on veut ajouter au x du vecteur
 	 */
 	public void increaseX(double value) {
 		this.x += value;
 	}
 	/**
-	 * 
+	 * Ajoute value a la valeur de y
 	 * @param value la valeur que l'on veut ajouter au y du vecteur
 	 */
 	public void increaseY(double value) {
 		this.y += value;
 	}
 	/**
-	 * 
+	 * Ajoute value a la valeur de z
 	 * @param value la valeur que l'on veut ajouter au z du vecteur
 	 */
 	public void increaseZ(double value) {
 		this.z += value;
 	}
 	/**
-	 * 
+	 * Enleve value a la valeur de x
 	 * @param value la valeur que l'on veut enlever au x du vecteur
 	 */
 	public void decreaseX(double value) {
 		this.x -= value;
 	}
 	/**
-	 * 
+	 * Enleve value a la valeur de y
 	 * @param value la valeur que l'on veut enlever au y du vecteur
 	 */
 	public void decreaseY(double value) {
 		this.y -= value;
 	}
 	/**
-	 * 
+	 * Enleve value a la valeur de z
 	 * @param value la valeur que l'on veut enlever au z du vecteur
 	 */
 	public void decreaseZ(double value) {

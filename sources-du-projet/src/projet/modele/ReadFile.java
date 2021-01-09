@@ -15,46 +15,46 @@ public class ReadFile {
 	 * 					- Une liste de faces
 	 * Le f est le fichier ply
 	 */
-	private File f;
-	private List<String> header = new ArrayList<String>();
-	private List<String> points = new ArrayList<String>();
-	private List<String> faces = new ArrayList<String>();
+	private File file;
+	private List<String> header = new ArrayList<>();
+	private List<String> points = new ArrayList<>();
+	private List<String> faces = new ArrayList<>();
  	/**
  	 * Initialise un lecteur de fichier ply
  	 * @param s Le nom du fichier
  	 */
 	public ReadFile(String s) {
-		this.f=new File(s);
+		this.file=new File(s);
 	}
 	/**
 	 * Lis le fichier pour remplir les trois listes de String
 	 * @throws IOException
 	 */
 	public void readPly() throws IOException{
-		Reader reader=new FileReader(f);
-		BufferedReader br=new BufferedReader(reader);
-		String toAdd=br.readLine();
+		Reader reader=new FileReader(file);
+		BufferedReader buff=new BufferedReader(reader);
+		String toAdd=buff.readLine();
 		header.add(toAdd);
 		while(!toAdd.equals("end_header")){
-			toAdd=br.readLine();
+			toAdd=buff.readLine();
 			header.add(toAdd);
 		}
 		for(int cptPts = 0; cptPts<this.getVertex();cptPts++) {
-			this.points.add(br.readLine());
+			this.points.add(buff.readLine());
 		}
 		for(int cptFace = 0; cptFace<this.getFace();cptFace++) {
-			this.faces.add(br.readLine());
+			this.faces.add(buff.readLine());
 		}		
 		reader.close();
-		br.close();
+		buff.close();
 	}
 	/**
 	 * @return Le nombre de points dans le modèle (et donc le nombre de lignes contenant des points à lire dans le fichier) 
 	 */
 	public int getVertex() {
-		for(String s:header) { 
-			if(s.contains("element vertex")){
-				int res=(Integer.parseInt(s.substring(15)));
+		for(String string:header) { 
+			if(string.contains("element vertex")){
+				int res=(Integer.parseInt(string.substring(15)));
 				return res;
 			}
 		}
@@ -64,9 +64,9 @@ public class ReadFile {
 	 * @return Le nombre de faces dans le modèle (et donc le nombre de lignes contenant des faces à lire dans le fichier) 
 	 */
 	public int getFace() {
-		for(String s:header) {
-			if(s.contains("element face")){
-				int res=(Integer.parseInt(s.substring(13)));
+		for(String string:header) {
+			if(string.contains("element face")){
+				int res=(Integer.parseInt(string.substring(13)));
 				return res;
 			}
 		}
@@ -76,8 +76,8 @@ public class ReadFile {
 	 * 
 	 * @return Le fichier ply
 	 */
-	public File getF() {
-		return f;
+	public File getFile() {
+		return file;
 	}
 	/**
 	 * 

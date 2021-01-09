@@ -5,24 +5,24 @@ import java.util.List;
 public class Translate {	
 	/**
 	 * Cette méthode applique la translation à tous les points du modèle
-	 * @param f Ensemble des faces du modèle
+	 * @param faces Ensemble des faces du modèle
 	 * @param x Translation en x
 	 * @param y Translation en y
 	 * @param z Translation en z
 	 */
-	public void translate(Faces f, double x, double y, double z) {
-		double[][] matrice= {{1,0,0,x},{0,1,0,y},{0,0,1,z},{0,0,0,1}};
-		Matrice m=new Matrice();
+	public void translate(Faces faces, double x, double y, double z) {
+		double[][] matriceTab= {{1,0,0,x},{0,1,0,y},{0,0,1,z},{0,0,0,1}};
+		Matrice myMatrice=new Matrice();
 		List<Point> modified=new ArrayList<>();
-		for(Face fa:f.getFaces()) {
-			for(Point p:fa.getPoints()) {
-				if(!modified.contains(p)) {
-					double[][]point=m.multiplicationTranslation(p.toMatrice(), matrice);
-					p.assign(point);
-					modified.add(p);
+		for(Face face:faces.getFaces()) {
+			for(Point point:face.getPoints()) {
+				if(!modified.contains(point)) {
+					double[][] matPoint=myMatrice.multiplicationTranslation(point.toMatrice(), matriceTab);
+					point.assign(matPoint);
+					modified.add(point);
 				}
 			}
 		}
-		f.notifyObservers(f);
+		faces.notifyObservers(faces);
 	}
 }

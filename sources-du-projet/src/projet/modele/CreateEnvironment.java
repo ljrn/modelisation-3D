@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class CreateEnvironment {
-    public Points pts=new Points();
-    public Faces fa=new Faces();
+    public Points points=new Points();
+    public Faces faces=new Faces();
     
     /**
-     * 
+     * Cree les faces
      * @param file Fichier dans lequel les faces doivent être lues
      * @param hauteur Hauteur du modèle
      * @param largeur Largeur du modèle
@@ -19,13 +19,13 @@ public class CreateEnvironment {
         ReadFile rf=new ReadFile(s);
         try {
 			rf.readPly();
-			 pts.decompStringPoints(rf.getPoints(),hauteur,largeur);
-		     fa.decompStringFaces(rf.getFaces(), pts);
-		     fa.trierFaces();
+			 points.decompStringPoints(rf.getPoints(),hauteur,largeur);
+		     faces.decompStringFaces(rf.getFaces(), points);
+		     faces.trierFaces();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        return fa;
+        return faces;
     }
 }

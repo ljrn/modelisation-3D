@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Face implements Comparable<Face>{
 	private int nbPoint;
-	private List<Point> points=new ArrayList<Point>();
+	private List<Point> points=new ArrayList<>();
 	private Vecteur normal;
 	private final int baseRed;
 	private final int baseGreen;
