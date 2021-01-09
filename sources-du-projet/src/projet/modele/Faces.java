@@ -6,7 +6,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import projet.utils.Subject;
-
+/**
+ * Classe permettant de representer l'ensemble des faces du modele
+ */
 public class Faces extends Subject{
 	private List<Face> faces = new ArrayList<>();
 	private static Vecteur lumiere=new Vecteur(1,1,-1);

@@ -1,6 +1,8 @@
 package projet.utils;
 
-
+/**
+ * Utilisation du pattern observer/observe
+ */
 public class ObservableProperty extends Subject {
 
 	protected Object value;

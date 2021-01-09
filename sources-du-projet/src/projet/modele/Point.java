@@ -1,5 +1,7 @@
 package projet.modele;
-
+/**
+ * Classe representant un point du modele
+ */
 public class Point{
 
     double x;

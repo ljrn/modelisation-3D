@@ -2,7 +2,9 @@ package projet.modele;
 
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * Classe permettant de créer l'environnement du modele
+ */
 public class CreateEnvironment {
     public Points points=new Points();
     public Faces faces=new Faces();

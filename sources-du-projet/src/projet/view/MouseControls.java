@@ -4,6 +4,9 @@ import projet.modele.Faces;
 import projet.modele.Rotate;
 import projet.modele.Translate;
 
+/**
+ * Implementation des controleurs souris
+ */
 public class MouseControls {
 	double previousX=0.0;
 	double previousY=0.0;

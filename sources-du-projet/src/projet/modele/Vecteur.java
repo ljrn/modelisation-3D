@@ -1,5 +1,8 @@
 package projet.modele;
 
+/**
+ * Implementation d'un vecteur pour les faces et la lumiere
+ */
 public class Vecteur {
 	private double x;
 	private double y;

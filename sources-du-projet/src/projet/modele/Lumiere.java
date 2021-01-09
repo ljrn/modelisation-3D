@@ -1,5 +1,7 @@
 package projet.modele;
-
+/**
+ *Classe permettant d'initialiser et de gerer la lumiere et l'eclairage du modele
+ */
 public class Lumiere {
 	/**
 	 * Methodes assignées aux boutons rotateLumiereDroite et Gauche dans la classe MonListChangeListener

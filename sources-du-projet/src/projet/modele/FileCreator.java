@@ -8,7 +8,9 @@ import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Pattern;
-
+/**
+ * Classe permettant de recuperer toutes les informations d'un fichier
+ */
 public class FileCreator {
 	/**
 	 * @param path Chemin du répertoire

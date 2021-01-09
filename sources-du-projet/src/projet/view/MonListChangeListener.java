@@ -21,7 +21,9 @@ import projet.modele.Rotate;
 import projet.modele.Translate;
 import projet.modele.Zoom;
 
-
+/**
+ * Classe permettant d'initialiser tous les boutons de la vue et de charger les modèles lors d'un changement de choix
+ */
 class MonListChangeListener implements ListChangeListener<File> {
 	Canvas canvas;
 	GraphicsContext graphicsContext;

@@ -2,7 +2,9 @@ package projet.modele;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe representant l'essemble des points du modele
+ */
 public class Points {
 	private List<Point> points = new ArrayList<Point>();
 	private Point pointCentral;

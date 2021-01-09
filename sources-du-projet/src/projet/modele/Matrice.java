@@ -1,5 +1,8 @@
 package projet.modele;
 
+/**
+ * Implementation d'une Matrice et des operations pouvant etre realisees
+ */
 public class Matrice {
 	/**
 	 * Cette méthode multiplie deux matrice pour une translation

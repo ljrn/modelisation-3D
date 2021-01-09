@@ -3,6 +3,9 @@ package projet.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utilisation du pattern observer/observe
+ */
 public abstract class Subject {
     protected List<Observer> attached;
     /*

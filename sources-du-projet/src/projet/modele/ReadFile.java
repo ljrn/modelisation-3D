@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Classe permettant de lire un fichier .ply et de le parser
+ */
 public class ReadFile {
 	/*
 	 * Le fichier ply contient :

@@ -1,6 +1,9 @@
 package projet.modele;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Classe permettant de représenter une face
+ */
 public class Face implements Comparable<Face>{
 	private int nbPoint;
 	private List<Point> points=new ArrayList<>();

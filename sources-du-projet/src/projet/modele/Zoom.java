@@ -3,6 +3,9 @@ package projet.modele;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation de l'operation d'homothetie sur l'ensmeble des points du modele
+ */
 public class Zoom {	
 	/**
 	 * Cette méthode appplique le zoom à tous les points du modèle

@@ -22,6 +22,9 @@ import projet.modele.Points;
 import projet.utils.Observer;
 import projet.utils.Subject;
 
+/**
+ * Initialisation de la vue principale du logiciel
+ */
 public class FormDisplay extends Application implements Observer {
 	double width;
 	double height;
