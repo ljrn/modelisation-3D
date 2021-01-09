@@ -1,8 +1,8 @@
 package projet.view;
 import javafx.scene.canvas.Canvas;
 import projet.modele.Faces;
-import projet.modele.Rotate;
-import projet.modele.Translate;
+import projet.modele.Rotation;
+import projet.modele.Translation;
 
 /**
  * Implementation des controleurs souris
@@ -16,8 +16,8 @@ public class MouseControls {
 	 * @param f Ensemble des faces du modèle
 	 */
 	public void mouseDragged(Canvas c, Faces f) {
-		Translate t=new Translate();
-		Rotate r=new Rotate();
+		Translation t= Translation.getInstance();
+		Rotation r= Rotation.getInstance();
 		c.setOnMousePressed(e->{
 			previousX=e.getSceneX();
 			previousY=e.getSceneY();

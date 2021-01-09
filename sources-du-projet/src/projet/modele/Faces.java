@@ -140,7 +140,7 @@ public class Faces extends Subject{
     	Faces f = this;
 	    TimerTask repeatedTask = new TimerTask() {
 	        public void run() {
-	        	Rotate r = new Rotate();
+	        	Rotation r = Rotation.getInstance();
 	        	r.rotateY(f, -0.009);
 	        	cancel();
 	        }

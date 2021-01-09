@@ -11,14 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import projet.modele.CreateEnvironment;
 import projet.modele.FileCreator;
 import projet.modele.Lumiere;
 import projet.modele.Points;
-import projet.modele.Rotate;
-import projet.modele.Translate;
+import projet.modele.Rotation;
+import projet.modele.Translation;
 import projet.modele.Zoom;
 
 /**
@@ -85,7 +84,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		canvas.setWidth(points.maxX());
 		canvas.setHeight(points.maxY());
 		formDisplay.dessinModele(env.faces, true, true);
-		Translate translate = new Translate();
+		Translation translate = Translation.getInstance();
 		plusX.setOnAction(e -> {
 			translate.translate(env.faces, 3.0, 0, 0);
 		});
@@ -98,14 +97,14 @@ class MonListChangeListener implements ListChangeListener<File> {
 		moinsY.setOnAction(e -> {
 			translate.translate(env.faces, 0, -3.0, 0);
 		});
-		Zoom zoom = new Zoom();
+		Zoom zoom = Zoom.getInstance();
 		canvas.setOnScroll(e -> {
 			if (e.getDeltaY() > 0)
 				zoom.zoom(env.faces, 1.05);
 			else
 				zoom.zoom(env.faces, 0.95);
 		});
-		Rotate rotate = new Rotate();
+		Rotation rotate = Rotation.getInstance();
 		rotateXplus.setOnAction(e -> {
 			rotate.rotateX(env.faces, 0.05);
 		});
@@ -124,7 +123,7 @@ class MonListChangeListener implements ListChangeListener<File> {
 		rotateYmoins.setOnMousePressed(e -> {
 			rotate.rotateY(env.faces, -0.05);
 		});
-		Lumiere lum = new Lumiere();
+		Lumiere lum = Lumiere.getInstance();
 		rotateLumiereDroite.setOnMousePressed(e -> {
 			lum.rotateHorizontal(env.faces, 0.1);
 		});

@@ -3,7 +3,19 @@ package projet.modele;
  *Classe permettant d'initialiser et de gerer la lumiere et l'eclairage du modele
  */
 public class Lumiere {
-	/**
+	
+	private static Lumiere INSTANCE;
+	private Lumiere() {
+	}
+	
+	public static Lumiere getInstance() {
+        if(INSTANCE == null) {
+            INSTANCE = new Lumiere();
+        }
+
+        return INSTANCE;
+    }
+/**
 	 * Methodes assignées aux boutons rotateLumiereDroite et Gauche dans la classe MonListChangeListener
 	 * @param faces Faces à éclairer
 	 * @param coeffLumiere coefficient de lumiere
