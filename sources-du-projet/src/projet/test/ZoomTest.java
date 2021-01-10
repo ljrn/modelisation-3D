@@ -21,7 +21,7 @@ public class ZoomTest {
 	Zoom z = Zoom.getInstance();
 	@BeforeEach
 	public void creation_Faces(){
-		ArrayList<Point> listPs = new ArrayList<Point>();
+		ArrayList<Point> listPs = new ArrayList<>();
 		listPs.add(new Point(10.1, 10.1, 10.1));
 		listPs.add(new Point(11.1, 11.1, 11.1));
 		listPs.add(new Point(12.1, 12.1, 12.1));
@@ -33,18 +33,18 @@ public class ZoomTest {
 
 		Points ps = new Points();
 		ps.setPoints(listPs);
-		ArrayList<Face> listFs = new ArrayList<Face>();	
-		ArrayList<Point> face1 = new ArrayList<Point>();
+		ArrayList<Face> listFs = new ArrayList<>();	
+		ArrayList<Point> face1 = new ArrayList<>();
 		face1.add(ps.getPoints().get(0));
 		face1.add(ps.getPoints().get(1));
 		face1.add(ps.getPoints().get(2));
 		listFs.add(new Face(3,face1));
-		ArrayList<Point> face2 = new ArrayList<Point>();
+		ArrayList<Point> face2 = new ArrayList<>();
 		face2.add(ps.getPoints().get(2));
 		face2.add(ps.getPoints().get(3));
 		face2.add(ps.getPoints().get(4));
 		listFs.add(new Face(3,face2));
-		ArrayList<Point> face3 = new ArrayList<Point>();
+		ArrayList<Point> face3 = new ArrayList<>();
 		face3.add(ps.getPoints().get(5));
 		face3.add(ps.getPoints().get(6));
 		face3.add(ps.getPoints().get(7));

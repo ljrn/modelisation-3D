@@ -15,7 +15,7 @@ class PointsTest {
 	Points ps;
 	@Test
 	void testDecompString() {
-		listS = new ArrayList<String>();
+		listS = new ArrayList<>();
 		String s1 = "10.123456 20.1234567 30.12345678";
 		listS.add(s1);
 		Points p = new Points();
@@ -26,7 +26,7 @@ class PointsTest {
 	}
 	@Test
 	void testMinMaxXY() {
-		listS = new ArrayList<String>();
+		listS = new ArrayList<>();
 		String s1 = "50 20 30 40";
 		String s2 = "50.1 42.5455 53.5353";
 		String s3 = "50.123 30 42.3 23.4";
