@@ -18,7 +18,7 @@ import projet.modele.Zoom;
 public class ZoomTest {
 	private static final double DELTA = 0.1;
 	Faces fs = new Faces();
-	Zoom z = new Zoom();
+	Zoom z = Zoom.getInstance();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<Point>();

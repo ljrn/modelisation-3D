@@ -13,12 +13,12 @@ import projet.modele.Face;
 import projet.modele.Faces;
 import projet.modele.Point;
 import projet.modele.Points;
-import projet.modele.Translate;
+import projet.modele.Translation;
 
 public class TranslateTest {
 	private static final double DELTA = 0.1;
 	Faces fs = new Faces();
-	Translate t =new Translate();
+	Translation t =Translation.getInstance();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<Point>();

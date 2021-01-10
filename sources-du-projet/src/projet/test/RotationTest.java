@@ -2,23 +2,24 @@ package projet.test;
 
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javafx.scene.transform.Rotate;
 import projet.modele.Face;
 import projet.modele.Faces;
 import projet.modele.Point;
 import projet.modele.Points;
-import projet.modele.Rotate;
+import projet.modele.Rotation;
 
 public class RotationTest {
 	private static final double DELTA = 0.1;
 	Faces fs = new Faces();
-	Rotate r =new Rotate();
+	Rotation r = Rotation.getInstance();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<Point>();
