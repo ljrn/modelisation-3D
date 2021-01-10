@@ -7,5 +7,5 @@ Tâches à réaliser groupe J6
 
 3 *Controlleur Horloge:* Baptiste -> 20 décembre
 
-4 *Lissage:* Mohamed et Louis -> 10 janvier
+4 *Gestion de la bibliothèque de modèles:* Mohnes -> 5 Janvier
 
