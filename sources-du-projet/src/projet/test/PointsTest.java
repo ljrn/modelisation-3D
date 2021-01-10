@@ -12,7 +12,7 @@ import projet.modele.Points;
 
 class PointsTest {
 	public List<String> listS;
-	Points ps;
+	Points points;
 	@Test
 	void testDecompString() {
 		listS = new ArrayList<>();
@@ -35,11 +35,11 @@ class PointsTest {
 		listS.add(s2);
 		listS.add(s3);
 		listS.add(s4);
-		ps = new Points();
-		ps.decompStringPoints(listS,0,0);
-		assertEquals(50, ps.minX(),0.05);
-		assertEquals(65.2, ps.maxX(),0.05);
-		assertEquals(20, ps.minY(),0.05);
-		assertEquals(42.5455, ps.maxY(), 0.05);
+		points = new Points();
+		points.decompStringPoints(listS,0,0);
+		assertEquals(50, points.minX(),0.05);
+		assertEquals(65.2, points.maxX(),0.05);
+		assertEquals(20, points.minY(),0.05);
+		assertEquals(42.5455, points.maxY(), 0.05);
 	}
 }

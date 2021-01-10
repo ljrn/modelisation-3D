@@ -15,7 +15,7 @@ import projet.modele.Points;
 import projet.modele.ReadFile;
 
 class FacesTest {
-	Faces fs = new Faces();
+	Faces faces = new Faces();
 	@BeforeEach
 	public void creation_Faces(){
 		ArrayList<Point> listPs = new ArrayList<>();
@@ -46,7 +46,7 @@ class FacesTest {
 		face3.add(ps.getPoints().get(6));
 		face3.add(ps.getPoints().get(7));
 		listFs.add(new Face(3,face3));
-		fs.setFaces(listFs);
+		faces.setFaces(listFs);
 	}
 	@Test
 	public void testDecompFaces() {

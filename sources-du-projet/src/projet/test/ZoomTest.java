@@ -17,7 +17,7 @@ import projet.modele.Zoom;
 
 public class ZoomTest {
 	private static final double DELTA = 0.1;
-	Faces fs = new Faces();
+	Faces faces = new Faces();
 	Zoom z = Zoom.getInstance();
 	@BeforeEach
 	public void creation_Faces(){
@@ -49,22 +49,22 @@ public class ZoomTest {
 		face3.add(ps.getPoints().get(6));
 		face3.add(ps.getPoints().get(7));
 		listFs.add(new Face(3,face3));
-		fs.setFaces(listFs);
+		faces.setFaces(listFs);
 	}
 	
 	@Test
     public void test_Zoom() {
-        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
-        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
-        assertEquals(10.1, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
-        z.zoom(fs, 1.5);
-        assertEquals(10.875, fs.getFaces().get(0).getPoints().get(0).getX(), 0.001);
-        assertEquals(10.875, fs.getFaces().get(0).getPoints().get(0).getY(), 0.001);
-        assertEquals(15.15, fs.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
+        assertEquals(10.1, faces.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+        assertEquals(10.1, faces.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+        assertEquals(10.1, faces.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+        z.zoom(faces, 1.5);
+        assertEquals(10.875, faces.getFaces().get(0).getPoints().get(0).getX(), 0.001);
+        assertEquals(10.875, faces.getFaces().get(0).getPoints().get(0).getY(), 0.001);
+        assertEquals(15.15, faces.getFaces().get(0).getPoints().get(0).getZ(), 0.01);
         
-        z.zoom(fs, 0.5);
-        assertEquals(10.78, fs.getFaces().get(0).getPoints().get(0).getX(), DELTA);
-        assertEquals(10.78, fs.getFaces().get(0).getPoints().get(0).getY(), DELTA);
-        assertEquals(7.575, fs.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
+        z.zoom(faces, 0.5);
+        assertEquals(10.78, faces.getFaces().get(0).getPoints().get(0).getX(), DELTA);
+        assertEquals(10.78, faces.getFaces().get(0).getPoints().get(0).getY(), DELTA);
+        assertEquals(7.575, faces.getFaces().get(0).getPoints().get(0).getZ(), DELTA);
     }
 }
