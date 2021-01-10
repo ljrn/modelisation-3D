@@ -35,3 +35,6 @@ En dehors des tâches techniques faîtes, un gros travail de communication au se
 De plus, nous avons réussi à implémenter les contrôles souris, ce dont nous sommes relativement fiers.
 Vous pouvez donc zoomer et dézoomer sur les modèles grâce à la molette, faire une rotation de la figure grâce à un cliquer déplacer sur le bouton droit de la souris, et, vous pouvez faire une translation de celle-ci grâce à un cliquer déplacer sur le bouton gauche de la souris.
 Malheureusement nous avons eu un problème avec la génération du fichier JAR executable avec MAVEN. Il est donc impossible de run le projet avec un JAR.
+
+![alt text](https://gitlab.univ-lille.fr/2020-s3-projet-mode/projetmode-j6/-/raw/master/UMLProjetMode-J6.jpg)
+
