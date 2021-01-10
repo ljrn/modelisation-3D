@@ -8,6 +8,10 @@ Louis:
      -Ajustement de la rotation autour du centre de la figure
      -Implémentation du Design Pattern Observateur/Observable
      -Refactoring
+     -Eclairage
+     -Deuxieme vue
+     -Modèle centré
+     -Javadoc
 
 Mohamed:
      - FacesTest, Points Tests, TranslateTest
