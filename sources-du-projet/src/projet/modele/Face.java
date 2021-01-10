@@ -50,8 +50,8 @@ public class Face implements Comparable<Face>{
 		return green;
 	}
 	/**
-	 * Initialise la composante rouge de la face
-	 * @param red Un entier de 0 à 255 désignant la teinte de vert à donner à la face
+	 * Initialise la composante verte de la face
+	 * @param green Un entier de 0 à 255 désignant la teinte de vert à donner à la face
 	 */
 	public void setGreen(int green) {
 		this.green = green;
@@ -64,8 +64,8 @@ public class Face implements Comparable<Face>{
 		return blue;
 	}
 	/**
-	 * Initialise la composante rouge de la face
-	 * @param red Un entier de 0 à 255 désignant la teinte de bleu à donner à la face
+	 * Initialise la composante bleue de la face
+	 * @param blue Un entier de 0 à 255 désignant la teinte de bleu à donner à la face
 	 */
 	public void setBlue(int blue) {
 		this.blue = blue;
@@ -151,7 +151,7 @@ public class Face implements Comparable<Face>{
 	}
 	
 	/**
-	 * @param Liste des points de la face
+	 * @param p Liste des points de la face
 	 * @return le vecteur "AB" de la face 
 	 */
 	public Vecteur getAB(List<Point> p) {

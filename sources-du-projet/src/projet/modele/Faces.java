@@ -24,6 +24,7 @@ public class Faces extends Subject{
 	}
 	/**
 	 * Cette méthode permet de donner la valeur de l'attribut boolean de classe timerActive
+	 * @param timerActive boolean permettant de dire si le timer doit être mis en actif ou non
 	 */
 	public void setTimerActive(boolean timerActive) {
 		this.timerActive = timerActive;
