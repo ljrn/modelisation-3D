@@ -47,13 +47,13 @@ public class Vecteur {
 		this.x = x;
 	}
 	/**
-	 * @param x la valeur du y que l'on veut attribuer au vecteur
+	 * @param y la valeur du y que l'on veut attribuer au vecteur
 	 */
 	public void setY(double y) {
 		this.y = y;
 	}
 	/**
-	 * @param x la valeur du z que l'on veut attribuer au vecteur
+	 * @param z la valeur du z que l'on veut attribuer au vecteur
 	 */
 	public void setZ(double z) {
 		this.z = z;
